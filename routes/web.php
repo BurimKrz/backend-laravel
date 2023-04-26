@@ -20,5 +20,6 @@ Route::get('list', function () {
     return view('welcome');
 });
 
+
 // Route::post('/captcha-validation', [CaptchaServiceController::class, 'capthcaFormValidate']);
 // Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
