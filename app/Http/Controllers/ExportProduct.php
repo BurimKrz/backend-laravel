@@ -33,6 +33,7 @@ class ExportProduct extends Controller
         })->toArray();
 
         // $exportProductsArray = json_decode(json_encode($exportProducts), true);
+          // $exportProductsArray = json_decode(json_encode($exportProducts), true);
 
          return ExportResource::collection($array);
     }
