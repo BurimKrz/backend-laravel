@@ -18,11 +18,10 @@ class RegisterController extends Controller
                 'surname' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8',
-                'phone_number' => 'required|string|max:255',
+                'phone_number' => 'required|string|max:255|unique:users,phone_number',
                 'country' => 'required|string|max:255',
                 'gender' => 'required|string|max:255',
                 'agreementss' => 'required|boolean:true,false',
-                // 'g-recaptcha-response' => 'required|captcha'
             ]);
 
         if ($validator->fails()) {
@@ -38,6 +37,6 @@ class RegisterController extends Controller
             'gender' => $request->gender,
         ]);
         return response()->json(['user' => $user], 201);
-         // 'g-recaptcha-response' => 'required|captcha'
+
     }
 }
