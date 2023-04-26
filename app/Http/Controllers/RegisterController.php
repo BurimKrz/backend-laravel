@@ -38,5 +38,6 @@ class RegisterController extends Controller
             'gender' => $request->gender,
         ]);
         return response()->json(['user' => $user], 201);
+         // 'g-recaptcha-response' => 'required|captcha'
     }
 }
