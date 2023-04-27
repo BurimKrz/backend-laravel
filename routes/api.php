@@ -24,14 +24,17 @@ Route::post('/register', [RegisterController::class, 'register']);
 //     return $request->user();
 // });
 
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
 Route::get('/', [ExportProduct::class ,'index']);
 
 Route::get('/list',[ExportProduct::class,'index1']);
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 
 
 
