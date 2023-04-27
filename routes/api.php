@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImportPoduct;
+use App\Http\Controllers\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +39,8 @@ Route::get('/elist',[ExportProduct::class,'index1']);
 //Route for import list
 Route::get('/ilist',[ImportPoduct::class, 'import']);
 
-
-
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+Route::post('/company',[CompanyController::class, 'company']);

@@ -19,14 +19,13 @@ return new class extends Migration
             $table->string('web_adress');
             $table->string('more_info');
             $table->string('budged');
-            $table->unsignedBigInteger("type_id");
+            $table->string("type");
             $table->unsignedBigInteger("category_id");
             $table->unsignedBigInteger("subcategory_id");
             $table->string("taxpayer_office");
             //TIN - taxpayer identification number
             $table->string("TIN");
             $table->unsignedBigInteger('activity_area_id');
-            $table->foreign('type_id')->references('id')->on('company_type');
             $table->foreign('category_id')->references('id')->on('company_category');
             $table->foreign('subcategory_id')->references('id')->on('company_subcategory');
             $table->foreign('activity_area_id')->references('id')->on('activity_area');
