@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExportProduct;
+use App\Http\Controllers\ImportPoduct;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ use App\Http\Controllers\ExportProduct;
 
 Route::get('/', [ExportProduct::class ,'index']);
 
-Route::get('/list',[ExportProduct::class,'index1']);
+//Route for export list
+Route::get('/elist',[ExportProduct::class,'index1']);
+
+//Route for import list
+Route::get('/ilist',[ImportPoduct::class, 'import']);
 
 
