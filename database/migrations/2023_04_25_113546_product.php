@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('imageURL');
             $table->integer('views');
             $table->unsignedBigInteger("category_id");
-            $table->unsignedBigInteger("copmapy_id");
+            $table->unsignedBigInteger("company_id");
             $table->foreign('category_id')->references('id')->on('product_category');
-            $table->foreign('copmapy_id')->references('id')->on('company');
+            $table->foreign('company_id')->references('id')->on('company');
             $table->timestamps();
          });
     }
