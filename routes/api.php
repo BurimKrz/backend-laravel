@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImportPoduct;
-use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
