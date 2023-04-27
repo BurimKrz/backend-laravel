@@ -4,6 +4,7 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExportProduct;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImportPoduct;
 use App\Http\Controllers\AuthController;
 
@@ -37,6 +38,7 @@ Route::get('/elist',[ExportProduct::class,'index1']);
 
 //Route for import list
 Route::get('/ilist',[ImportPoduct::class, 'import']);
+
 
 
 Route::post('/login', [AuthController::class, 'login']);
