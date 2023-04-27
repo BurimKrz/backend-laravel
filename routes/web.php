@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\CaptchaServiceController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+
+Route::get('list', function () {
     return view('welcome');
 });
 
+
+// Route::post('/captcha-validation', [CaptchaServiceController::class, 'capthcaFormValidate']);
+// Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
