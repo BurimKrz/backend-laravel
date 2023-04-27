@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $country = App\Models\countries::all();
+    return view('welcome', ['country' => $country]);
 });
 
 // Route::post('/captcha-validation', [CaptchaServiceController::class, 'capthcaFormValidate']);
