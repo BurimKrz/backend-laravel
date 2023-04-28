@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 
+
 class RegisterController extends Controller
 {
     public function register(Request $request)
@@ -44,5 +45,5 @@ class RegisterController extends Controller
     public function index() {
         return CountryResource::collection(countries::all());
     }
-
+    
 }
