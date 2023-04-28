@@ -7,6 +7,9 @@ use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImportPoduct;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ItemExportController;
+use App\Http\Controllers\ItemImportController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +51,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::post('/company', [CompanyController::class, 'company']);
+
+Route::post('/exportItem', [ItemExportController::class, 'itemExport']);
+
+Route::post('/importItem', [ItemImportController::class, 'itemImport']);
