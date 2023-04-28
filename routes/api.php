@@ -39,8 +39,12 @@ Route::get('/elist',[ExportProduct::class,'index1']);
 //Route for import list
 Route::get('/ilist',[ImportPoduct::class, 'import']);
 
+Route::get('/elist/{id}',[ExportProduct::class, 'show']);
+
+Route::get('/ilist/{id}',[ImportPoduct::class, 'show']);
+
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::post('/company',[CompanyController::class, 'company']);
+Route::post('/company', [CompanyController::class, 'company']);

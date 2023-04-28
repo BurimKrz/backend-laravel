@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CompanyController extends Controller
 {
-    function company (){
+    function company (Request $request){
         $validator = Validator::make( 
             $request->all(),
         [
@@ -17,12 +17,13 @@ class CompanyController extends Controller
            'country'=> 'required|string|max:255',
            'web_adress'=> 'required|string|max:255',
            'more_info' => 'required|string|max:255',
-           'budget' => 'required|string|max:255',
+           'budged' => 'required|string|max:255',
            'type'=> 'required|string|max:255',
            'taxpayer_office'=> 'required|string|max:255',
            'TIN'=> 'required|string|max:255',
-            'category_id'=> 'required|string|max:255',
-            'subcategory_id'=> 'required|string|max:255',
+           'activity_area_id'=>'required|integer',
+            'category_id'=> 'required|integer',
+            'subcategory_id'=> 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -35,12 +36,15 @@ class CompanyController extends Controller
             'country'=>$request->country,
             'web_adress'=>$request->web_adress,
             'more_info'=>$request->more_info,
-            'budget'=>$request->budget,
+            'budged'=>$request->budged,
             'type'=>$request->type,
             'taxpayer_office'=>$request->taxpayer_office,
             'TIN'=>$request->TIN,
+            'activity_area_id'=>$request->activity_area_id,
             'category_id'=>$request->category_id,
             'subcategory_id'=>$request->subcategory_id,
         ]);
+
+        return response()->json(['company' => $company], 201);
     }
 }

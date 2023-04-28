@@ -31,25 +31,6 @@ class ExportProduct extends Controller
 
                         logger($exportProducts);
 
-        // $exportProducts = DB::table('export_product')
-        // ->join('product', 'export_product.product_id', '=', 'product.id')
-        // ->join('company', 'product.company_id', '=', 'company.id')
-        // ->join('product_category', 'product.category_id', '=', 'product_category.id')
-        // ->select('product.name', 'product.description', 'product.price', 'product.imageURL', 'product.views', 'company.name', 'company.country', 'company.keywords', 'product_category.name')
-        // ->get();
-
-        // $exportProducts = DB::table('export_product as exp')
-        //         ->join('product as p', function ($join) {
-        //         $join->on('exp.product_id', '=', 'p.id')
-        //         ->whereRaw('p.company_id = c.id')
-        //         ->whereRaw('p.category_id = pc.id');
-        // })
-        //         ->join('company as c', 'p.company_id', '=', 'c.id')
-        //         ->join('product_category as pc', 'p.category_id', '=', 'pc.id')
-        //         ->select('p.name', 'p.description', 'p.price', 'p.imageURL', 'p.views', 'c.name', 'c.country', 'c.keywords', 'pc.name')
-        //         ->get();
-
-
         $array = $exportProducts->map(function($obj){
             return (array)$obj;
         })->toArray();
@@ -59,4 +40,21 @@ class ExportProduct extends Controller
 
          return ExportResource::collection($array);
     }
+
+    function show ($id) {
+        $exportProducts = DB::table('export_product as exp')
+              ->join('product as p', 'exp.product_id', '=', 'p.id')
+              ->join('company as c', 'c.id', '=', 'p.company_id')
+              ->join('product_category as pc', 'pc.id', '=', 'p.category_id')
+              ->where('exp.id', '=', $id)
+               ->select('exp.id','p.name', 'p.description', 'p.price', 'p.imageURL', 'p.views', 'c.name as company_name', 'c.country', 'c.keywords', 'pc.name as category_name', 'exp.info', 'c.budged')
+            ->get();
+      
+                  logger($exportProducts);
+               $array = $exportProducts->map(function($obj){
+                  return (array)$obj;
+              })->toArray();
+      
+              return ExportResource::collection($array);
+         }
 }
