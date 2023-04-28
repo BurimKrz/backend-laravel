@@ -3,6 +3,7 @@
 use App\Http\Controllers\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImportPoduct;
@@ -19,6 +20,7 @@ use App\Http\Controllers\CompanyController;
 |
 */
 Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/country', [RegisterController::class, 'index']);
 
 
 
