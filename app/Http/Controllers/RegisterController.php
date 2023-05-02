@@ -7,6 +7,7 @@ use App\Models\countries;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 
 
@@ -37,9 +38,12 @@ class RegisterController extends Controller
             'password' => bcrypt($request -> password),
             'phone_number' => $request->phone_number,
             'country' => $request->country,
-            'gender' => $request->gender,
+            'gender' => $request->gender
+            
         ]);
-        return response()->json(['user' => $user], 201);
+       
+
+        return response()->json(['message' => 'User registered successfully'], 201);
 
     }
     public function index() {
