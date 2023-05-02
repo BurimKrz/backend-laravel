@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CountryResource;
+use App\Models\countries;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+
 
 
 class RegisterController extends Controller
@@ -39,4 +42,8 @@ class RegisterController extends Controller
         return response()->json(['user' => $user], 201);
 
     }
+    public function index() {
+        return CountryResource::collection(countries::all());
+    }
+    
 }
