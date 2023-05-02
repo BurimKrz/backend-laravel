@@ -25,6 +25,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop($tableNames['import_product']);
+
+        Schema::dropIfExists('import_product');
     }
 };

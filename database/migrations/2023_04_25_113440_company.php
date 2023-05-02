@@ -20,14 +20,14 @@ return new class extends Migration
             $table->string('more_info');
             $table->string('budged');
             $table->string("type");
-            $table->unsignedBigInteger("category_id");
-            $table->unsignedBigInteger("subcategory_id");
+            $table->string("category");
+            $table->string("subcategory");
             $table->string("taxpayer_office");
             //TIN - taxpayer identification number
             $table->string("TIN");
             $table->unsignedBigInteger('activity_area_id');
-            $table->foreign('category_id')->references('id')->on('company_category');
-            $table->foreign('subcategory_id')->references('id')->on('company_subcategory');
+            // $table->foreign('category_id')->references('id')->on('company_category');
+            // $table->foreign('subcategory_id')->references('id')->on('company_subcategory');
             $table->foreign('activity_area_id')->references('id')->on('activity_area');
             $table->timestamps();
          });
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop($tableNames['company']);
+        Schema::dropIfExists('company');
     }
 };

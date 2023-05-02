@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop($tableNames['activity_area']);
+        Schema::dropIfExists('activity_area');
     }
 };

@@ -40,7 +40,7 @@ class AdminSeeder extends Seeder
         // $user->assignRole($role);
 
 
-        
+
         // $role = Role::create(['name' => 'admin']);
         // $user = \App\Models\User::factory()->create([
         //     'name' => 'Test ADMIN',
@@ -51,14 +51,18 @@ class AdminSeeder extends Seeder
 
 
 
-        // $role = Role::create(['name' => 'commander']);
-        // $user = \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'gentdushi@protonmail.ch',
-        //     'password' => bcrypt('123'),
-        // ]);
-        // $user->assignRole($role);
 
-        
+        $user = \App\Models\User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'gentdushi@protonmail.ch',
+            'surname' =>'dushi',
+            'phone_number' => '+383',
+            'country' => 'Albania',
+            'gender' => 'm',
+            'password' => bcrypt('123'),
+        ]);
+        $user->assignRole($role);
+
+
     }
 }

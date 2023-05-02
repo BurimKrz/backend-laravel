@@ -9,5 +9,5 @@ class export_item extends Model
 {
     public $table = 'export_item';
     
-    protected $fillable = ['name','description', 'price', 'category'];
+    protected $fillable = ['name','description', 'price', 'category', 'created_at'];
 }
