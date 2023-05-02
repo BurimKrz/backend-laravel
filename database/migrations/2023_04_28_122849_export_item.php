@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('company_categories', function (Blueprint $table) {
-            $table->id("id");
+        Schema::create('export_item',function(Blueprint $table){
+            $table->id('id');
+            $table->string('name');
+            $table->string('description');
+            $table->decimal('price', 50,2);
             $table->string('category');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('company_category');
+        Schema::drop($tableNames['import_item']);
     }
 };
