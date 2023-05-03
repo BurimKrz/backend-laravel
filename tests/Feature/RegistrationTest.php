@@ -23,9 +23,9 @@ use Tests\TestCase;
          $response = $this->post('http://127.0.0.1:8000/api/register', [
              'name' => 'Ermira',
              'surname' => 'Bajrami',
-             'email' => 'ermirabajram52@gmail.com',
+             'email' => 'ermirabajram42@gmail.com',
              'password' => 'Ermira654',
-             'phone_number' => '044306223',
+             'phone_number' => '044306263',
              'country' => 'Albania',
              'gender' => 'F',
              'agreementss' => true
