@@ -7,8 +7,8 @@ use Illuminate\Foundation\Testing\WithFaker;
 use App\Providers\RouteServiceProvider;
 use Tests\TestCase;
 
-// class RegistrationTest extends TestCase
-// {
+ class RegistrationTest extends TestCase
+ {
     /**
      * A basic feature test example.
      */
@@ -30,7 +30,7 @@ use Tests\TestCase;
 //             'gender' => 'F',
 //             'agreementss' => true
 //         ]);
- 
+
 //         $response->assertRedirect('/');
-//     }
-// }
+    //  }
+ }
