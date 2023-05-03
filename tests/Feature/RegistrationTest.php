@@ -30,7 +30,7 @@ use Tests\TestCase;
 //             'gender' => 'F',
 //             'agreementss' => true
 //         ]);
- 
+
 //         $response->assertRedirect('/');
 //     }
 // }

@@ -10,9 +10,12 @@ class LoginTest extends TestCase
 {
     public function test_user_can_view_a_login_form()
     {
-        $response = $this->get('/login');
+           $response = $this->post('http://127.0.0.1:8000/api/login', [
 
-        $response->assertSuccessful();
-        $response->assertViewIs('auth.login');
-    }
+             'email' => 'ermirabajram42@gmail.com',
+             'password' => 'Ermira654',
+         ]);
+
+        $response->assertStatus(200);
+        }
 }
