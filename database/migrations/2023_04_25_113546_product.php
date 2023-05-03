@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\product;
 
 return new class extends Migration
 {
@@ -11,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product', function(Blueprint $table){
+        Schema::create('products', function(Blueprint $table){
             $table->id('id');
             $table->string('name');
             $table->string('description');
@@ -20,7 +21,7 @@ return new class extends Migration
             $table->integer('views');
             $table->unsignedBigInteger("category_id");
             $table->unsignedBigInteger("company_id");
-            $table->foreign('category_id')->references('id')->on('product_category');
+            $table->foreign('category_id')->references('id')->on('product_categories');
             $table->foreign('company_id')->references('id')->on('company');
             $table->timestamps();
          });
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product');
+        Schema::dropIfExists('products');
     }
 };
