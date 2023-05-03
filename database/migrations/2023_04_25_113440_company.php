@@ -25,10 +25,10 @@ return new class extends Migration
             $table->string("taxpayer_office");
             //TIN - taxpayer identification number
             $table->string("TIN");
-            $table->unsignedBigInteger('activity_area_id');
+            // $table->unsignedBigInteger('activity_company_id');
             // $table->foreign('category_id')->references('id')->on('company_category');
             // $table->foreign('subcategory_id')->references('id')->on('company_subcategory');
-            $table->foreign('activity_area_id')->references('id')->on('activity_area');
+            // $table->foreign('activity_company_id')->references('id')->on('activity_company');
             $table->timestamps();
          });
     }
