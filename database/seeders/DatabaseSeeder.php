@@ -25,6 +25,14 @@ class DatabaseSeeder extends Seeder
             SubcategorySeeder::class
         ]);
 
+        $this->call([
+            ActivityAreaSeeder::class
+        ]);
+
+        $this->call([
+            ProductCategorySeeder::class
+        ]);
+
         //$this->call(AdminSeeder::class);
 
         // \App\Models\User::factory(10)->create();
