@@ -21,7 +21,7 @@ class ModifyItem extends Controller
         $product->description = $productValidated['description']; 
         $product->price = $productValidated['price'];
         $product->imageURL = $productValidated['imageURL'];
-        
+        $product->save();
         
         return response()->json(['product' => $product]);
     }

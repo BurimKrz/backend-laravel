@@ -13,6 +13,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ModifyItem;
 
 
 /*
