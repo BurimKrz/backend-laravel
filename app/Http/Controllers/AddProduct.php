@@ -16,7 +16,6 @@ class AddProduct extends Controller
                 'decription'=> 'required|string|max:255', 
                 'price'=>'required|numeric', 
                 'imageURL'=>'required|string|max:255',
-                'views'=>'required|string|max:255', 
                 'category_id'=>'required|integer', 
                 'copmapy_id'=>'required|integer'
             ]
@@ -31,7 +30,6 @@ class AddProduct extends Controller
             'decription' =>$request->description, 
             'price' => $request->price, 
             'imageURL' => $request->imageURL, 
-            'views' => $request->views, 
             'category_id'=> $request->category_id, 
             'copmapy_id'=> $request->company_id
         ]);

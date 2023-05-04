@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class import_item extends Model
+class activity_company extends Model
 {
     use HasFactory;
 
-    public $table = 'import_item';
-    
-    protected $fillable = ['name','description', 'price', 'category'];
+    public $table = 'activity_company';
+    protected $fillable = ['activity_area_id', 'company_id'];
 }
