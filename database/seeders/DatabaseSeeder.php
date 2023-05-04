@@ -13,19 +13,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // comment this line when migrate seed for more then 1 time
-        // or just migrate:fresh --seed
-        $this->call(AdminSeeder::class);
+        $this->call([
+            CountrySeeder::class
+        ]);
 
+        $this->call([
+            CategorySeeder::class
+        ]);
 
-        // call fake data and how many you need / 'factory(?)'
+        $this->call([
+            SubcategorySeeder::class
+        ]);
 
-        \App\Models\countries::factory(20)->create();
-        \App\Models\company::factory(20)->create();
-        \App\Models\product_category::factory(20)->create();
-        \App\Models\product::factory(20)->create();
-
-
+        //$this->call(AdminSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

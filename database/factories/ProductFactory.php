@@ -27,6 +27,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->randomFloat(2, 1, 1000),
             'imageURL' => $this->faker->imageUrl(640, 480, 'product', true, 'Faker'),
             'views' => $this->faker->numberBetween(0, 1000),
+            'type' => $this->faker->word("Import","Export"),
             'category_id' => product_category::factory(),
             'company_id' => company::factory(),
         ];

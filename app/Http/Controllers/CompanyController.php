@@ -21,7 +21,6 @@ class CompanyController extends Controller
            'type'=> 'required|string|max:255',
            'taxpayer_office'=> 'required|string|max:255',
            'TIN'=> 'required|string|max:255',
-           'activity_area_id'=>'required|integer',
             'category_id'=> 'required|integer',
             'subcategory_id'=> 'required|integer',
         ]);
@@ -40,8 +39,7 @@ class CompanyController extends Controller
             'type'=>$request->type,
             'taxpayer_office'=>$request->taxpayer_office,
             'TIN'=>$request->TIN,
-            'activity_area_id'=>$request->activity_area_id,
-            'category_id'=>$request->category_id,
+            'category_id'=>$request->category_id, 
             'subcategory_id'=>$request->subcategory_id,
         ]);
 

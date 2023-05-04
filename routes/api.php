@@ -8,10 +8,12 @@ use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImportPoduct;
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\ItemExportController;
-use App\Http\Controllers\ItemImportController;
+// use App\Http\Controllers\ItemExportController;
+// use App\Http\Controllers\ItemImportController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\AddProduct;
 
 
 /*
@@ -56,9 +58,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 Route::post('/company', [CompanyController::class, 'company']);
 
-Route::post('/exportItem', [ItemExportController::class, 'itemExport']);
+// Route::post('/exportItem', [ItemExportController::class, 'itemExport']);
 
-Route::post('/importItem', [ItemImportController::class, 'itemImport']);
+// Route::post('/importItem', [ItemImportController::class, 'itemImport']);
 
 Route::get('/view/{id}', [ViewController::class, 'view']);
 
@@ -67,3 +69,7 @@ Route::get('/date/{id}', [ViewController::class, 'date']);
 Route::get('/category', [CategoryController::class, 'category']);
 
 Route::get('/subcategory', [CategoryController::class, 'subcategory']);
+
+Route::post('/activity',[ActivityController::class, 'activitycontroller']);
+
+Route::post('/add', [AddProduct::class,'AddProduct']);
