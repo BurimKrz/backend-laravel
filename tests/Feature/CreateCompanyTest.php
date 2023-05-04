@@ -23,6 +23,8 @@ class CreateCompanyTest extends TestCase
     'type' => 'F',
     'taxpayer_office' => "102",
     'TIN' => "102",
+    'category' => 'hello',
+    'subcategory' => 'hello',
 
 ]);
 $response->assertStatus(201);

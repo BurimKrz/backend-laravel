@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('company', function(Blueprint $table){
+       Schema::create('company', function(Blueprint $table){
             $table->id('id');
             $table->string('name');
             $table->string('keywords');
@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('more_info');
             $table->string('budged');
             $table->string("type");
-
+            $table->string("category");
+            $table->string("subcategory");
             $table->string("taxpayer_office");
             //TIN - taxpayer identification number
             $table->string("TIN");
