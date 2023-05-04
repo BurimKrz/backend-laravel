@@ -11,16 +11,6 @@ class company extends Model
 
     public $table = 'company';
 
-    protected $fillable = [
-    'name',
-    'keywords',
-    'country',
-    'web_adress',
-    'more_info',
-    'budged',
-    'type',
-    "taxpayer_office",
-    "TIN",
-
-    ];
+    protected $fillable = ['name', 'keywords', 'country', 'web_adress', 'more_info', 'budged', 'type', "taxpayer_office",
+                            "TIN",'activity_area_id', 'category', 'subcategory'];
 }
