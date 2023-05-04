@@ -26,6 +26,7 @@ class CountrySeeder extends Seeder
             ['country' => 'Egypt'],
             ['country' => 'Gabon'],
             ['country' => 'Kazakhstan'],
+            ['country' => 'Kosova'],
             ['country' => 'Malaysia'],
             ['country' => 'Monaco'],
             ['country' => 'Russia'],

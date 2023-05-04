@@ -52,16 +52,16 @@ class AdminSeeder extends Seeder
 
 
 
-        $user = \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'gentdushi@protonmail.ch',
-            'surname' =>'dushi',
-            'phone_number' => '+383',
-            'country' => 'Albania',
-            'gender' => 'm',
-            'password' => bcrypt('123'),
-        ]);
-        $user->assignRole($role);
+        // $user = \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'gentdushi@protonmail.ch',
+        //     'surname' =>'dushi',
+        //     'phone_number' => '+383',
+        //     'country' => 'Albania',
+        //     'gender' => 'm',
+        //     'password' => bcrypt('123'),
+        // ]);
+        // $user->assignRole($role);
 
 
     }

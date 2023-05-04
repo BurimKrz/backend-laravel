@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone_number');
-            $table->string('country');
+            $table->unsignedBigInteger('country_id');
             $table->string('gender');
             $table->boolean('agreementss')->default(false);
             $table->rememberToken();
