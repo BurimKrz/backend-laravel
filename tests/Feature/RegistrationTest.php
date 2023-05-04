@@ -26,7 +26,7 @@ use Tests\TestCase;
              'email' => 'ermirabajram42@gmail.com',
              'password' => 'Ermira654',
              'phone_number' => '044306263',
-             'country' => 'Albania',
+             'country_id' => 1,
              'gender' => 'F',
              'agreementss' => true
          ]);
