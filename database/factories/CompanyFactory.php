@@ -26,10 +26,10 @@ class CompanyFactory extends Factory
             'budged' => $this->faker->randomNumber(5),
             'type' => $this->faker->words(2, true),
             'taxpayer_office' => $this->faker->randomNumber(3),
-            'category' => $this->faker->words(2, true),
-            'subcategory' => $this->faker->words(2, true),
+            'category_id' => $this->faker->randomElement([1, 2, 3, 4]),
+'subcategory_id' => $this->faker->randomElement([1, 2, 3, 4]),
             'TIN' => $this->faker->randomNumber(2)
-            
+
         ];
     }
 }
