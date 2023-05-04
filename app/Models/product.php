@@ -9,7 +9,9 @@ class product extends Model
 {
     use HasFactory;
 
-    public $table = 'products';
+    // public $table = 'products';
+
+    protected $table = 'product';
 
     protected $fillable = ['name', 'description', 'price', 'imageURL', 'views', 'category_id', 'copmapy_id', 'created_at'];
 }
