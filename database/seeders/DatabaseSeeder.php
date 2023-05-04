@@ -17,7 +17,15 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class
         ]);
 
-        $this->call(AdminSeeder::class);
+        $this->call([
+            CategorySeeder::class
+        ]);
+
+        $this->call([
+            SubcategorySeeder::class
+        ]);
+
+        //$this->call(AdminSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

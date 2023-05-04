@@ -20,6 +20,7 @@ class AddProduct extends Controller
                 'price'=>'required|numeric', 
                 'imageURL'=>'required|string|max:255',
                 'type'=>'required|string|max:255',
+                'views'=>'integer',
                 'category_id'=>'required|integer', 
                 'company_id'=>'required|integer'
             ]
@@ -51,6 +52,7 @@ class AddProduct extends Controller
             $product -> price = $request -> price;
             $product -> imageURL = $request -> imageURL;
             $product -> type = $request -> type;
+            $product -> views = $request ->views;
             $product -> category_id = $request -> category_id;
             $product -> company_id = $request -> company_id;
             $product -> save();
