@@ -19,7 +19,7 @@ class countriesFactory extends Factory
     public function definition(): array
     {
         return [
-            'country' => $this->faker->name()
+            'country' => $this->faker->unique()->country
         ];
     }
 }

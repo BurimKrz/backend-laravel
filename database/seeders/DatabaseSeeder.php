@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([
-        //     CountrySeeder::class
-        // ]);
+        // comment this line when migrate seed for more then 1 time
+        // or just migrate:fresh --seed
+        $this->call(AdminSeeder::class);
 
         // $this->call([
         //     CategorySeeder::class
@@ -25,7 +25,12 @@ class DatabaseSeeder extends Seeder
         //     SubcategorySeeder::class
         // ]);
 
-        //$this->call(AdminSeeder::class);
+        \App\Models\countries::factory(100)->create();
+        \App\Models\company::factory(20)->create();
+        \App\Models\product_category::factory(20)->create();
+        \App\Models\product::factory(20)->create();
+
+
 
         // \App\Models\User::factory(10)->create();
 
