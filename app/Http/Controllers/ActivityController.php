@@ -37,7 +37,7 @@ class ActivityController extends Controller
         for ($i=0; $i < count($split); $i++) { 
             DB::table('activity_company')->insert([
                 'activity_area_id' => $split[$i],
-                'company_id' => 1
+                'company_id' => 2
             ]);
         }
         return response()->json('ok');

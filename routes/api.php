@@ -13,6 +13,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\AddProduct;
 
 
 /*
@@ -70,3 +71,5 @@ Route::get('/category', [CategoryController::class, 'category']);
 Route::get('/subcategory', [CategoryController::class, 'subcategory']);
 
 Route::post('/activity',[ActivityController::class, 'activitycontroller']);
+
+Route::post('/add', [AddProduct::class,'AddProduct']);

@@ -17,12 +17,12 @@ return new class extends Migration
             $table->string('description');
             $table->decimal('price', 50,2);
             $table->string('imageURL');
-            $table->integer('views');
+            $table->integer('views')->default(0);
             $table->string('type');
             $table->unsignedBigInteger("category_id");
             $table->unsignedBigInteger("company_id");
             $table->foreign('category_id')->references('id')->on('product_category');
-            $table->foreign('company_id')->references('id')->on('company');
+            $table->foreign('company_id')->references('id')->on('company')->default(1);
             $table->timestamps();
          });
     }

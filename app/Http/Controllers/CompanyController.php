@@ -39,8 +39,8 @@ class CompanyController extends Controller
             'type'=>$request->type,
             'taxpayer_office'=>$request->taxpayer_office,
             'TIN'=>$request->TIN,
-            'category_id'=>$request->category,
-            'subcategory_id'=>$request->subcategory,
+            'category_id'=>$request->category_id, 
+            'subcategory_id'=>$request->subcategory_id,
         ]);
 
         return response()->json(['company' => $company], 201);
