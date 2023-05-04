@@ -70,6 +70,8 @@ Route::get('/category', [CategoryController::class, 'category']);
 
 Route::get('/subcategory', [CategoryController::class, 'subcategory']);
 
+Route::get('/productcategory', [CategoryController::class, 'productcategory']);
+
 Route::post('/activity',[ActivityController::class, 'activitycontroller']);
 
 Route::post('/add', [AddProduct::class,'AddProduct']);
