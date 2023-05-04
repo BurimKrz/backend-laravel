@@ -21,8 +21,8 @@ class CompanyController extends Controller
            'type'=> 'required|string|max:255',
            'taxpayer_office'=> 'required|string|max:255',
            'TIN'=> 'required|string|max:255',
-            'category'=> 'required|string|max:255',
-            'subcategory'=> 'required|string|max:255',
+            'category_id'=> 'required|integer',
+            'subcategory_id'=> 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -39,8 +39,8 @@ class CompanyController extends Controller
             'type'=>$request->type,
             'taxpayer_office'=>$request->taxpayer_office,
             'TIN'=>$request->TIN,
-            'category'=>$request->category,
-            'subcategory'=>$request->subcategory,
+            'category_id'=>$request->category,
+            'subcategory_id'=>$request->subcategory,
         ]);
 
         return response()->json(['company' => $company], 201);
