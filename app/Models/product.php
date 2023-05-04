@@ -13,5 +13,5 @@ class product extends Model
 
     protected $table = 'product';
 
-    protected $fillable = ['name', 'description', 'price', 'imageURL', 'views', 'category_id', 'copmapy_id', 'created_at'];
+    protected $fillable = ['name', 'description', 'price', 'imageURL', 'views', 'type', 'category_id', 'copmapy_id', 'created_at'];
 }
