@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // comment this line when migrate seed for more then 1 time
         // or just migrate:fresh --seed
-        // $this->call(AdminSeeder::class);
+        $this->call(AdminSeeder::class);
 
         
         // DUMMY DATA  --  DONT CHANGE THE ORDER OF SEEDS
