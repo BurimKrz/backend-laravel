@@ -37,7 +37,7 @@ class companyFactory extends Factory
             'keywords' => $this->faker->words(3, true),
             'country' => $this->faker->country,
             'web_adress' => $this->faker->url,
-            'more_info' => $this->faker->paragraph,
+            'more_info' => $this->faker->words(3, true),
             'budged' => $this->faker->numberBetween(1000, 10000),
             'type' => $this->faker->randomElement(['local', 'international']),
             'taxpayer_office' => $this->faker->numberBetween(100, 999),

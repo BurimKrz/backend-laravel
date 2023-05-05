@@ -9,7 +9,6 @@ use Database\Seeders\SubcategorySeeder;
 use Database\Seeders\ActivityAreaSeeder;
 use Database\Seeders\ProductCategorySeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\company;
 use App\Models\product;
 use App\Models\product_category;
@@ -22,10 +21,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // comment this line when migrate seed for more then 1 time
-        // or just migrate:fresh --seed
-        $this->call(AdminSeeder::class);
-
         
         // DUMMY DATA  --  DONT CHANGE THE ORDER OF SEEDS
 
@@ -43,6 +38,11 @@ class DatabaseSeeder extends Seeder
 
             // Seed the activity table - no more then 6
         \App\Models\activity_area::factory(6)->create();
+
+
+        // comment this line when migrate seed for more then 1 time
+        // or just migrate:fresh --seed
+        $this->call(AdminSeeder::class);
 
 
         // \App\Models\User::factory(10)->create();
