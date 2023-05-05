@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('company_subcategories', function (Blueprint $table) {
             $table->id("id");
-            $table->string('category');
+            $table->string('name');
             // $table->unsignedBigInteger("category_id");
             $table->timestamps();
         });
