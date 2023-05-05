@@ -26,7 +26,7 @@ class User extends Authenticatable
         'password',
         'password',
         'phone_number',
-        'country',
+        'country_id',
         'gender',
         'agreements'
     ];

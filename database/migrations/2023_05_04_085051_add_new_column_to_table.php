@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('company_type', function (Blueprint $table) {
-            $table->id("id");
-            $table->string('type');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('country_id')->references('id')->on('countries');    
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('company_type');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

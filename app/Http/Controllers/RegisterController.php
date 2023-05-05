@@ -23,7 +23,7 @@ class RegisterController extends Controller
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8',
                 'phone_number' => 'required|string|max:255|unique:users,phone_number',
-                'country' => 'required|string|max:255',
+                'country_id' => 'required|integer',
                 'gender' => 'required|string|max:255',
                 'agreementss' => 'required|boolean:true,false',
             ]);
@@ -37,13 +37,13 @@ class RegisterController extends Controller
             'email' => $request -> email,
             'password' => bcrypt($request -> password),
             'phone_number' => $request->phone_number,
-            'country' => $request->country,
+            'country_id' => $request->country_id,
             'gender' => $request->gender
             
         ]);
        
 
-        return response()->json(['message' => 'User registered successfully'], 201);
+        return response()->json(['user' => $user], 201);
 
     }
     public function index() {

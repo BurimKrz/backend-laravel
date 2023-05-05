@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 class CompanyController extends Controller
 {
     function company (Request $request){
-        $validator = Validator::make( 
+      $validator = Validator::make(
             $request->all(),
         [
            'name'=> 'required|string|max:255',
@@ -21,12 +21,10 @@ class CompanyController extends Controller
            'type'=> 'required|string|max:255',
            'taxpayer_office'=> 'required|string|max:255',
            'TIN'=> 'required|string|max:255',
-           'activity_area_id'=>'required|integer',
             'category_id'=> 'required|integer',
             'subcategory_id'=> 'required|integer',
         ]);
-
-        if ($validator->fails()) {
+       if ($validator->fails()) {
             return response() -> json(['errors' => $validator->errors()], 400);
         }
 
@@ -40,8 +38,7 @@ class CompanyController extends Controller
             'type'=>$request->type,
             'taxpayer_office'=>$request->taxpayer_office,
             'TIN'=>$request->TIN,
-            'activity_area_id'=>$request->activity_area_id,
-            'category_id'=>$request->category_id,
+            'category_id'=>$request->category_id, 
             'subcategory_id'=>$request->subcategory_id,
         ]);
 

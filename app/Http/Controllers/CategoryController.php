@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\company_category;
 use App\Models\company_subcategory;
+use App\Models\product_category;
 use App\Http\Resources\CategoryResource;
-use App\Http\Resources\CategorySubcesource;
+use App\Http\Resources\ProductCategory;
 
 class CategoryController extends Controller
 {
@@ -15,7 +16,11 @@ class CategoryController extends Controller
     }
 
     function subcategory(){
-        return SuncategoryResource::collection(company_subcategory::all());
+        return CategoryResource::collection(company_subcategory::all());
+    }
+
+    function productcategory(){
+        return ProductCategory::collection(product_category::all());
     }
 
 }
