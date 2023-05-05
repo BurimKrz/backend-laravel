@@ -16,7 +16,7 @@ class ExportProduct extends Controller
     }
 
     function index1(){
-        
+
         // $exportProducts = DB::table('export_product as exp')
         //                  ->join('product as p', 'exp.product_id', '=', 'p.id')
         //                  ->select('exp.*', 'p.*')
@@ -26,7 +26,7 @@ class ExportProduct extends Controller
                         ->join('product as p', 'exp.product_id', '=', 'p.id')
                         ->join('company as c', 'c.id', '=', 'p.company_id')
                         ->join('product_category as pc', 'pc.id', '=', 'p.category_id')
-                        ->select('p.name', 'p.description', 'p.price', 'p.imageURL', 'p.views', 'c.name as company_name', 'c.country', 'c.keywords', 'pc.name as category_name')
+                        ->select('p.name', 'p.description', 'p.price', 'p.imageURL', 'p.views', 'c.name as company_name', 'c.country', 'c.keywords', 'pc.name as category_name', 'p.id')
                         ->get();
 
                         logger($exportProducts);
@@ -36,7 +36,7 @@ class ExportProduct extends Controller
         })->toArray();
 
         // $exportProductsArray = json_decode(json_encode($exportProducts), true);
-       
+
 
          return ExportResource::collection($array);
     }
@@ -47,14 +47,14 @@ class ExportProduct extends Controller
               ->join('company as c', 'c.id', '=', 'p.company_id')
               ->join('product_category as pc', 'pc.id', '=', 'p.category_id')
               ->where('exp.id', '=', $id)
-               ->select('exp.id','p.name', 'p.description', 'p.price', 'p.imageURL', 'p.views', 'c.name as company_name', 'c.country', 'c.keywords', 'pc.name as category_name', 'exp.info', 'c.budged')
+               ->select('exp.id','p.name', 'p.description', 'p.price', 'p.imageURL', 'p.views', 'c.name as company_name', 'c.country', 'c.keywords', 'pc.name as category_name',  'c.budged')
             ->get();
-      
+
                   logger($exportProducts);
                $array = $exportProducts->map(function($obj){
                   return (array)$obj;
               })->toArray();
-      
+
               return ExportResource::collection($array);
          }
 }
