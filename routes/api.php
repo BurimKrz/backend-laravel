@@ -3,7 +3,7 @@
 use App\Http\Controllers\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Tests\Feature\Auth\RegistrationTest;
+// use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImportPoduct;
@@ -13,6 +13,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ModifyItem;
 
 
 /*
@@ -27,7 +28,8 @@ use App\Http\Controllers\ActivityController;
 */
 Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/country', [RegisterController::class, 'index']);
-
+Route::put('/product/{id}', [ModifyItem::class, 'update']);
+Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
