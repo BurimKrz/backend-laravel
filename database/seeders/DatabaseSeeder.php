@@ -2,6 +2,12 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Seeder;
+use Database\Seeders\CountrySeeder;
+use Database\Seeders\CategorySeeder;
+use Database\Seeders\SubcategorySeeder;
+use Database\Seeders\ActivityAreaSeeder;
+use Database\Seeders\ProductCategorySeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\company;
