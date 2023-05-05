@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\company;
+use App\Models\product;
+use App\Models\product_category;
 
 
 class DatabaseSeeder extends Seeder
@@ -15,21 +18,22 @@ class DatabaseSeeder extends Seeder
     {
         // comment this line when migrate seed for more then 1 time
         // or just migrate:fresh --seed
-        // $this->call(AdminSeeder::class);
+        $this->call(AdminSeeder::class);
 
-        // $this->call([
-        //     CategorySeeder::class
-        // ]);
+        
+        // DUMMY DATA  --  DONT CHANGE THE ODER OF SEEDS
 
-        // $this->call([
-        //     SubcategorySeeder::class
-        // ]);
-
-        \App\Models\countries::factory(100)->create();
-        \App\Models\company::factory(20)->create();
+            // Seed the countries table
+        \App\Models\countries::factory(20)->create();
+        
+            // Seed the producct category table
         \App\Models\product_category::factory(20)->create();
-        \App\Models\product::factory(20)->create();
 
+            // Seed the company table
+        company::factory(10)->create();
+
+            // Seed the product table
+        \App\Models\product::factory(20)->create();
 
 
         // \App\Models\User::factory(10)->create();
