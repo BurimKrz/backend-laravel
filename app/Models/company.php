@@ -19,6 +19,8 @@ class company extends Model
         'more_info', 
         'budged', 'type', 
         'taxpayer_office',                  
-        'TIN'
+        'TIN', 
+        'category_id',
+        'subcategory_id'
     ];
 }
