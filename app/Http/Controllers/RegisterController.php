@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-
-
 class RegisterController extends Controller
 {
     public function register(Request $request)
@@ -26,7 +24,8 @@ class RegisterController extends Controller
                 'country_id' => 'required|integer',
                 'gender' => 'required|string|max:255',
                 'agreementss' => 'required|boolean:true,false',
-            ]);
+            ]
+        );
 
         if ($validator->fails()) {
             return response() -> json(['errors' => $validator->errors()], 400);
@@ -39,15 +38,14 @@ class RegisterController extends Controller
             'phone_number' => $request->phone_number,
             'country_id' => $request->country_id,
             'gender' => $request->gender
-            
+
         ]);
-       
+
 
         return response()->json(['user' => $user], 201);
-
     }
-    public function index() {
+    public function index()
+    {
         return CountryResource::collection(countries::all());
     }
-    
 }

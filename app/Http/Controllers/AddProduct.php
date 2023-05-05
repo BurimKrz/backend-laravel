@@ -11,18 +11,19 @@ use Illuminate\Support\Facades\Validator;
 
 class AddProduct extends Controller
 {
-    function AddProduct (Request $request){
+    function AddProduct(Request $request)
+    {
         $validator = Validator::make(
             $request -> all(),
             [
-                'name'=>'required|string|max:255',
-                'description'=> 'required|string|max:255',
-                'price'=>'required|numeric',
-                'imageURL'=>'required|string|max:255',
-                'type'=>'required|string|max:255',
-                'views'=>'integer',
-                'category_id'=>'required|integer',
-                'company_id'=>'required|integer'
+                'name' => 'required|string|max:255',
+                'description' => 'required|string|max:255',
+                'price' => 'required|numeric',
+                'imageURL' => 'required|string|max:255',
+                'type' => 'required|string|max:255',
+                'views' => 'integer',
+                'category_id' => 'required|integer',
+                'company_id' => 'required|integer'
             ]
         );
 
@@ -46,7 +47,7 @@ class AddProduct extends Controller
         if ($validator -> fails()) {
             return response() -> json(['status' => 400, 'message' => $validator -> errors()]);
         } else {
-            $product = new Product;
+            $product = new Product();
             $product -> name = $request -> name;
             $product -> description = $request -> description;
             $product -> price = $request -> price;
@@ -59,21 +60,21 @@ class AddProduct extends Controller
 
             $productId = $product->id;
 
-        if ($typeImportExport == 'export') {
-            // Insert the product ID into the export_product table
-            DB::table('export_product')->insert([
+            if ($typeImportExport == 'export') {
+                // Insert the product ID into the export_product table
+                DB::table('export_product')->insert([
                 'product_id' => $productId
-            ]);
-        }
+                ]);
+            }
             if ($typeImportExport == 'import') {
                 // Insert the product ID into the import_product table
                 DB::table('import_product')->insert([
                     'product_id' => $productId
                 ]);
-        }
+            }
 
         // return response()->json(['AddProduct'->$AddProduct]);
-        return response() -> json(['status' => 200, 'message' => 'Product added successfully']);
-    }
+            return response() -> json(['status' => 200, 'message' => 'Product added successfully']);
+        }
     }
 }

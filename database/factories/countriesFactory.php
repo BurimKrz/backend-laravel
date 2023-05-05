@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Countrie>
  */
+
 use App\Models\countries;
 
 class countriesFactory extends Factory

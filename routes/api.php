@@ -16,7 +16,6 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AddProduct;
 use App\Http\Controllers\ModifyItem;
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -48,14 +47,14 @@ Route::get('/', function () {
 Route::get('/', [ExportProduct::class ,'index']);
 
 //Route for export list
-Route::get('/elist',[ExportProduct::class,'index1']);
+Route::get('/elist', [ExportProduct::class,'showList']);
 
 //Route for import list
-Route::get('/ilist',[ImportPoduct::class, 'import']);
+Route::get('/ilist', [ImportPoduct::class, 'import']);
 
-Route::get('/elist/{id}',[ExportProduct::class, 'show']);
+Route::get('/elist/{id}', [ExportProduct::class, 'show']);
 
-Route::get('/ilist/{id}',[ImportPoduct::class, 'show']);
+Route::get('/ilist/{id}', [ImportPoduct::class, 'show']);
 
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -77,6 +76,6 @@ Route::get('/subcategory', [CategoryController::class, 'subcategory']);
 
 Route::get('/productcategory', [CategoryController::class, 'productcategory']);
 
-Route::post('/activity',[ActivityController::class, 'activitycontroller']);
+Route::post('/activity', [ActivityController::class, 'activitycontroller']);
 
 Route::post('/add', [AddProduct::class,'AddProduct']);

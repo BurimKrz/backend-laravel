@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::create('activity_company',function(Blueprint $table){
-        $table->id("id");
-        $table->unsignedBigInteger('activity_area_id');
-        $table->unsignedBigInteger('company_id')->default(1);
-        $table->foreign('company_id')->references('id')->on('company');
-        $table->timestamps();
-       });
+        Schema::create('activity_company', function (Blueprint $table) {
+            $table->id("id");
+            $table->unsignedBigInteger('activity_area_id');
+            $table->unsignedBigInteger('company_id')->default(1);
+            $table->foreign('company_id')->references('id')->on('company');
+            $table->timestamps();
+        });
     }
 
     /**

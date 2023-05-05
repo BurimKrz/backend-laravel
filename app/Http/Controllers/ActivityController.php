@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Models\activity_company;
 use Illuminate\Support\Facades\Validator;
@@ -11,14 +10,15 @@ use Illuminate\Support\Str;
 
 class ActivityController extends Controller
 {
-    function activitycontroller(Request $request){
+    function activitycontroller(Request $request)
+    {
         $validator = Validator::make(
             $request -> all(),
             [
-                'activity_area_id'=> 'required|integer',
+                'activity_area_id' => 'required|integer',
                 // 'company_id'=> 'integer',
             ]
-            ); 
+        );
 
             $activityAreaId = strval($request->activity_area_id);
 
@@ -34,7 +34,7 @@ class ActivityController extends Controller
         $split = str_split($activityAreaId, 1);
 
 
-        for ($i=0; $i < count($split); $i++) { 
+        for ($i = 0; $i < count($split); $i++) {
             DB::table('activity_company')->insert([
                 'activity_area_id' => $split[$i],
                 'company_id' => 2

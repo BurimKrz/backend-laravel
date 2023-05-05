@@ -12,14 +12,14 @@ class company extends Model
     protected $table = 'company';
 
     protected $fillable = [
-        'name', 
-        'keywords', 
-        'country', 
-        'web_adress', 
-        'more_info', 
-        'budged', 'type', 
-        'taxpayer_office',                  
-        'TIN', 
+        'name',
+        'keywords',
+        'country',
+        'web_adress',
+        'more_info',
+        'budged', 'type',
+        'taxpayer_office',
+        'TIN',
         'category_id',
         'subcategory_id'
     ];

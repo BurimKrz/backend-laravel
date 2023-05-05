@@ -12,11 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product', function(Blueprint $table){
+        Schema::create('product', function (Blueprint $table) {
             $table->id('id');
             $table->string('name');
             $table->string('description');
-            $table->decimal('price', 50,2);
+            $table->decimal('price', 50, 2);
             $table->string('imageURL');
             $table->integer('views')->default(0);
             $table->string('type');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('product_category');
             $table->foreign('company_id')->references('id')->on('company')->default(1);
             $table->timestamps();
-         });
+        });
     }
 
     /**

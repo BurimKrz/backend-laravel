@@ -10,6 +10,6 @@ class export_product extends Model
     use HasFactory;
 
     public $table = 'export_product';
-    
+
     protected $fillable = ['name','product_id'];
 }

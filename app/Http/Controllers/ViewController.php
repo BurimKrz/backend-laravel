@@ -9,16 +9,17 @@ use App\Http\Resources\ViewResource;
 
 class ViewController extends Controller
 {
-    function view($id){
+    function view($id)
+    {
         $product = Product::find($id);
         $views = $product ? $product->views : null;
         return response()->json(['views' => $views]);
     }
 
-    function date($id){
+    function date($id)
+    {
         $product = Product::find($id);
-        $created = $product ? $product->created_at: null;
+        $created = $product ? $product->created_at : null;
         return response()->json(['created_at' => $created]);
     }
 }
-

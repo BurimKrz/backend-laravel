@@ -6,7 +6,6 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
-
 class AdminSeeder extends Seeder
 {
     /**
@@ -23,14 +22,12 @@ class AdminSeeder extends Seeder
         $user = \App\Models\User::factory()->create([
             'name' => 'Test User',
             'email' => 'gentdushi@protonmail.ch',
-            'surname' =>'dushi',
+            'surname' => 'dushi',
             'phone_number' => '+383',
             'country_id' => 1,
             'gender' => 'm',
             'password' => bcrypt('123'),
         ]);
         $user->assignRole($role);
-
-
     }
 }

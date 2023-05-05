@@ -11,16 +11,18 @@ use App\Http\Resources\ProductCategory;
 
 class CategoryController extends Controller
 {
-    function category(){
+    function category()
+    {
         return CategoryResource::collection(company_category::all());
     }
 
-    function subcategory(){
+    function subcategory()
+    {
         return CategoryResource::collection(company_subcategory::all());
     }
 
-    function productcategory(){
+    function productcategory()
+    {
         return ProductCategory::collection(product_category::all());
     }
-
 }

@@ -18,12 +18,12 @@ class company_subcategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->randomElement([
-                'Limited by Sheares', 
-                'Limited by Guarante', 
-                'Unlimited Company', 
-                'Holding', 
-                'Subsidiary', 
-                'Assosiate', 
+                'Limited by Sheares',
+                'Limited by Guarante',
+                'Unlimited Company',
+                'Holding',
+                'Subsidiary',
+                'Assosiate',
                 'Listed',
                 'Unlisted',
                 'Goverment',

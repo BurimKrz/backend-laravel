@@ -13,7 +13,6 @@ use App\Models\company;
 use App\Models\product;
 use App\Models\product_category;
 
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -21,12 +20,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        
+
         // DUMMY DATA  --  DONT CHANGE THE ORDER OF SEEDS
 
             // Seed the countries table
         \App\Models\countries::factory(20)->create();
-        
+
             // Seed the producct category table
         \App\Models\product_category::factory(20)->create();
 
@@ -52,6 +51,5 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         // \App\Models\User::factory(10)->create();
-
     }
 }

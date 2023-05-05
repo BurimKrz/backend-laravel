@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::create('company', function(Blueprint $table){
+        Schema::create('company', function (Blueprint $table) {
             $table->id('id');
             $table->string('name');
             $table->string('keywords');
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->foreign('subcategory_id')->references('id')->on('company_subcategories');
             // $table->foreign('activity_company_id')->references('id')->on('activity_company');
             $table->timestamps();
-         });
+        });
     }
 
     /**

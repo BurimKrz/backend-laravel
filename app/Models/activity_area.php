@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class activity_area extends Model
 {
     use HasFactory;
+
     public $table = 'activity_area';
 
     protected $fillable = ['name'];
 }
-
