@@ -17,7 +17,19 @@ class company_subcategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->word,
+            'name' => $this->faker->randomElement([
+                'Limited by Sheares', 
+                'Limited by Guarante', 
+                'Unlimited Company', 
+                'Holding', 
+                'Subsidiary', 
+                'Assosiate', 
+                'Listed',
+                'Unlisted',
+                'Goverment',
+                'Foreing',
+                'Section 8',
+            ]),
         ];
     }
 }
