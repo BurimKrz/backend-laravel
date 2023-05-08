@@ -23,6 +23,6 @@ class company extends Model
         'category_id',
         'subcategory_id',
         'profile_picture',
-        'membership_plans'
+        'membership'
     ];
 }

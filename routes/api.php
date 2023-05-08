@@ -31,7 +31,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/country', [RegisterController::class, 'index']);
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
-
+Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
 
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

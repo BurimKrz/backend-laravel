@@ -24,7 +24,11 @@ class CompanyListResource extends JsonResource
         'budged'=> $this->budged,
         'type'=> $this->type,
         'taxpayer_office'=> $this->taxpayer_office,
-        'TIN'=> $this->TIN
+        'TIN'=> $this->TIN,
+        'category_id' => $this->category_id,
+        'subcategory_id' => $this->subcategory_id,
+        'profile_picture' => $this -> profile_picture,
+        'membership' => $this -> membership
         ];
     }
 }

@@ -45,6 +45,8 @@ class companyFactory extends Factory
             'category_id' => $companyCategory_id,
             'subcategory_id' => $companySubCategory_id,
             'TIN' => $this->faker->numberBetween(10, 99),
+            'profile_picture' => $this->faker->imageUrl(640, 480, 'company', true, 'Faker'),
+            'membership' => $this->faker->words(3, true),
         ];
     }
 }
