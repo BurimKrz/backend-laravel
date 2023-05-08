@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('keywords');
             $table->string('country');
-            $table->string('web_adress');
+            $table->string('web_address');
             $table->string('more_info');
             $table->string('budged');
             $table->string("type");

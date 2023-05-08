@@ -15,8 +15,8 @@ class company extends Model
         'name',
         'keywords',
         'country',
-        'web_adress',
-        'more_info', // -> description 
+        'web_address',
+        'more_info',
         'budged', 'type',
         'taxpayer_office',
         'TIN',
