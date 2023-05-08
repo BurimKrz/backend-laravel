@@ -45,5 +45,10 @@ class CompanyController extends Controller
         ]);
 
         return response()->json(['company' => $company], 201);
+
+        // public function  companyDetails($id){
+        //     $view_details = Company::findOrFail($id);
+        //     return 
+        // }
     }
 }

@@ -16,11 +16,13 @@ class company extends Model
         'keywords',
         'country',
         'web_adress',
-        'more_info',
+        'more_info', // -> description 
         'budged', 'type',
         'taxpayer_office',
         'TIN',
         'category_id',
-        'subcategory_id'
+        'subcategory_id',
+        'profile_picture',
+        'membership_plans'
     ];
 }
