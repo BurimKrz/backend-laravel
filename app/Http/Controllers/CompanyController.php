@@ -34,7 +34,7 @@ class CompanyController extends Controller
             'name'            => $request->name,
             'keywords'        => $request->keywords,
             'country'         => $request->country,
-            'web_address'      => $request->web_adress,
+            'web_address'      => $request->web_address,
             'more_info'       => $request->more_info,
             'budged'          => $request->budged,
             'type'            => $request->type,
