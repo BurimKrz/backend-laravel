@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\countries::factory(20)->create();
 
             // Seed the producct category table
-        \App\Models\product_category::factory(20)->create();
+        // \App\Models\product_category::factory(20)->create();
 
             // Seed the company table
         company::factory(10)->create();
