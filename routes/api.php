@@ -14,6 +14,7 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AddProduct;
+use App\Http\Controllers\CompanyListController;
 use App\Http\Controllers\ModifyItem;
 
 /*
@@ -79,3 +80,4 @@ Route::get('/productcategory', [CategoryController::class, 'productcategory']);
 Route::post('/activity', [ActivityController::class, 'activitycontroller']);
 
 Route::post('/add', [AddProduct::class,'AddProduct']);
+Route::get('/CompanyList', [CompanyListController::class, 'companyList']);
