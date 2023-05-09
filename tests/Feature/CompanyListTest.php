@@ -16,8 +16,7 @@ class CompanyListTest extends TestCase
     public function test_company_list(): void
     {
         $companies = Company::all();
-          $response = $this->get('http://127.0.0.1:8000/api/CompanyList');
-
+        $response = $this->get('http://127.0.0.1:8000/api/CompanyList');
     $response->assertStatus(200);
        $response->assertJson([
             'data' => $companies->map(function ($company) {
