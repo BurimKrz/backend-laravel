@@ -58,7 +58,7 @@ class AddProduct extends Controller
             $product -> company_id = $request -> company_id;
             $product -> save();
 
-            $productId = $product->id;
+            $productId = $product->id;   
 
             if ($typeImportExport == 'export') {
                 export_product::create(['product_id' => $productId]);
