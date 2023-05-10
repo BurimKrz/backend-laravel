@@ -16,11 +16,13 @@ class ProductCategorySeeder extends Seeder
         DB::table('product_category') -> insert([
             ['name' => 'Fashion'],
             ['name' => 'Home'],
-            ['name' => 'Acessories'],
+            ['name' => 'Accessories'],
             ['name' => 'Sporting'],
             ['name' => 'Health'],
             ['name' => 'Medical'],
             ['name' => 'Pets'],
+            ['name' => 'Fashion'],
+
         ]);
     }
 }

@@ -28,7 +28,7 @@ class ProductFactory extends Factory
             'imageURL' => $this->faker->imageUrl(640, 480, 'product', true, 'Faker'),
             'views' => $this->faker->numberBetween(0, 1000),
             'type' => $this->faker->randomElement(['import', 'export']),
-            'category_id' => product_category::factory(),
+           'category_id' => product_category::inRandomOrder()->first()->id,
             'company_id' => company::factory(),
         ];
     }
