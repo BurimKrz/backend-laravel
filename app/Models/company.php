@@ -21,6 +21,8 @@ class company extends Model
         'taxpayer_office',
         'TIN',
         'category_id',
-        'subcategory_id'
+        'subcategory_id',
+        'profile_picture',
+        'membership'
     ];
 }
