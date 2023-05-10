@@ -30,8 +30,8 @@ class companyFactory extends Factory
     public function definition()
     {
         // Create a new Company and ProductCategory and retrieve their IDs
-        $companyCategory_id = company_category::factory()->create()->id;
-        $companySubCategory_id = company_subcategory::factory()->create()->id;
+       // $companyCategory_id = company_category::factory()->create()->id;
+        // $companySubCategory_id = company_subcategory::factory()->create()->id;
 
         return [
             'name' => $this->faker->company,
@@ -42,8 +42,8 @@ class companyFactory extends Factory
             'budged' => $this->faker->numberBetween(1000, 10000),
             'type' => $this->faker->randomElement(['local', 'international']),
             'taxpayer_office' => $this->faker->numberBetween(100, 999),
-            'category_id' => $companyCategory_id,
-            'subcategory_id' => $companySubCategory_id,
+            'category_id' => company_category::inRandomOrder()->first()->id,
+            'subcategory_id' => company_subcategory::inRandomOrder()->first()->id,
             'TIN' => $this->faker->numberBetween(10, 99),
         ];
     }
