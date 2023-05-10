@@ -45,5 +45,7 @@ class CompanyController extends Controller
         ]);
 
         return response()->json(['company' => $company], 201);
+
+        
     }
 }
