@@ -21,8 +21,10 @@ return new class extends Migration
             $table->integer('views')->default(0);
             $table->string('type');
             $table->unsignedBigInteger("category_id");
+            $table->unsignedBigInteger("subcategory_id");
             $table->unsignedBigInteger("company_id");
             $table->foreign('category_id')->references('id')->on('product_category');
+            $table->foreign('subcategory_id')->references('id')->on('product_subcategory');
             $table->foreign('company_id')->references('id')->on('company')->default(1);
             $table->timestamps();
         });
