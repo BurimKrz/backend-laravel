@@ -38,15 +38,16 @@ class CompanyDetailsTest extends TestCase
             'data' => [
                 [
                     'id' => 26,
-                    'name' => 'Bashirian, Klocko and Swaniawski',
-                    'keywords' => 'sed odit omnis',
-                    'country' => 'Luxembourg',
-                    'web_address' => 'http://mcglynn.com/sit-praesentium-deleniti-ipsa-autem.html',
-                    'more_info' => 'quisquam a veniam',
-                    'profile_picture' => 'https://via.placeholder.com/640x480.png/000033?text=company+Faker+tenetur',
-                    'membership' => 'aut ipsum sint',
-                    "category"=> "Stock",
-                    "subcategory"=> "Limited by Sheares", ]
+                    'name' => 'Schaefer and Sons',
+                    'keywords' => 'suscipit sapiente occaecati',
+                    'country' => 'Angola',
+                    'web_address' => 'http://www.ferry.com/voluptatum-vel-voluptates-beatae-voluptatum-porro',
+                    'more_info' => 'voluptatum esse veniam',
+                    'profile_picture' => 'https://via.placeholder.com/640x480.png/00ff55?text=company+Faker+commodi',
+                    'membership' => 'ullam corrupti fugiat',
+                    'category' => 'Others',
+                    'subcategory' => 'Limited by Guarante', 
+                ]
             ]
         ]);
     }

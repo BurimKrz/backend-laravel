@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\TokenResource;
 use Illuminate\Http\Request;
 use App\Models\token;
 use App\Models\User;
@@ -19,7 +18,7 @@ class TokenController extends Controller
             ->where('users.id', '=', $id)
             ->first();
             
-        return response()->json($user_token);
+        return response()->json( $user_token);
     }
 
     public function updateToken(Request $request, $id) {      
