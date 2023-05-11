@@ -22,12 +22,12 @@ class TokenController extends Controller
         return response()->json($user_token);
     }
 
-    public function updateToken(Request $request, $id) {
-        
+    public function updateToken(Request $request, $id) {      
+
         $token = Token::findOrFail($id);
         $validated = $request->validate(['amount' => 'required|integer']);
         $token -> amount = $validated['amount'];
-        $token->save();
+        $token->save(); 
         return response()->json(['token' => $token]);
     }
 }
