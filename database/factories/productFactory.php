@@ -29,6 +29,7 @@ class ProductFactory extends Factory
             'views' => $this->faker->numberBetween(0, 1000),
             'type' => $this->faker->randomElement(['import', 'export']),
            'category_id' => product_category::inRandomOrder()->first()->id,
+           'subcategory_id' => product_category::inRandomOrder()->first()->id,
             'company_id' => company::factory(),
         ];
     }
