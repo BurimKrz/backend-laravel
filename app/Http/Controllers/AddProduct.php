@@ -29,20 +29,6 @@ class AddProduct extends Controller
 
         $typeImportExport = $request->type;
 
-        // if ($validator->fails()) {
-        //     return response() -> json(['errors' => $validator->errors()], 400);
-        // }
-
-        // $AddProduct = product::create([
-        //     'name' => $request->name,
-        //     'description' =>$request->description,
-        //     'price' => $request->price,
-        //     'imageURL' => $request->imageURL,
-        //     'type'=>$request->type,
-        //     'category_id'=> $request->category_id,
-        //     'company_id'=> $request->company_id,
-
-        // ]);
 
         if ($validator -> fails()) {
             return response() -> json(['status' => 400, 'message' => $validator -> errors()]);
@@ -58,11 +44,12 @@ class AddProduct extends Controller
             $product -> company_id = $request -> company_id;
             $product -> save();
 
-            $productId = $product->id;   
+            $productId = $product->id;
 
             if ($typeImportExport == 'export') {
                 export_product::create(['product_id' => $productId]);
                 // Insert the product ID into the export_product table
+                export_product::create(['product_id' => $productId]);
                 // DB::table('export_product')->insert([
                 // 'product_id' => $productId
                 // ]);
