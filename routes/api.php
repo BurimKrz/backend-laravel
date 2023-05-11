@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -81,3 +82,4 @@ Route::post('/activity', [ActivityController::class, 'activitycontroller']);
 
 Route::post('/add', [AddProduct::class,'AddProduct']);
 Route::get('/CompanyList', [CompanyListController::class, 'companyList']);
+Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filterProductSubCategory']);

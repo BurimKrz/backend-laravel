@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\activity_area;
+use App\Models\countries;
 use Illuminate\Database\Seeder;
 use Database\Seeders\CountrySeeder;
 use Database\Seeders\CategorySeeder;
@@ -10,6 +12,7 @@ use Database\Seeders\ActivityAreaSeeder;
 use Database\Seeders\ProductCategorySeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\company;
+use App\Models\company_category;
 use App\Models\product;
 use App\Models\product_category;
 
@@ -24,7 +27,7 @@ class DatabaseSeeder extends Seeder
         // DUMMY DATA  --  DONT CHANGE THE ORDER OF SEEDS
 
             // Seed the countries table
-        \App\Models\countries::factory(20)->create();
+        countries::factory(20)->create();
 
             // Seed the producct category table
         // \App\Models\product_category::factory(20)->create();
@@ -33,11 +36,10 @@ class DatabaseSeeder extends Seeder
         company::factory(10)->create();
 
             // Seed the product table
-        \App\Models\product::factory(20)->create();
+        product::factory(20)->create();
 
             // Seed the activity table - no more then 6
-        \App\Models\activity_area::factory(6)->create();
-
+        activity_area::factory(6)->create();
 
         // comment this line when migrate seed for more then 1 time
         // or just migrate:fresh --seed

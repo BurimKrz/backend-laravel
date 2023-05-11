@@ -19,6 +19,7 @@ class product extends Model
         'views',
         'type',
         'category_id',
+        'subcategory_id',
         'company_id',
         'created_at'
     ];

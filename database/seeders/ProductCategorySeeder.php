@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProductCategorySeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
      */
@@ -25,4 +26,6 @@ class ProductCategorySeeder extends Seeder
 
         ]);
     }
+
+
 }
