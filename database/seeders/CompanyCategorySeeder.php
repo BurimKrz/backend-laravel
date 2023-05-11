@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\company_category;
 
 class CompanyCategorySeeder extends Seeder
 {
@@ -13,18 +14,15 @@ class CompanyCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('company_categories') -> insert([
-             ['name' => 'Limited by Sheares'],
-            ['name' => 'Limited by Guarante'],
-            ['name' => 'Unlimited Company'],
-            ['name' => 'Holding'],
-            ['name' => 'Subsidiary'],
-            ['name' => 'Assosiate'],
-            ['name' => 'Listed'],
-            ['name' => 'Unlisted'],
-            ['name' => 'Goverment'],
-            ['name' => 'Foreing'],
-            ['name' => 'Section 8'],
-        ]);
-    }
+        $categories = [
+            ['name' => 'Liability'],
+            ['name' => 'Control'],
+            ['name' => 'Stock'],
+            ['name' => 'Others'],
+        ];
+
+        foreach ($categories as $category) {
+            if (!company_category::where('name', $category['name'])->exists()) {
+                company_category::create($category);
+            }
 }

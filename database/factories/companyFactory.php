@@ -43,6 +43,8 @@ class companyFactory extends Factory
             'taxpayer_office' => $this->faker->numberBetween(100, 999),
             'category_id' => company_category::inRandomOrder()->first()->id,
             'subcategory_id' => company_subcategory::inRandomOrder()->first()->id,
+            'category_id' => company_category::inRandomOrder()->first()->id,
+            'subcategory_id' => company_subcategory::inRandomOrder()->first()->id,
             'TIN' => $this->faker->numberBetween(10, 99),
             'profile_picture' => $this->faker->imageUrl(640, 480, 'company', true, 'Faker'),
             'membership' => $this->faker->words(3, true),
