@@ -13,7 +13,7 @@ return new class extends Migration
     {
     
          Schema::create('token_coin', function(Blueprint $table){
-            $table->id('id');
+            $table->id();
             $table->integer('amount')->default(0);
             $table->timestamps();
         });

@@ -11,5 +11,5 @@ class usersToken extends Model
 
     public $table = 'users_token';
 
-    protected $fillable = ['id', 'user_id', 'token_id'];
+    protected $fillable = ['user_id', 'token_id'];
 }

@@ -2,13 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use App\Models\token;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\usersTokens>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UsersToken>
  */
-class UserTokenFactory extends Factory
+class UsersTokenFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +19,8 @@ class UserTokenFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            'token_id' => usersToken::factory(),
+            'user_id' => User::factory()->create()->id,
+            'token_id' => Token::factory()->create()->id,
         ];
     }
 }

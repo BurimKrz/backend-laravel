@@ -10,5 +10,5 @@ class token extends Model
     use HasFactory;
     public $table = 'token_coin';
 
-    protected $fillable = ['id', 'amount'];
+    protected $fillable = ['amount'];
 }

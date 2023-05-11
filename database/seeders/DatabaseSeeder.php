@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\usersToken;
 use Illuminate\Database\Seeder;
 use Database\Seeders\CountrySeeder;
 use Database\Seeders\CategorySeeder;
@@ -33,7 +34,7 @@ class DatabaseSeeder extends Seeder
         company::factory(10)->create();
 
             // Seed the product table
-        \App\Models\product::factory(20)->create();
+        product::factory(20)->create();
 
             // Seed the activity table - no more then 6
         \App\Models\activity_area::factory(6)->create();
@@ -42,8 +43,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\token::factory(10)->create();
         
-        \App\Models\usersToken::factory(10)->create();
-
+        usersToken::factory(10)->create();
 
         // comment this line when migrate seed for more then 1 time
         // or just migrate:fresh --seed
