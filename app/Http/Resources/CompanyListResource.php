@@ -21,10 +21,8 @@ class CompanyListResource extends JsonResource
         'country' => $this->country,
         'web_address'=> $this->web_address,
         'more_info'=> $this->more_info,
-        'budged'=> $this->budged,
-        'type'=> $this->type,
-        'taxpayer_office'=> $this->taxpayer_office,
-        'TIN'=> $this->TIN
+        'type'=> $this->type,  
         ];
+     
     }
 }
