@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('token_id')->references('id')->on('token_coin');
             $table->timestamps();
         });
+
+        
     }
 
     /**
