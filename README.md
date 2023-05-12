@@ -73,14 +73,14 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ### "Migrate and seed"
 
-## php artisan migrate:fresh
+## 1.php artisan migrate:fresh
 
-## php artisan db:seed --class=ProductCategorySeeder
+## 2.php artisan db:seed --class=ProductCategorySeeder
 
-## php artisan db:seed --class=CompanyCategorySeeder
+## 3.php artisan db:seed --class=CompanyCategorySeeder
 
-## php artisan db:seed --class=CompanySubcategorySeeder
+## 4.php artisan db:seed --class=CompanySubcategorySeeder
 
-## php artisan db:seed --class=ProductSubcategorySeeder
+## 5.php artisan db:seed --class=ProductSubcategorySeeder
 
-## php artisan db:seed
+## 6.php artisan db:seed
