@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->string('phone_number');
             $table->unsignedBigInteger('country_id');
             $table->string('gender');
-            $table->boolean('agreementss')->default(false);
+            $table->boolean('agreements')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
