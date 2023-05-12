@@ -21,6 +21,6 @@ class product extends Model
         'category_id',
         'subcategory_id',
         'company_id',
-        'created_at'
+        'created_at',
     ];
 }

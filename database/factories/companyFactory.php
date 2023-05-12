@@ -2,16 +2,15 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\company;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\company>
  */
 
-use App\Models\company;
-use App\Models\product_category;
 use App\Models\company_category;
 use App\Models\company_subcategory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class companyFactory extends Factory
 {
@@ -30,7 +29,6 @@ class companyFactory extends Factory
     public function definition()
     {
         // Create a new Company and ProductCategory and retrieve their IDs
-
 
         return [
             'name' => $this->faker->company,

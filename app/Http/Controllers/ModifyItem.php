@@ -30,7 +30,7 @@ class ModifyItem extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        $product -> delete();
+        $product->delete();
         return response()->json("Product deleted");
     }
 }

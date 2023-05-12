@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class CreateCompanyTest extends TestCase
@@ -11,7 +9,7 @@ class CreateCompanyTest extends TestCase
     /**
      * A basic feature test example.
      */
-     public function test_Create_Comapany(): void
+    public function test_Create_Comapany(): void
     {
 //          $response = $this->post('http://127.0.0.1:8000/api/company', [
 //     'name' => 'Ermira',

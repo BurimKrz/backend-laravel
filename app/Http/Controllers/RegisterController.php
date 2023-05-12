@@ -7,7 +7,6 @@ use App\Models\countries;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -28,19 +27,18 @@ class RegisterController extends Controller
         );
 
         if ($validator->fails()) {
-            return response() -> json(['errors' => $validator->errors()], 400);
+            return response()->json(['errors' => $validator->errors()], 400);
         }
         $user = User::create([
             'name' => $request->name,
-            'surname' => $request -> surname,
-            'email' => $request -> email,
-            'password' => bcrypt($request -> password),
+            'surname' => $request->surname,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
             'phone_number' => $request->phone_number,
             'country_id' => $request->country_id,
-            'gender' => $request->gender
+            'gender' => $request->gender,
 
         ]);
-
 
         return response()->json(['user' => $user], 201);
     }

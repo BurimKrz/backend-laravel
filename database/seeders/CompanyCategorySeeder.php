@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use App\Models\company_category;
+use Illuminate\Database\Seeder;
 
 class CompanyCategorySeeder extends Seeder
 {
@@ -25,6 +23,6 @@ class CompanyCategorySeeder extends Seeder
             if (!company_category::where('name', $category['name'])->exists()) {
                 company_category::create($category);
             }
-}
-}
+        }
+    }
 }

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -17,7 +16,6 @@ class AdminSeeder extends Seeder
         $role = Role::create(['name' => 'commander']);
 
         $role = Role::create(['name' => 'admin']);
-
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Test User',

@@ -19,12 +19,12 @@ class CompanyDetailsResource extends JsonResource
             'name' => $this->name,
             'keywords' => $this->keywords,
             'country' => $this->country,
-            'web_address'=> $this->web_address,
-            'more_info'=> $this->more_info,   //description         
+            'web_address' => $this->web_address,
+            'more_info' => $this->more_info, //description
             'category' => $this->category,
             'subcategory' => $this->subcategory,
-            'profile_picture' => $this -> profile_picture,
-            'membership' => $this -> membership
-            ];
+            'profile_picture' => $this->profile_picture,
+            'membership' => $this->membership,
+        ];
     }
 }

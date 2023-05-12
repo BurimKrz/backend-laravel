@@ -27,20 +27,18 @@ class UserFactory extends Factory
             'phone_number' => fake()->phoneNumber(),
             'country_id' => countries::factory()->create()->id,
             'gender' => $this->faker->randomElement(['male', 'female']),
-            'agreements' =>$this->faker->boolean(),
+            'agreements' => $this->faker->boolean(),
 
             'remember_token' => Str::random(10),
         ];
     }
-
-
 
     /**
      * Indicate that the model's email address should be unverified.
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }

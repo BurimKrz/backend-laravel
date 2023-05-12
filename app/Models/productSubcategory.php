@@ -11,6 +11,6 @@ class productSubcategory extends Model
     protected $table = 'product_subcategory';
     protected $fillable = [
         'name',
-        'category_id'
+        'category_id',
     ];
 }

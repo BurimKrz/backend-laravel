@@ -18,7 +18,7 @@ class activity_areaFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->randomElement([
-                'Exporter', 'Importer', 'Servicer', 'Retailer', 'Wholesaler', 'Manifacturer'
+                'Exporter', 'Importer', 'Servicer', 'Retailer', 'Wholesaler', 'Manifacturer',
             ]),
         ];
     }

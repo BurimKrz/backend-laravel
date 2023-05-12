@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class token extends Model
 {
     use HasFactory;
-    public $table = 'token_coin';                                   
+    public $table = 'token_coin';
 
     protected $fillable = ['amount'];
-    
+
 }

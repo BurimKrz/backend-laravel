@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TokenTest extends TestCase
@@ -16,15 +14,11 @@ class TokenTest extends TestCase
         $response = $this->get('/api/token/2');
         $response->assertStatus(200);
         $response->assertJson([
-                  
-                    'id' => 2,
-                    'amount' => 651   
-            
+
+            'id' => 2,
+            'amount' => 651,
+
         ]);
-   
 
-
-        
-        
     }
 }

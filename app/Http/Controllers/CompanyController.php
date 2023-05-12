@@ -13,18 +13,18 @@ class CompanyController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'name'            => 'required|string|max:255',
-                'keywords'        => 'required|string|max:255',
-                'country'         => 'required|string|max:255',
-                'web_address'      => 'required|string|max:255',
-                'web_address'      => 'required|string|max:255',
-                'more_info'       => 'required|string|max:255',
-                'budged'          => 'required|string|max:255',
-                'type'            => 'required|string|max:255',
+                'name' => 'required|string|max:255',
+                'keywords' => 'required|string|max:255',
+                'country' => 'required|string|max:255',
+                'web_address' => 'required|string|max:255',
+                'web_address' => 'required|string|max:255',
+                'more_info' => 'required|string|max:255',
+                'budged' => 'required|string|max:255',
+                'type' => 'required|string|max:255',
                 'taxpayer_office' => 'required|string|max:255',
-                'TIN'             => 'required|string|max:255',
-                'category_id'     => 'required|integer',
-                'subcategory_id'  => 'required|integer',
+                'TIN' => 'required|string|max:255',
+                'category_id' => 'required|integer',
+                'subcategory_id' => 'required|integer',
             ]
         );
         if ($validator->fails()) {
@@ -32,21 +32,20 @@ class CompanyController extends Controller
         }
 
         $company = company::create([
-            'name'            => $request->name,
-            'keywords'        => $request->keywords,
-            'country'         => $request->country,
-            'web_address'      => $request->web_address,
-            'more_info'       => $request->more_info,
-            'budged'          => $request->budged,
-            'type'            => $request->type,
+            'name' => $request->name,
+            'keywords' => $request->keywords,
+            'country' => $request->country,
+            'web_address' => $request->web_address,
+            'more_info' => $request->more_info,
+            'budged' => $request->budged,
+            'type' => $request->type,
             'taxpayer_office' => $request->taxpayer_office,
-            'TIN'             => $request->TIN,
-            'category_id'     => $request->category_id,
-            'subcategory_id'  => $request->subcategory_id,
+            'TIN' => $request->TIN,
+            'category_id' => $request->category_id,
+            'subcategory_id' => $request->subcategory_id,
         ]);
 
         return response()->json(['company' => $company], 201);
-
 
     }
 }

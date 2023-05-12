@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_subcategory', function(Blueprint $table){
+        Schema::create('product_subcategory', function (Blueprint $table) {
             $table->id('id');
             $table->string('name');
             $table->unsignedBigInteger("category_id");
             $table->foreign('category_id')->references('id')->on('product_category');
             $table->timestamps();
-         });
+        });
     }
 
     /**

@@ -2,12 +2,11 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
+use App\Models\company;
 use App\Models\company_category;
 use App\Models\company_subcategory;
-use App\Models\company;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class CategorizeCompanyTest extends TestCase
 {
@@ -45,7 +44,7 @@ class CategorizeCompanyTest extends TestCase
                 "country" => $company->country,
                 "web_address" => $company->web_address,
                 "more_info" => $company->more_info,
-                "type" => $company->type
+                "type" => $company->type,
             ];
         })->toArray());
     }

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\company;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\product>
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 use App\Models\product;
 use App\Models\product_category;
-use App\Models\company;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
 {
@@ -28,8 +28,8 @@ class ProductFactory extends Factory
             'imageURL' => $this->faker->imageUrl(640, 480, 'product', true, 'Faker'),
             'views' => $this->faker->numberBetween(0, 1000),
             'type' => $this->faker->randomElement(['import', 'export']),
-           'category_id' => product_category::inRandomOrder()->first()->id,
-           'subcategory_id' => product_category::inRandomOrder()->first()->id,
+            'category_id' => product_category::inRandomOrder()->first()->id,
+            'subcategory_id' => product_category::inRandomOrder()->first()->id,
             'company_id' => company::factory(),
         ];
     }

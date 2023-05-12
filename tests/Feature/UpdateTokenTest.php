@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class UpdateTokenTest extends TestCase
@@ -15,12 +13,10 @@ class UpdateTokenTest extends TestCase
     {
         $response = $this->put('/api/updateToken/1', [
 
-            "amount" => 200
-         ]);
+            "amount" => 200,
+        ]);
 
         $response->assertStatus(200);
 
-
-        
     }
 }

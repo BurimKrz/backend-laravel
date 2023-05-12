@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Token>
@@ -18,8 +17,8 @@ class TokenFactory extends Factory
     public function definition(): array
     {
         return [
-            'amount'=> $this->faker->numberBetween(0, 1000),
+            'amount' => $this->faker->numberBetween(0, 1000),
         ];
     }
-    
+
 }

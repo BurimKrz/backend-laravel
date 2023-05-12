@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-    
-         Schema::create('token_coin', function(Blueprint $table){
+
+        Schema::create('token_coin', function (Blueprint $table) {
             $table->id();
             $table->integer('amount')->default(0);
             $table->timestamps();
-            
+
         });
     }
-
-    
 
     /**
      * Reverse the migrations.
