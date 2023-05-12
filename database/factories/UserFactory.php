@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'phone_number' => fake()->phoneNumber(),
             'country_id' => countries::factory()->create()->id,
             'gender' => $this->faker->randomElement(['male', 'female']),
-            'agreementss' =>$this->faker->boolean(),
+            'agreements' =>$this->faker->boolean(),
 
             'remember_token' => Str::random(10),
         ];
