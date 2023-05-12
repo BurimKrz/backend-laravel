@@ -21,4 +21,5 @@ class TokenFactory extends Factory
             'amount'=> $this->faker->numberBetween(0, 1000),
         ];
     }
+    
 }

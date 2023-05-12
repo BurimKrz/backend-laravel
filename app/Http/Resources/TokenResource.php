@@ -18,5 +18,7 @@ class TokenResource extends JsonResource
             'id'=>$this->id,
             'amount'=> $this->amount
         ];
+
+        
     }
 }

@@ -29,5 +29,7 @@ class TokenController extends Controller
         $token -> amount = $validated['amount'];
         $token->save(); 
         return response()->json(['token' => $token]);
+
+        
     }
 }

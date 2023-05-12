@@ -11,4 +11,5 @@ class token extends Model
     public $table = 'token_coin';                                   
 
     protected $fillable = ['amount'];
+    
 }
