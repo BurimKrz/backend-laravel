@@ -31,7 +31,7 @@ class CompanyDetailsTest extends TestCase
         //     ]
         // ]);
 
-        // $response = $this->get('/api/company_details/26');
+        $response = $this->get('/api/company_details/26');
 
         $response->assertStatus(200);
         $response->assertJson([
