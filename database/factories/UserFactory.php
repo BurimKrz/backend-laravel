@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-use App\Models\countries;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -19,14 +19,9 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'surname' => fake()->word(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'phone_number' => fake()->phoneNumber(),
-            'country_id' => countries::factory()->create()->id,
-            'gender' => $this->faker->randomElement(['male', 'female']),
-            'agreementss' =>$this->faker->boolean(),
             'remember_token' => Str::random(10),
         ];
     }
