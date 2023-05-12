@@ -18,7 +18,6 @@ use App\Http\Controllers\AddProduct;
 use App\Http\Controllers\CompanyListController;
 use App\Http\Controllers\ModifyItem;
 use App\Http\Controllers\CompanyFilterController;
-use App\Http\Controllers\TokenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +33,6 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/country', [RegisterController::class, 'index']);
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
-Route::get('/token/{id}', [TokenController::class, 'token']);
-Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
 Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
 
 

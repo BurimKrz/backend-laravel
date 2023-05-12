@@ -21,10 +21,10 @@ class CompanyDetailsResource extends JsonResource
             'country' => $this->country,
             'web_address'=> $this->web_address,
             'more_info'=> $this->more_info,   //description         
-            'profile_picture' => $this -> profile_picture,
-            'membership' => $this -> membership,
             'category' => $this->category,
             'subcategory' => $this->subcategory,
+            'profile_picture' => $this -> profile_picture,
+            'membership' => $this -> membership
             ];
     }
 }
