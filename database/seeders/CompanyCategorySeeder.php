@@ -26,3 +26,5 @@ class CompanyCategorySeeder extends Seeder
                 company_category::create($category);
             }
 }
+}
+}
