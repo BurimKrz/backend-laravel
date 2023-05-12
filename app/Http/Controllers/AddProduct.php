@@ -15,14 +15,14 @@ class AddProduct extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'name' => 'required|string|max:255',
+                'name'        => 'required|string|max:255',
                 'description' => 'required|string|max:255',
-                'price' => 'required|numeric',
-                'imageURL' => 'required|string|max:255',
-                'type' => 'required|string|max:255',
-                'views' => 'integer',
+                'price'       => 'required|numeric',
+                'imageURL'    => 'required|string|max:255',
+                'type'        => 'required|string|max:255',
+                'views'       => 'integer',
                 'category_id' => 'required|integer',
-                'company_id' => 'required|integer',
+                'company_id'  => 'required|integer',
             ]
         );
 
@@ -31,15 +31,15 @@ class AddProduct extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 400, 'message' => $validator->errors()]);
         } else {
-            $product = new Product();
-            $product->name = $request->name;
+            $product              = new Product();
+            $product->name        = $request->name;
             $product->description = $request->description;
-            $product->price = $request->price;
-            $product->imageURL = $request->imageURL;
-            $product->type = $request->type;
-            $product->views = $request->views;
+            $product->price       = $request->price;
+            $product->imageURL    = $request->imageURL;
+            $product->type        = $request->type;
+            $product->views       = $request->views;
             $product->category_id = $request->category_id;
-            $product->company_id = $request->company_id;
+            $product->company_id  = $request->company_id;
             $product->save();
 
             $productId = $product->id;

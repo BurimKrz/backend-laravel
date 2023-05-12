@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
 use App\Models\token;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UsersToken>
@@ -20,7 +20,7 @@ class UsersTokenFactory extends Factory
     {
         return [
 
-            'user_id' => User::factory()->create()->id,
+            'user_id'  => User::factory()->create()->id,
             'token_id' => Token::factory()->create()->id,
         ];
     }

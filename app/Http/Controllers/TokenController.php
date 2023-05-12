@@ -22,8 +22,8 @@ class TokenController extends Controller
     public function updateToken(Request $request, $id)
     {
 
-        $token = Token::findOrFail($id);
-        $validated = $request->validate(['amount' => 'required|integer']);
+        $token         = Token::findOrFail($id);
+        $validated     = $request->validate(['amount' => 'required|integer']);
         $token->amount = $validated['amount'];
         $token->save();
         return response()->json(['token' => $token]);
