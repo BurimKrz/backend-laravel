@@ -4,17 +4,17 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\company_subcategory;
+use Illuminate\Support\Facades\DB;
 
-class CompanySubcategorySeeder extends Seeder
+class CompanySubCategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $subcategories =[
-            ['name' => 'Limited by Sheares', 'category_id' => 1],
+          DB::table('company_subcategories') -> insert([
+              ['name' => 'Limited by Sheares', 'category_id' => 1],
             ['name' => 'Limited by Guarante', 'category_id' => 1],
             ['name' => 'Unlimited Company', 'category_id' => 1],
             ['name' => 'Holding', 'category_id' => 2],
@@ -25,9 +25,6 @@ class CompanySubcategorySeeder extends Seeder
             ['name' => 'Goverment','category_id' => 4],
             ['name' => 'Foreing', 'category_id' => 4],
             ['name' => 'Section 8', 'category_id' => 4],
-        ];
-        foreach ($subcategories as $subcategory) {
-            company_subcategory::create($subcategory);
-        }
+        ]);
     }
 }

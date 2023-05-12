@@ -49,7 +49,6 @@ class AddProduct extends Controller
             if ($typeImportExport == 'export') {
                 export_product::create(['product_id' => $productId]);
                 // Insert the product ID into the export_product table
-                export_product::create(['product_id' => $productId]);
                 // DB::table('export_product')->insert([
                 // 'product_id' => $productId
                 // ]);
