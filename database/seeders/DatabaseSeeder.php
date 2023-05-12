@@ -57,5 +57,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         // \App\Models\User::factory(10)->create();
+
+        
     }
 }
