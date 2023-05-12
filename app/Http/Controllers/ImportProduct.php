@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ImportResource;
 use Illuminate\Support\Facades\DB;
 
-class ImportPoduct extends Controller
+class ImportProduct extends Controller
 {
     public function import()
     {

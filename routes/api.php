@@ -12,7 +12,6 @@ use App\Http\Controllers\ExportProduct;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
 use App\Http\Controllers\FilterProductController;
-use App\Http\Controllers\ImportPoduct;
 use App\Http\Controllers\ModifyItem;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TokenController;
@@ -33,11 +32,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/country', [RegisterController::class, 'index']);
 
-Route::get('/ilist', [ImportPoduct::class, 'import']);
+Route::get('/ilist', [ImportProduct::class, 'import']);
 
 Route::get('/elist/{id}', [ExportProduct::class, 'show']);
 
-Route::get('/ilist/{id}', [ImportPoduct::class, 'show']);
+Route::get('/ilist/{id}', [ImportProduct::class, 'show']);
 
 Route::get('/', [ExportProduct::class, 'index']);
 
