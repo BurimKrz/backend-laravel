@@ -27,11 +27,12 @@ class UserFactory extends Factory
             'country_id' => countries::factory()->create()->id,
             'gender' => $this->faker->randomElement(['male', 'female']),
             'agreementss' =>$this->faker->boolean(),
+            
             'remember_token' => Str::random(10),
         ];
     }
 
-    
+
 
     /**
      * Indicate that the model's email address should be unverified.
