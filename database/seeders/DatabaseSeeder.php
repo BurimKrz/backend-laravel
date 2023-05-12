@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\activity_area;
 use App\Models\countries;
+use App\Models\usersToken;
 use Illuminate\Database\Seeder;
 use Database\Seeders\CountrySeeder;
 use Database\Seeders\CategorySeeder;
@@ -43,6 +44,7 @@ class DatabaseSeeder extends Seeder
 
         // comment this line when migrate seed for more then 1 time
         // or just migrate:fresh --seed
+        usersToken::factory(20)->create();
         $this->call(AdminSeeder::class);
 
 
@@ -54,6 +56,6 @@ class DatabaseSeeder extends Seeder
         // ]);
         // \App\Models\User::factory(10)->create();
 
-        
+
     }
 }
