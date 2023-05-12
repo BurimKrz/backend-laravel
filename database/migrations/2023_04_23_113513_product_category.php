@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -11,13 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('company_subcategories', function (Blueprint $table) {
-            $table->id("id");
+        Schema::create('product_category', function(Blueprint $table){
+            $table->id('id');
             $table->string('name');
-            $table->unsignedBigInteger("category_id");
-            $table->foreign('category_id')->references('id')->on('company_categories');
             $table->timestamps();
-        });
+         });
+
     }
 
     /**
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('company_subcategory');
+        Schema::dropIfExists('product_category');
     }
 };

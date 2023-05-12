@@ -15,12 +15,10 @@ class CategoryController extends Controller
     {
         return CategoryResource::collection(company_category::all());
     }
-
     function subcategory()
     {
         return CategoryResource::collection(company_subcategory::all());
     }
-
     function productcategory()
     {
         return ProductCategory::collection(product_category::all());

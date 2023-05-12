@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AddProduct;
 use App\Http\Controllers\CompanyListController;
 use App\Http\Controllers\ModifyItem;
+use App\Http\Controllers\CompanyFilterController;
 use App\Http\Controllers\TokenController;
 
 /*
@@ -84,4 +86,8 @@ Route::get('/productcategory', [CategoryController::class, 'productcategory']);
 Route::post('/activity', [ActivityController::class, 'activitycontroller']);
 
 Route::post('/add', [AddProduct::class,'AddProduct']);
+
 Route::get('/CompanyList', [CompanyListController::class, 'companyList']);
+Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filterProductSubCategory']);
+
+Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompany']);
