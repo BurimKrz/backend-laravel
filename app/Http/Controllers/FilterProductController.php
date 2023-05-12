@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class FilterProductController extends Controller
 {
     function filterProductCategory($id){
-        $productCategory = Product_category::find($id);
+        $productCategory = product_category::find($id);
 
         if(!$productCategory){
             return new JsonResponse(['message'=>'Not found'], 404);
