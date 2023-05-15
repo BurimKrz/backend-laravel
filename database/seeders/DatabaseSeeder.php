@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\activity_area;
+use App\Models\buySell;
 use App\Models\company;
 use App\Models\countries;
 use App\Models\product;
@@ -37,6 +38,8 @@ class DatabaseSeeder extends Seeder
         // comment this line when migrate seed for more then 1 time
         // or just migrate:fresh --seed
         usersToken::factory(20)->create();
+
+        buySell::factory(5)->create();
         $this->call(AdminSeeder::class);
 
         // \App\Models\User::factory(10)->create();
