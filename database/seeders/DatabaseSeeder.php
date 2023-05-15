@@ -7,6 +7,8 @@ use App\Models\buySell;
 use App\Models\company;
 use App\Models\countries;
 use App\Models\product;
+use App\Models\token;
+use App\Models\User;
 use App\Models\usersToken;
 use Illuminate\Database\Seeder;
 
@@ -37,6 +39,9 @@ class DatabaseSeeder extends Seeder
 
         // comment this line when migrate seed for more then 1 time
         // or just migrate:fresh --seed
+        User::factory(20)->create();
+        token::factory(20)->create();
+        
         usersToken::factory(20)->create();
 
         buySell::factory(5)->create();
