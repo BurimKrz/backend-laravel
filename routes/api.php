@@ -17,6 +17,7 @@ use App\Http\Controllers\TokenController;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\SellController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -81,6 +82,8 @@ Route::post('/company', [CompanyController::class, 'company']);
 Route::post('/activity', [ActivityController::class, 'activitycontroller']);
 
 Route::post('/add', [AddProduct::class, 'AddProduct']);
+
+Route::post('/sellConfirm', [SellController::class, 'sellConfirmation']);
 
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 
