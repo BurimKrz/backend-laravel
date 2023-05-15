@@ -11,5 +11,5 @@ class import_product extends Model
 
     public $table = 'import_product';
 
-    protected $fillable = ['info','product_id'];
+    protected $fillable = ['info', 'product_id'];
 }

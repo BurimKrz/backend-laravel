@@ -15,16 +15,17 @@ class CompanyDetailsResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'keywords' => $this->keywords,
-            'country' => $this->country,
-            'web_address'=> $this->web_address,
-            'more_info'=> $this->more_info,   //description         
-            'category' => $this->category,
-            'subcategory' => $this->subcategory,
-            'profile_picture' => $this -> profile_picture,
-            'membership' => $this -> membership
-            ];
+            'id'              => $this->id,
+            'name'            => $this->name,
+            'keywords'        => $this->keywords,
+            'country'         => $this->country,
+            'web_address'     => $this->web_address,
+            //description
+            'more_info'       => $this->more_info,
+            'category'        => $this->category,
+            'subcategory'     => $this->subcategory,
+            'profile_picture' => $this->profile_picture,
+            'membership'      => $this->membership,
+        ];
     }
 }

@@ -2,12 +2,11 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
+use App\Models\company;
 use App\Models\company_category;
 use App\Models\company_subcategory;
-use App\Models\company;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class CategorizeCompanyTest extends TestCase
 {
@@ -26,7 +25,7 @@ class CategorizeCompanyTest extends TestCase
 
         // Create 5 companies associated with the category and subcategory
         $companies = company::factory()->count(5)->create([
-            'category_id' => $category->id,
+            'category_id'    => $category->id,
             'subcategory_id' => $subcategory->id,
         ]);
 
@@ -40,12 +39,12 @@ class CategorizeCompanyTest extends TestCase
         // Assert that the response JSON contains the data of the companies
         $response->assertJson($companies->map(function ($company) {
             return [
-                "name" => $company->name,
-                "keywords" => $company->keywords,
-                "country" => $company->country,
+                "name"        => $company->name,
+                "keywords"    => $company->keywords,
+                "country"     => $company->country,
                 "web_address" => $company->web_address,
-                "more_info" => $company->more_info,
-                "type" => $company->type
+                "more_info"   => $company->more_info,
+                "type"        => $company->type,
             ];
         })->toArray());
     }

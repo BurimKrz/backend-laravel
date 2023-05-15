@@ -9,19 +9,19 @@ class ModifyItem extends Controller
 {
     public function update(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
+        $product          = Product::findOrFail($id);
         $productValidated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name'        => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'imageURL' => 'required|string|max:255',
+            'price'       => 'required|numeric',
+            'imageURL'    => 'required|string|max:255',
             // 'image' => 'required|image'
         ]);
 
-        $product->name = $productValidated['name'];
+        $product->name        = $productValidated['name'];
         $product->description = $productValidated['description'];
-        $product->price = $productValidated['price'];
-        $product->imageURL = $productValidated['imageURL'];
+        $product->price       = $productValidated['price'];
+        $product->imageURL    = $productValidated['imageURL'];
         $product->save();
 
         return response()->json(['product' => $product]);
@@ -30,7 +30,7 @@ class ModifyItem extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        $product -> delete();
+        $product->delete();
         return response()->json("Product deleted");
     }
 }

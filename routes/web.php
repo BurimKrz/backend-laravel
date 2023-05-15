@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 // use App\Http\Controllers\CaptchaServiceController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,13 +13,11 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
-
+ */
 
 Route::get('list', function () {
     return view('welcome');
 });
-
 
 // Route::post('/captcha-validation', [CaptchaServiceController::class, 'capthcaFormValidate']);
 // Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);

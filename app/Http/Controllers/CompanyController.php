@@ -16,8 +16,8 @@ class CompanyController extends Controller
                 'name'            => 'required|string|max:255',
                 'keywords'        => 'required|string|max:255',
                 'country'         => 'required|string|max:255',
-                'web_address'      => 'required|string|max:255',
-                'web_address'      => 'required|string|max:255',
+                'web_address'     => 'required|string|max:255',
+                'web_address'     => 'required|string|max:255',
                 'more_info'       => 'required|string|max:255',
                 'budged'          => 'required|string|max:255',
                 'type'            => 'required|string|max:255',
@@ -35,7 +35,7 @@ class CompanyController extends Controller
             'name'            => $request->name,
             'keywords'        => $request->keywords,
             'country'         => $request->country,
-            'web_address'      => $request->web_address,
+            'web_address'     => $request->web_address,
             'more_info'       => $request->more_info,
             'budged'          => $request->budged,
             'type'            => $request->type,
@@ -46,7 +46,6 @@ class CompanyController extends Controller
         ]);
 
         return response()->json(['company' => $company], 201);
-
 
     }
 }

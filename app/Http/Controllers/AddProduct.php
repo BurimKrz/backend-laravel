@@ -2,47 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-use App\Models\product;
 use App\Models\export_product;
 use App\Models\import_product;
+use App\Models\product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class AddProduct extends Controller
 {
-    function AddProduct(Request $request)
+    public function AddProduct(Request $request)
     {
         $validator = Validator::make(
-            $request -> all(),
+            $request->all(),
             [
-                'name' => 'required|string|max:255',
-                'description' => 'required|string|max:255',
-                'price' => 'required|numeric',
-                'imageURL' => 'required|string|max:255',
-                'type' => 'required|string|max:255',
-                'views' => 'integer',
-                'category_id' => 'required|integer',
-                'company_id' => 'required|integer'
+                'name'           => 'required|string|max:255',
+                'description'    => 'required|string|max:255',
+                'price'          => 'required|numeric',
+                'imageURL'       => 'required|string|max:255',
+                'type'           => 'required|string|max:255',
+                'views'          => 'integer',
+                'category_id'    => 'required|integer',
+                'subcategory_id' => 'required|integer',
+                'company_id'     => 'required|integer',
             ]
         );
 
         $typeImportExport = $request->type;
 
-
-        if ($validator -> fails()) {
-            return response() -> json(['status' => 400, 'message' => $validator -> errors()]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 400, 'message' => $validator->errors()]);
         } else {
-            $product = new Product();
-            $product -> name = $request -> name;
-            $product -> description = $request -> description;
-            $product -> price = $request -> price;
-            $product -> imageURL = $request -> imageURL;
-            $product -> type = $request -> type;
-            $product -> views = $request ->views;
-            $product -> category_id = $request -> category_id;
-            $product -> company_id = $request -> company_id;
-            $product -> save();
+            $product                 = new Product();
+            $product->name           = $request->name;
+            $product->description    = $request->description;
+            $product->price          = $request->price;
+            $product->imageURL       = $request->imageURL;
+            $product->type           = $request->type;
+            $product->views          = $request->views;
+            $product->category_id    = $request->category_id;
+            $product->subcategory_id = $request->subcategory_id;
+            $product->company_id     = $request->company_id;
+            $product->save();
 
             $productId = $product->id;
 
@@ -61,8 +61,8 @@ class AddProduct extends Controller
                 // ]);
             }
 
-        // return response()->json(['AddProduct'->$AddProduct]);
-            return response() -> json(['status' => 200, 'message' => 'Product added successfully']);
+            // return response()->json(['AddProduct'->$AddProduct]);
+            return response()->json(['status' => 200, 'message' => 'Product added successfully']);
         }
     }
 }
