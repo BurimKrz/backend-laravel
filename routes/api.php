@@ -34,20 +34,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/country', [RegisterController::class, 'index']);
 
 Route::get('/ilist', [ImportProduct::class, 'import']);
-Route::put('/product/{id}', [ModifyItem::class, 'update']);
-Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
-Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/', [ExportProduct::class, 'index']);
 
@@ -83,11 +69,13 @@ Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filte
 
 Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompany']);
 
-Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
+Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
 
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
-Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
+Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
+
+Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
 Route::post('/register', [RegisterController::class, 'register']);
 
@@ -100,6 +88,10 @@ Route::post('/company', [CompanyController::class, 'company']);
 Route::post('/activity', [ActivityController::class, 'activitycontroller']);
 
 Route::post('/add', [AddProduct::class, 'AddProduct']);
+
+Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
+
+Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
