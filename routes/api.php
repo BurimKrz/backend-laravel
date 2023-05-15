@@ -33,61 +33,84 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
+ //Country list 
 Route::get('/country', [RegisterController::class, 'index']);
 
+//Route for import list
 Route::get('/ilist', [ImportProduct::class, 'import']);
 
+//All product list
 Route::get('/ProductAllList', [ExportProduct::class, 'index']);
 
 //Route for export list
 Route::get('/elist', [ExportProduct::class, 'showList']);
 
-//Route for import list
-
+//View more for export product
 Route::get('/elist/{id}', [ExportProduct::class, 'show']);
 
+//View more for import product
 Route::get('/ilist/{id}', [ImportProduct::class, 'show']);
 
+//View more for company
 Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
 
+//Show user token
 Route::get('/token/{id}', [TokenController::class, 'token']);
 
+//Number of views for product
 Route::get('/view/{id}', [ViewController::class, 'view']);
 
+//Created date for product
 Route::get('/date/{id}', [ViewController::class, 'date']);
 
+//Category of company
 Route::get('/category', [CategoryController::class, 'category']);
 
+//Subcategory of company
 Route::get('/subcategory', [CategoryController::class, 'subcategory']);
 
+//Category of product
 Route::get('/productcategory', [CategoryController::class, 'productcategory']);
 
+//List of all comapmanies
 Route::get('/CompanyList', [CompanyListController::class, 'companyList']);
 
+//Filter product base on subcategory
 Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filterProductSubCategory']);
 
+//Filter company base on category
 Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompany']);
 
+//Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
 Route::post('/updateToken/{id}/{value}', [TokenController::class, 'updateToken']);
 
+//Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
 
+//Login
 Route::post('/login', [AuthController::class, 'login']);
 
+//Logout
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
+//Create a new company
 Route::post('/company', [CompanyController::class, 'company']);
 
+//Activity area for comapany
 Route::post('/activity', [ActivityController::class, 'activitycontroller']);
 
+//Add a new product
 Route::post('/add', [AddProduct::class, 'AddProduct']);
 
+//Confiramtion from an user for buying a product
 Route::post('/buy', [PurchaseConfirmedController::class, 'purchaseConfirmed']);
 
+//Confiramtion from an owner for selling a product
 Route::post('/sellConfirm', [SellController::class, 'sellConfirmation']);
 
+//Detele a product 
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 
 
