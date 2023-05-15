@@ -35,19 +35,16 @@ Route::get('/country', [RegisterController::class, 'index']);
 
 Route::get('/ilist', [ImportProduct::class, 'import']);
 
-Route::get('/', [ExportProduct::class, 'index']);
+Route::get('/ProductAllList', [ExportProduct::class, 'index']);
 
 //Route for export list
 Route::get('/elist', [ExportProduct::class, 'showList']);
 
 //Route for import list
-Route::get('/ilist', [ImportPoduct::class, 'import']);
 
 Route::get('/elist/{id}', [ExportProduct::class, 'show']);
 
 Route::get('/ilist/{id}', [ImportProduct::class, 'show']);
-
-Route::get('/', [ExportProduct::class, 'index']);
 
 Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
 
@@ -69,13 +66,9 @@ Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filte
 
 Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompany']);
 
-Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
-
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
 Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
-
-Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
 Route::post('/register', [RegisterController::class, 'register']);
 
@@ -88,8 +81,6 @@ Route::post('/company', [CompanyController::class, 'company']);
 Route::post('/activity', [ActivityController::class, 'activitycontroller']);
 
 Route::post('/add', [AddProduct::class, 'AddProduct']);
-
-Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 
