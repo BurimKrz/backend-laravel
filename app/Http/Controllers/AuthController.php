@@ -26,7 +26,7 @@ class AuthController extends Controller
         }
 
         return response()->json([
-            'message' => 'The provided credentials are incorrect'
+            'message' => 'The provided credentials are incorrect',
         ], 401);
 
         // return ValidationException::withMessages([

@@ -9,6 +9,6 @@ class activity_company extends Model
 {
     use HasFactory;
 
-    public $table = 'activity_company';
+    public $table       = 'activity_company';
     protected $fillable = ['activity_area_id', 'company_id'];
 }

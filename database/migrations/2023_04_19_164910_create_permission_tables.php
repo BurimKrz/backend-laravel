@@ -14,9 +14,9 @@ class CreatePermissionTables extends Migration
      */
     public function up()
     {
-        $tableNames = config('permission.table_names');
+        $tableNames  = config('permission.table_names');
         $columnNames = config('permission.column_names');
-        $teams = config('permission.teams');
+        $teams       = config('permission.teams');
 
         if (empty($tableNames)) {
             throw new \Exception ('Error: config/permission.php not loaded. Run [php artisan config:clear] and try again.');

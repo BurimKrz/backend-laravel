@@ -15,7 +15,7 @@ class TokenTest extends TestCase
         $response->assertStatus(200);
         $response->assertJson([
 
-            'id' => 2,
+            'id'     => 2,
             'amount' => 651,
 
         ]);
