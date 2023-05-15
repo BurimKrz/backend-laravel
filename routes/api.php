@@ -10,12 +10,13 @@ use App\Http\Controllers\CompanyListController;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\FilterProductController;
 // use Tests\Feature\Auth\RegistrationTest;
+use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\ModifyItem;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TokenController;
-use App\Http\Controllers\ViewController;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
+use App\Http\Controllers\ViewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,22 +34,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/country', [RegisterController::class, 'index']);
 
 Route::get('/ilist', [ImportProduct::class, 'import']);
-Route::put('/product/{id}', [ModifyItem::class, 'update']);
-Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
-Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
-Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
-Route::get('/token/{id}', [TokenController::class, 'token']);
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/ProductAllList', [ExportProduct::class, 'index']);
 
