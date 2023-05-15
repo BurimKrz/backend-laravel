@@ -4,20 +4,20 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AddProduct;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\FilterProductController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\TokenController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-// use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyFilterController;
 use App\Http\Controllers\CompanyListController;
 use App\Http\Controllers\ExportProduct;
+use App\Http\Controllers\FilterProductController;
+// use Tests\Feature\Auth\RegistrationTest;
+use App\Http\Controllers\ModifyItem;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TokenController;
+use App\Http\Controllers\ViewController;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
-use App\Http\Controllers\ModifyItem;
-use App\Http\Controllers\ViewController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +43,6 @@ Route::get('/token/{id}', [TokenController::class, 'token']);
 //     return $request->user();
 // });
 
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -54,7 +53,7 @@ Route::get('/', function () {
 Route::get('/ProductAllList', [ExportProduct::class, 'index']);
 
 //Route for export list
-Route::get('/elist', [ExportProduct::class,'showList']);
+Route::get('/elist', [ExportProduct::class, 'showList']);
 
 //Route for import list
 
