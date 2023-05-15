@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TokenController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 // use Tests\Feature\Auth\RegistrationTest;
@@ -34,7 +35,8 @@ Route::get('/country', [RegisterController::class, 'index']);
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
-
+Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
+Route::get('/token/{id}', [TokenController::class, 'token']);
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
