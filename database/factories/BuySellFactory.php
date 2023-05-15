@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\token;
+use App\Models\product;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UsersToken>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class UsersTokenFactory extends Factory
+class BuySellFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,9 +19,9 @@ class UsersTokenFactory extends Factory
     public function definition(): array
     {
         return [
-
             'user_id'    => User::inRandomOrder()->first()->id,
-            'token_id' => token::inRandomOrder()->first()->id,
+            'product_id' => Product::inRandomOrder()->first()->id,
+            'action'     => $this->faker->randomElement(['buy', 'sell']),
         ];
     }
 }
