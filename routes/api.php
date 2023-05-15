@@ -16,13 +16,8 @@ use App\Http\Controllers\CompanyListController;
 use App\Http\Controllers\ExportProduct;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
-use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ModifyItem;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\TokenController;
 use App\Http\Controllers\ViewController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
