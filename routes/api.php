@@ -12,6 +12,7 @@ use App\Http\Controllers\FilterProductController;
 // use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\ModifyItem;
+use App\Http\Controllers\PurchaseConfirmedController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TokenController;
 // use App\Http\Controllers\ItemExportController;
@@ -82,7 +83,10 @@ Route::post('/activity', [ActivityController::class, 'activitycontroller']);
 
 Route::post('/add', [AddProduct::class, 'AddProduct']);
 
+Route::post('/buy', [PurchaseConfirmedController::class, 'purchaseConfirmed']);
+
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
