@@ -12,6 +12,7 @@ use App\Http\Controllers\ExportProduct;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
 use App\Http\Controllers\FilterProductController;
+use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\ModifyItem;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TokenController;
@@ -63,8 +64,6 @@ Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filte
 Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompany']);
 
 Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
-
-Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 

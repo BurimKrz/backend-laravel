@@ -24,13 +24,11 @@ class UserFactory extends Factory
             'email'             => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             // password
-
             'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
             'phone_number'      => fake()->phoneNumber(),
             'country_id'        => countries::factory()->create()->id,
             'gender'            => $this->faker->randomElement(['male', 'female']),
             'agreements'        => $this->faker->boolean(),
-
             'remember_token'    => Str::random(10),
         ];
     }
