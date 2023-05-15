@@ -70,7 +70,7 @@ Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompan
 
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
-Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
+Route::post('/updateToken/{id}/{value}', [TokenController::class, 'updateToken']);
 
 Route::post('/register', [RegisterController::class, 'register']);
 
