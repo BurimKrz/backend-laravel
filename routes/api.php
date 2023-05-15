@@ -4,22 +4,21 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AddProduct;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\FilterProductController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\TokenController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-// use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyFilterController;
 use App\Http\Controllers\CompanyListController;
 use App\Http\Controllers\ExportProduct;
-// use App\Http\Controllers\ItemExportController;
-// use App\Http\Controllers\ItemImportController;
 use App\Http\Controllers\FilterProductController;
+// use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\ModifyItem;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TokenController;
+// use App\Http\Controllers\ItemExportController;
+// use App\Http\Controllers\ItemImportController;
 use App\Http\Controllers\ViewController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,11 +38,9 @@ Route::put('/product/{id}', [ModifyItem::class, 'update']);
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
 
-
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -52,10 +49,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', [ExportProduct::class ,'index']);
+Route::get('/', [ExportProduct::class, 'index']);
 
 //Route for export list
-Route::get('/elist', [ExportProduct::class,'showList']);
+Route::get('/elist', [ExportProduct::class, 'showList']);
 
 //Route for import list
 Route::get('/ilist', [ImportPoduct::class, 'import']);
@@ -65,7 +62,6 @@ Route::get('/elist/{id}', [ExportProduct::class, 'show']);
 Route::get('/ilist/{id}', [ImportProduct::class, 'show']);
 
 Route::get('/', [ExportProduct::class, 'index']);
-
 
 Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
 
