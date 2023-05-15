@@ -42,8 +42,8 @@ class DatabaseSeeder extends Seeder
         // comment this line when migrate seed for more then 1 time
         // or just migrate:fresh --seed
         User::factory(20)->create();
+
         token::factory(20)->create();
-        
 
         export_product::factory(10)->create();
 

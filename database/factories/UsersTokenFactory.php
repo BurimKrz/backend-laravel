@@ -20,7 +20,7 @@ class UsersTokenFactory extends Factory
     {
         return [
 
-            'user_id'    => User::inRandomOrder()->first()->id,
+            'user_id'  => User::inRandomOrder()->first()->id,
             'token_id' => token::inRandomOrder()->first()->id,
         ];
     }
