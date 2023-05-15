@@ -3,11 +3,14 @@
 namespace Database\Seeders;
 
 use App\Models\activity_area;
+use App\Models\buySell;
 use App\Models\company;
 use App\Models\countries;
 use App\Models\export_product;
 use App\Models\import_product;
 use App\Models\product;
+use App\Models\token;
+use App\Models\User;
 use App\Models\usersToken;
 use Illuminate\Database\Seeder;
 
@@ -38,12 +41,17 @@ class DatabaseSeeder extends Seeder
 
         // comment this line when migrate seed for more then 1 time
         // or just migrate:fresh --seed
+        User::factory(20)->create();
+        token::factory(20)->create();
+        
 
         export_product::factory(10)->create();
 
         import_product::factory(10)->create();
 
         usersToken::factory(20)->create();
+
+        buySell::factory(5)->create();
         $this->call(AdminSeeder::class);
 
         // \App\Models\User::factory(10)->create();

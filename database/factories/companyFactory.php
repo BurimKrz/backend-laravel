@@ -39,9 +39,9 @@ class companyFactory extends Factory
             'budged'          => $this->faker->numberBetween(1000, 10000),
             'type'            => $this->faker->randomElement(['local', 'international']),
             'taxpayer_office' => $this->faker->numberBetween(100, 999),
-            'category_id'     => company_category::inRandomOrder()->first()->id,
-            'subcategory_id'  => company_subcategory::inRandomOrder()->first()->id,
-            'TIN'             => $this->faker->numberBetween(10, 99),
+            'category_id' => company_category::inRandomOrder()->first()->id,
+            'subcategory_id' => company_subcategory::inRandomOrder()->first()->id,
+            'TIN' => $this->faker->numberBetween(10, 99),
             'profile_picture' => $this->faker->imageUrl(640, 480, 'company', true, 'Faker'),
             'membership'      => $this->faker->words(3, true),
         ];
