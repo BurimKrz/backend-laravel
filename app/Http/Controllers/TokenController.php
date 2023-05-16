@@ -19,14 +19,17 @@ class TokenController extends Controller
         return response()->json($user_token);
     }
 
-    public function updateToken(Request $request, $id)
+    public function updateToken($id, $value)
     {
-
-        $token         = Token::findOrFail($id);
-        $validated     = $request->validate(['amount' => 'required|integer']);
-        $token->amount = $validated['amount'];
-        $token->save();
-        return response()->json(['token' => $token]);
+        $token = Token::findOrFail($id);
+        if ($token->amount < $value) {
+            return response()->json(['error' => 'Insufficient tokens'], 400);
+        } else {
+            $token->amount -= $value;
+            $token->save();
+            return response()->json(['token' => $token]);
+        }
 
     }
+    
 }

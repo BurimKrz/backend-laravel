@@ -46,4 +46,5 @@ class RegisterController extends Controller
     {
         return CountryResource::collection(countries::all());
     }
+    
 }
