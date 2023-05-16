@@ -23,8 +23,8 @@ return new class extends Migration
             $table->unsignedBigInteger("category_id");
             $table->unsignedBigInteger("subcategory_id");
             $table->string("taxpayer_office");
-            $table->string('profile_picture');
-            $table->string('membership');
+            $table->string('profile_picture')->nullable();
+            $table->string('membership')->nullable();
             //TIN - taxpayer identification number
             $table->string("TIN");
             // $table->unsignedBigInteger('activity_company_id');
