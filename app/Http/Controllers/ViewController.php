@@ -9,9 +9,9 @@ class ViewController extends Controller
     public function view($id)
     {
         $product = Product::find($id);
+        $views   = $product->views;
         if ($product) {
             $product->increment('views');
-            $views = $product->views;
             return response()->json(['views' => $views]);
         } else {
             return response()->json(['views' => $views]);
