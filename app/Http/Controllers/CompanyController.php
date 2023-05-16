@@ -31,7 +31,7 @@ class CompanyController extends Controller
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $company = company::create([
+        $company = Company::create([
             'name'            => $request->name,
             'keywords'        => $request->keywords,
             'country'         => $request->country,
