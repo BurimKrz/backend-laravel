@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->decimal('price', 50, 2);
             $table->string('imageURL');
-            $table->integer('views')->default(0);
+            $table->integer('views')->nullable();
             $table->string('type');
             $table->unsignedBigInteger("category_id");
             $table->unsignedBigInteger("subcategory_id");
