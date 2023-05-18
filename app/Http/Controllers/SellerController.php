@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\sellerConfirmation;
+use App\Models\Transaction;
 
 class SellerController extends Controller
 {
@@ -32,6 +33,13 @@ class SellerController extends Controller
             ]
         );
 
+        if ($request->confirmation === true) {
+            $transaction = new Transaction;
+            $transaction->seller_id = $request->company_id;
+            $transaction->buyer_id = $request->buyer_id;
+            $transaction->product_id = $request->product_id;
+            $transaction->save();
+        }
         return response('Sell confirmation recorded successfully.');
     }
 }
