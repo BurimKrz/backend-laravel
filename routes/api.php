@@ -18,7 +18,7 @@ use App\Http\Controllers\TokenController;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
 use App\Http\Controllers\ViewController;
-use App\Http\Controllers\SellController;
+use App\Http\Controllers\SellerController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\ConfirmBuyController;
 use App\Http\Controllers\ConfirmSellController;
@@ -115,7 +115,7 @@ Route::post('/add', [AddProduct::class, 'AddProduct']);
 Route::post('/buy', [PurchaseConfirmedController::class, 'purchaseConfirmed']);
 
 //Confiramtion from an owner for selling a product
-Route::post('/sellConfirm', [SellController::class, 'sellConfirmation']);
+Route::post('/sellConfirm', [SellerController::class, 'sellConfirmation']);
 
 //Trede a product confimation
 Route::post('/trade', [TradeController::class, 'store']);

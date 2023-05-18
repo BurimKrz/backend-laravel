@@ -51,7 +51,6 @@ class DatabaseSeeder extends Seeder
 
         usersToken::factory(20)->create();
 
-        buySell::factory(5)->create();
         $this->call(AdminSeeder::class);
 
         // \App\Models\User::factory(10)->create();
