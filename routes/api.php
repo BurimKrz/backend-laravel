@@ -84,7 +84,7 @@ Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompan
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
-Route::post('/updateToken/{id}/{value}', [TokenController::class, 'updateToken']);
+Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
 
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
