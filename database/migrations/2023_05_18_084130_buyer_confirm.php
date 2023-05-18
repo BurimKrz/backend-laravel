@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('buy_sell', function (Blueprint $table) {
+        Schema::create('buyer_confirm', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
-            $table->string('action');
+            $table->boolean('confirmation')->default(false);
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('product_id')->references('id')->on('product');
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('buy_sell');
+        Schema::dropIfExists('buyer_confirm');
     }
 };

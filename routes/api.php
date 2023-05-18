@@ -19,6 +19,10 @@ use App\Http\Controllers\TokenController;
 // use App\Http\Controllers\ItemImportController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\SellController;
+use App\Http\Controllers\TradeController;
+use App\Http\Controllers\ConfirmBuyController;
+use App\Http\Controllers\ConfirmSellController;
+use App\Http\Controllers\InterestedProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -81,9 +85,19 @@ Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filte
 //Filter company base on category
 Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompany']);
 
+//Interested products
+Route::get('/interstedProduct/{id}', [InterestedProductController::class, 'interestedProduct']);
+
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
+//Confirm buy
+Route::put('/confirmBuy/{id}', [ConfirmBuyController::class, 'confirmBuy']);
+
+//Confirm sell
+Route::put('/confirmSell/{id}', [ConfirmSellController::class, 'confirmSell']);
+
+//Deduct token
 Route::post('/updateToken/{id}/{value}', [TokenController::class, 'updateToken']);
 
 //Register a new user
@@ -109,6 +123,12 @@ Route::post('/buy', [PurchaseConfirmedController::class, 'purchaseConfirmed']);
 
 //Confiramtion from an owner for selling a product
 Route::post('/sellConfirm', [SellController::class, 'sellConfirmation']);
+
+//Trede a product confimation
+Route::post('/trade', [TradeController::class, 'store']);
+
+//Add a product at interested list
+Route::post('interestedAt', [InterestedProductController::class, 'interestedAt']);
 
 //Detele a product 
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
