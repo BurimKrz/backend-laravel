@@ -93,7 +93,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 //Logout
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 //Create a new company
 Route::post('/company', [CompanyController::class, 'company']);
