@@ -91,14 +91,7 @@ Route::get('/interstedProduct/{id}', [InterestedProductController::class, 'inter
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
-//Confirm buy
-Route::put('/confirmBuy/{id}', [ConfirmBuyController::class, 'confirmBuy']);
-
-//Confirm sell
-Route::put('/confirmSell/{id}', [ConfirmSellController::class, 'confirmSell']);
-
-//Deduct token
-Route::post('/updateToken/{id}/{value}', [TokenController::class, 'updateToken']);
+Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
 
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
