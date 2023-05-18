@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AddProduct;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyFilterController;
@@ -112,7 +113,7 @@ Route::post('/activity', [ActivityController::class, 'activitycontroller']);
 Route::post('/add', [AddProduct::class, 'AddProduct']);
 
 //Confiramtion from an user for buying a product
-Route::post('/buy', [PurchaseConfirmedController::class, 'purchaseConfirmed']);
+Route::post('/buyConfirmed', [BuyerController::class, 'buyerConfirmation']);
 
 //Confiramtion from an owner for selling a product
 Route::post('/sellConfirm', [SellController::class, 'sellConfirmation']);
