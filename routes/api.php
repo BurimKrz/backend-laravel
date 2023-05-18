@@ -8,22 +8,19 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyFilterController;
 use App\Http\Controllers\CompanyListController;
+// use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\FilterProductController;
-// use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\ImportProduct;
+use App\Http\Controllers\InterestedProductController;
 use App\Http\Controllers\ModifyItem;
-use App\Http\Controllers\PurchaseConfirmedController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\TokenController;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
-use App\Http\Controllers\ViewController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
-use App\Http\Controllers\ConfirmBuyController;
-use App\Http\Controllers\ConfirmSellController;
-use App\Http\Controllers\InterestedProductController;
+use App\Http\Controllers\ViewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,7 +35,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
- //Country list 
+//Country list
 Route::get('/country', [RegisterController::class, 'index']);
 
 //Route for import list
@@ -124,9 +121,11 @@ Route::post('/trade', [TradeController::class, 'store']);
 //Add a product at interested list
 Route::post('interestedAt', [InterestedProductController::class, 'interestedAt']);
 
-//Detele a product 
+//Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 
+//Delete a product from InterestedAt
+Route::delete('/deleteProduct', [InterestedProductController::class, 'deleteInterestedAT']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

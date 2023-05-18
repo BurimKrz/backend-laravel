@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\interestedAt;
-use App\Models\product;
-use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -31,7 +29,6 @@ class InterestedProductController extends Controller
         return response()->json(['interestedAt' => $interestedAt], 200);
     }
 
-
     public function interestedProduct($id)
     {
         $interestedProduct = InterestedAt::join('product', 'interested_at.product_id', '=', 'product.id')
@@ -39,7 +36,14 @@ class InterestedProductController extends Controller
             ->select('product.name', 'product.description', 'product.price')
             ->where('users.id', '=', $id)
             ->get();
-        
-            return response()->json($interestedProduct);
+
+        return response()->json($interestedProduct);
+    }
+
+    public function deleteInterestedAT($id)
+    {
+        $product = InterestedAt::findOrFail($id);
+        $product->delete();
+        return response()->json("Product deleted");
     }
 }
