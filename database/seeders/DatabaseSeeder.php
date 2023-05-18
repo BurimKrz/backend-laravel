@@ -50,6 +50,11 @@ class DatabaseSeeder extends Seeder
 
         usersToken::factory(20)->create();
 
+<<<<<<< HEAD
+=======
+        $this->call(AdminSeeder::class);
+
+>>>>>>> f230a2081e1312820a970c6d3c5e6f7bd81d72ef
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
