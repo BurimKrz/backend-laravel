@@ -14,11 +14,11 @@ use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\ModifyItem;
 use App\Http\Controllers\PurchaseConfirmedController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\TokenController;
+use App\Http\Controllers\SellController;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
+use App\Http\Controllers\TokenController;
 use App\Http\Controllers\ViewController;
-use App\Http\Controllers\SellController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
- //Country list 
+//Country list
 Route::get('/country', [RegisterController::class, 'index']);
 
 //Route for import list
@@ -93,7 +93,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 //Logout
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('/logout', [AuthController::class, 'logout']);
 
 //Create a new company
 Route::post('/company', [CompanyController::class, 'company']);
@@ -110,9 +110,8 @@ Route::post('/buy', [PurchaseConfirmedController::class, 'purchaseConfirmed']);
 //Confiramtion from an owner for selling a product
 Route::post('/sellConfirm', [SellController::class, 'sellConfirmation']);
 
-//Detele a product 
+//Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
-
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
