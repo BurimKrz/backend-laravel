@@ -21,14 +21,16 @@ class TokenController extends Controller
 
     public function updateToken(Request $request, $id)
     {
-        $token     = Token::findOrFail($id);
-        $validated = $request->validate([
-            'amount' => 'required|integer',
-        ]);
-
-        $token->amount = $validated['amount'];
-        $token->save();
-
+        if ($user) {
+            $token = Token::create([
+                'amount' => 100
+            ]);
+        
+            UsersToken::create([
+                'user_id'  => $user->id,
+                'token_id' => $token->id
+            ]);
+        }
         return response()->json(['amount' => $token]);
 
     }
