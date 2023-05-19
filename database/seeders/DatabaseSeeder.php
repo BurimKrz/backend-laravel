@@ -42,13 +42,13 @@ class DatabaseSeeder extends Seeder
         // or just migrate:fresh --seed
         User::factory(20)->create();
 
-        token::factory(20)->create();
+        // token::factory(20)->create();
 
         export_product::factory(10)->create();
 
         import_product::factory(10)->create();
 
-        usersToken::factory(20)->create();
+        // usersToken::factory(20)->create();
 
         // \App\Models\User::factory(10)->create();
 
