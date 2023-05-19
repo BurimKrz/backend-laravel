@@ -9,14 +9,15 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyFilterController;
 use App\Http\Controllers\CompanyListController;
 // use Tests\Feature\Auth\RegistrationTest;
+use App\Http\Controllers\CorporateController;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\InterestedInListController;
 use App\Http\Controllers\InterestedProductController;
-use App\Http\Controllers\ModifyItem;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
+use App\Http\Controllers\ModifyItem;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\TokenController;
@@ -90,9 +91,13 @@ Route::get('/interstedProduct/{id}', [InterestedProductController::class, 'inter
 //Products people are interested in for company
 Route::get('/interstedIn/{id}', [InterestedInListController::class, 'interestedIn']);
 
+//
+Route::get('/corporate', [CorporateController::class, 'showCorporate']);
+
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
+//Deduct token
 Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
 
 //Register a new user
