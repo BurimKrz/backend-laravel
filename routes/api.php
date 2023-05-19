@@ -3,21 +3,23 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AddProduct;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyFilterController;
 use App\Http\Controllers\CompanyListController;
+// use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\FilterProductController;
-// use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\ImportProduct;
+use App\Http\Controllers\InterestedProductController;
 use App\Http\Controllers\ModifyItem;
-use App\Http\Controllers\PurchaseConfirmedController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SellController;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SellerController;
 use App\Http\Controllers\TokenController;
+use App\Http\Controllers\TradeController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -81,10 +83,13 @@ Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filte
 //Filter company base on category
 Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompany']);
 
+//Interested products
+Route::get('/interstedProduct/{id}', [InterestedProductController::class, 'interestedProduct']);
+
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
-Route::post('/updateToken/{id}/{value}', [TokenController::class, 'updateToken']);
+Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
 
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
@@ -105,13 +110,22 @@ Route::post('/activity', [ActivityController::class, 'activitycontroller']);
 Route::post('/add', [AddProduct::class, 'AddProduct']);
 
 //Confiramtion from an user for buying a product
-Route::post('/buy', [PurchaseConfirmedController::class, 'purchaseConfirmed']);
+Route::post('/buyConfirmed', [BuyerController::class, 'buyerConfirmation']);
 
 //Confiramtion from an owner for selling a product
-Route::post('/sellConfirm', [SellController::class, 'sellConfirmation']);
+Route::post('/sellConfirm', [SellerController::class, 'sellConfirmation']);
+
+//Trede a product confimation
+Route::post('/trade', [TradeController::class, 'store']);
+
+//Add a product at interested list
+Route::post('interestedAt', [InterestedProductController::class, 'interestedAt']);
 
 //Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
+
+//Delete a product from InterestedAt
+Route::delete('/deleteProduct', [InterestedProductController::class, 'deleteInterestedAT']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

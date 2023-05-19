@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class buySell extends Model
+class transaction extends Model
 {
     use HasFactory;
-    public $table = 'buy_sell';
 
-    protected $fillable = ['user_id', 'product_id', 'action'];
+    protected $table = 'transaction';
+
+    protected $fillable = ['id', 'buyer_id', 'seller_id', 'product_id'];
 }
