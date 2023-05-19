@@ -9,7 +9,7 @@ class interestedIn extends Model
 {
     use HasFactory;
 
-    public $table = ['interested_in'];
+    public $table = 'interested_in';
 
     protected $fillable = ['product_id', 'buyer_id', 'company_id'];
 }

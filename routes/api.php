@@ -12,6 +12,7 @@ use App\Http\Controllers\CompanyListController;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ImportProduct;
+use App\Http\Controllers\InterestedInListController;
 use App\Http\Controllers\InterestedProductController;
 use App\Http\Controllers\ModifyItem;
 // use App\Http\Controllers\ItemExportController;
@@ -83,8 +84,11 @@ Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filte
 //Filter company base on category
 Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompany']);
 
-//Interested products
+//Products people are interested at for user
 Route::get('/interstedProduct/{id}', [InterestedProductController::class, 'interestedProduct']);
+
+//Products people are interested in for company
+Route::get('/interstedIn/{id}', [InterestedInListController::class, 'interestedIn']);
 
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
@@ -126,6 +130,9 @@ Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 
 //Delete a product from InterestedAt
 Route::delete('/deleteProduct', [InterestedProductController::class, 'deleteInterestedAT']);
+
+//Delete a product from InterestedInList
+Route::delete('/delete/{id}', [InterestedInListController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

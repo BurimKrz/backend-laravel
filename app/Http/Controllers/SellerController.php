@@ -24,7 +24,7 @@ class SellerController extends Controller
             return response()->json(['status' => 400, 'message' => $validator->errors()]);
         }
 
-        $seller = SellerConfirmation::create(
+        SellerConfirmation::create(
             [
                 'company_id'   => $request->company_id,
                 'product_id'   => $request->product_id,
