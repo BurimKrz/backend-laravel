@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TokenRequest;
 use App\Models\token;
 use App\Models\usersToken;
 use Illuminate\Http\Request;
@@ -20,19 +21,17 @@ class TokenController extends Controller
         return response()->json($user_token);
     }
 
-    public function updateToken(Request $request, $user_id)
+    public function updateToken(TokenRequest $request, $user_id)
     {
        
-        $validated = $request->validate([
-            'amount' => 'required|integer',
-        ]);
+      
         $userToken = usersToken::where('user_id', $user_id)->first();
         if (!$userToken) {
             return response()->json(['error' => 'User token not found'], 404);
         }
 
         $token = Token::findOrFail($userToken->token_id);
-        $token->amount = $validated['amount'];
+        $token->amount = $request->amount;
         $token->save();
         return response()->json(['amount' => $token->amount]);
 

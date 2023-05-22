@@ -14,7 +14,7 @@ class AddProduct extends Controller
         $typeImportExport = $request->type;
 
         $product = new Product($request->validated());
-
+        $product->save();
         $productId = $product->id;
 
         if ($typeImportExport == 'export') {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\CountryResource;
 use App\Models\countries;
 use App\Models\Token;
@@ -12,25 +13,9 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'name'         => 'required|string|max:255',
-                'surname'      => 'required|string|max:255',
-                'email'        => 'required|string|email|max:255|unique:users',
-                'password'     => 'required|string|min:8',
-                'phone_number' => 'required|string|max:255|unique:users,phone_number',
-                'country_id'   => 'required|integer',
-                'gender'       => 'required|string|max:255',
-                'agreements'   => 'required|boolean:true,false',
-            ]
-        );
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
+        
         $user = User::create([
             'name'         => $request->name,
             'surname'      => $request->surname,

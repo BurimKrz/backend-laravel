@@ -2,24 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InterestedAtRequest;
 use App\Models\interestedAt;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class InterestedProductController extends Controller
 {
-    public function interestedAt(Request $request)
+    public function interestedAt(InterestedAtRequest $request)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'product_id' => 'required|integer',
-                'user_id'    => 'required|integer',
-            ]
-        );
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
 
         $interestedAt = InterestedAt::create([
             'product_id' => $request->product_id,

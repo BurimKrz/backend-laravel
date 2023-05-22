@@ -10,27 +10,7 @@ class CompanyController extends Controller
 {
     public function company(Request $request)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'name'            => 'required|string|max:255',
-                'keywords'        => 'required|string|max:255',
-                'country'         => 'required|string|max:255',
-                'web_address'     => 'required|string|max:255',
-                'web_address'     => 'required|string|max:255',
-                'more_info'       => 'required|string|max:255',
-                'budged'          => 'required|string|max:255',
-                'type'            => 'required|string|max:255',
-                'taxpayer_office' => 'required|string|max:255',
-                'TIN'             => 'required|string|max:255',
-                'category_id'     => 'required|integer',
-                'subcategory_id'  => 'required|integer',
-            ]
-        );
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
-
+      
         $company = Company::create([
             'name'            => $request->name,
             'keywords'        => $request->keywords,
