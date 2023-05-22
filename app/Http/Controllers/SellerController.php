@@ -2,27 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\SellerRequest;
 use App\Models\sellerConfirmation;
-use App\Models\Transaction;
+use App\Models\transaction;
 
 class SellerController extends Controller
 {
-    public function sellConfirmation(Request $request)
+    public function sellConfirmation(SellerRequest $request)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'company_id'   => 'required|integer',
-                'product_id'   => 'required|integer',
-                'buyer_id'     => 'required|integer',
-                'confirmation' => 'required|boolean:true,false',
-            ]
-        );
-        if ($validator->fails()) {
-            return response()->json(['status' => 400, 'message' => $validator->errors()]);
-        }
 
         SellerConfirmation::create(
             [
@@ -34,12 +21,10 @@ class SellerController extends Controller
         );
 
         if ($request->confirmation === true) {
-            $transaction = new Transaction;
-            $transaction->seller_id = $request->company_id;
-            $transaction->buyer_id = $request->buyer_id;
-            $transaction->product_id = $request->product_id;
-            $transaction->save();
+
+            $transaction = new Transaction($request->validated());
         }
-        return response('Sell confirmation recorded successfully.');
+        return response($transaction);
+
     }
 }

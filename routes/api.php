@@ -123,7 +123,9 @@ Route::post('/sellConfirm', [SellerController::class, 'sellConfirmation']);
 Route::post('/trade', [TradeController::class, 'store']);
 
 //Add a product at interested list
-Route::post('interestedAt', [InterestedProductController::class, 'interestedAt']);
+Route::post('/interestedAt', [InterestedProductController::class, 'interestedAt']);
+
+Route::post('/interestedIn', [InterestedInListController::class, 'interestedInProduct']);
 
 //Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
