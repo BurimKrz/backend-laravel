@@ -16,6 +16,7 @@ use App\Http\Controllers\InterestedProductController;
 use App\Http\Controllers\ModifyItem;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
+use App\Http\Controllers\NotifyBuyerInterested;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\TokenController;
@@ -85,6 +86,9 @@ Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompan
 
 //Interested products
 Route::get('/interstedProduct/{id}', [InterestedProductController::class, 'interestedProduct']);
+
+//Notification for the buyer that is interested in a product
+Route::get('/Notify/{Uid}/{Pid}', [NotifyBuyerInterested::class, 'notify']);
 
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
