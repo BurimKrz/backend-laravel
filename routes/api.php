@@ -22,6 +22,7 @@ use App\Http\Controllers\SellerController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -124,6 +125,9 @@ Route::post('/trade', [TradeController::class, 'store']);
 
 //Add a product at interested list
 Route::post('interestedAt', [InterestedProductController::class, 'interestedAt']);
+
+//Newsletter
+Route::post('/newsletter', [NewsletterController::class, 'addNewsletter']);
 
 //Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
