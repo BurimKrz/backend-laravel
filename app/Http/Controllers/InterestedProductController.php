@@ -4,29 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\InterestedAtRequest;
 use App\Models\interestedAt;
+use App\Services\Interfaces\InterestedAtInterface;
 
 class InterestedProductController extends Controller
 {
-    public function interestedAt(InterestedAtRequest $request)
+    public function interestedAt(InterestedAtRequest $interestedAtRequest, InterestedAtInterface $interestedAtInterface)
     {
+        return response()->json(($interestedAtInterface->createInterestedAt($interestedAtRequest)), 200);
 
-        $interestedAt = InterestedAt::create([
-            'product_id' => $request->product_id,
-            'user_id'    => $request->user_id,
-        ]);
-
-        return response()->json(['interestedAt' => $interestedAt], 200);
     }
 
-    public function interestedProduct($id)
+    public function interestedProduct(InterestedAtInterface $interestedAtInterface, $id)
     {
-        $interestedProduct = InterestedAt::join('product', 'interested_at.product_id', '=', 'product.id')
-            ->join('users', 'interested_at.user_id', '=', 'users.id')
-            ->select('product.name', 'product.description', 'product.price')
-            ->where('users.id', '=', $id)
-            ->get();
-
-        return response()->json($interestedProduct);
+        return response()->json(($interestedAtInterface->selectInterstedProduct($id)), 200);
     }
 
     public function deleteInterestedAT($id)

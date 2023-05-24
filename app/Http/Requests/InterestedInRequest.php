@@ -22,7 +22,7 @@ class InterestedInRequest extends FormRequest
     public function rules(): array
     {
         return [
-
+            'buyer_id'   => 'required|integer',
             'product_id' => 'required|integer',
             'company_id' => 'required|integer',
         ];

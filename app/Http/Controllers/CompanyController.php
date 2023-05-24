@@ -2,30 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\company;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\CompanyRequest;
+use App\Services\Interfaces\CompanyInterface;
 
 class CompanyController extends Controller
 {
-    public function company(Request $request)
+    public function company(CompanyRequest $companyRequest, CompanyInterface $companyInterface)
     {
-      
-        $company = Company::create([
-            'name'            => $request->name,
-            'keywords'        => $request->keywords,
-            'country'         => $request->country,
-            'web_address'     => $request->web_address,
-            'more_info'       => $request->more_info,
-            'budged'          => $request->budged,
-            'type'            => $request->type,
-            'taxpayer_office' => $request->taxpayer_office,
-            'TIN'             => $request->TIN,
-            'category_id'     => $request->category_id,
-            'subcategory_id'  => $request->subcategory_id,
-        ]);
-
-        return response()->json(['company' => $company], 201);
+        return response()->json(($companyInterface->createCompany($companyRequest)), 201);
 
     }
 }

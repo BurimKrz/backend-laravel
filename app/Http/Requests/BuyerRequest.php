@@ -26,5 +26,6 @@ class BuyerRequest extends FormRequest
              'product_id' => 'required|integer', 
              'confirmation' => 'required|boolean:true, false'
         ];
+       
     }
 }
