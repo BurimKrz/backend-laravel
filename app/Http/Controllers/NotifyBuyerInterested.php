@@ -10,14 +10,21 @@ class NotifyBuyerInterested extends Controller
 {
     public function notify($Uid, $Pid)
     {
-        $user         = User::find($Uid);
-        $product      = Product::find($Pid);
-        $notification = new BuyerInterestedProduct($user, $product);
-        $user->notify($notification);
+        $user    = User::find($Uid);
+        $product = Product::find($Pid);
+        if ($user && $product) {
+            $notification = new BuyerInterestedProduct($user, $product);
+            $user->notify($notification);
 
-        $notificationData = $notification->toArray(null);
+            $notificationData = $notification->toArray($user);
 
-        return response()->json($notificationData, 200);
+            return response()->json($notificationData, 200);
+        } else if (!$user) {
+
+            return response()->json(['error' => 'User not found'], 404);
+        } else if (!$product) {
+
+            return response()->json(['error' => 'Product not found'], 404);
+        }
     }
-
 }

@@ -40,8 +40,9 @@ class BuyerInterestedProduct extends Notification
     {
         return [
 
-            'Full Name' => $this->user['name'] . ' ' . $this->user['surname'],
-            'Product'   => $this->product['name'],
+            'notifiable_id' => $notifiable->id,
+            'Full Name'     => $this->user['name'] . ' ' . $this->user['surname'],
+            'Product'       => $this->product['name'],
         ];
     }
 }
