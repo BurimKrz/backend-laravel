@@ -14,6 +14,7 @@ use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\InterestedInListController;
 use App\Http\Controllers\InterestedProductController;
+use App\Http\Controllers\MailFormController;
 use App\Http\Controllers\ModifyItem;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
@@ -89,10 +90,13 @@ Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompan
 Route::get('/interstedProduct/{id}', [InterestedProductController::class, 'interestedProduct']);
 
 //Notification for the buyer that is interested in a product
-Route::get('/Notify/{Uid}/{Pid}', [NotifyBuyerInterested::class, 'notify']);
+Route::get('/Notify/{Oid}/{Pid}/{Uid}', [NotifyBuyerInterested::class, 'notify']);
 
 //Products people are interested in for company
 Route::get('/interstedIn/{id}', [InterestedInListController::class, 'interestedIn']);
+
+//Getting data for the "Form" communication
+Route::get('/form/{id}', [MailFormController::class, 'mailForm']);
 
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);

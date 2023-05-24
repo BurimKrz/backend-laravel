@@ -8,15 +8,16 @@ use App\Notifications\BuyerInterestedProduct;
 
 class NotifyBuyerInterested extends Controller
 {
-    public function notify($Uid, $Pid)
+    public function notify($Oid, $Uid, $Pid)
     {
+        $Owner   = User::find($Oid);
         $user    = User::find($Uid);
         $product = Product::find($Pid);
         if ($user && $product) {
-            $notification = new BuyerInterestedProduct($user, $product);
-            $user->notify($notification);
+            $notification = new BuyerInterestedProduct($Owner, $user, $product);
+            $Owner->notify($notification);
 
-            $notificationData = $notification->toArray($user);
+            $notificationData = $notification->toArray($Owner);
 
             return response()->json($notificationData, 200);
         } else if (!$user) {

@@ -11,13 +11,15 @@ class BuyerInterestedProduct extends Notification
     use Queueable;
     public $user;
     public $product;
+    public $Owner;
     /**
      * Create a new notification instance.
      */
-    public function __construct($user, $product)
+    public function __construct($Owner, $user, $product)
     {
         $this->user    = $user;
         $this->product = $product;
+        $this->Owner   = $Owner;
 
     }
 
