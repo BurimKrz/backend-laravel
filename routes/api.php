@@ -14,6 +14,7 @@ use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\InterestedInListController;
 use App\Http\Controllers\InterestedProductController;
+use App\Http\Controllers\ListNotificationsController;
 use App\Http\Controllers\MailFormController;
 use App\Http\Controllers\ModifyItem;
 // use App\Http\Controllers\ItemExportController;
@@ -97,6 +98,9 @@ Route::get('/interstedIn/{id}', [InterestedInListController::class, 'interestedI
 
 //Getting data for the "Form" communication
 Route::get('/form/{id}', [MailFormController::class, 'mailForm']);
+
+//Get the the Notifications for the Owner
+Route::get('/Notify/{id}', [ListNotificationsController::class, 'findNotifications']);
 
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
