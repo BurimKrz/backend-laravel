@@ -24,6 +24,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
+use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -105,7 +106,11 @@ Route::get('/Notify/{id}', [ListNotificationsController::class, 'findNotificatio
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
+//Updating Token
 Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
+
+//Updating User Profile Data
+Route::put('/updateUser/{id}', [UpdateProfileUserController::class, 'update']);
 
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
