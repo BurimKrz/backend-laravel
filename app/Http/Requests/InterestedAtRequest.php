@@ -24,6 +24,7 @@ class InterestedAtRequest extends FormRequest
         return [
             'product_id' => 'required|integer',
             'user_id'    => 'required|integer',
+            'company_id' => 'required|integer'
         ];
     }
 }

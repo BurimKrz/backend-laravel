@@ -15,6 +15,7 @@ class InterestedAtService implements InterestedAtInterface
             [
                 'product_id' => $interestedAtRequest['product_id'],
                 'user_id'    => $interestedAtRequest['user_id'],
+                'company_id'    => $interestedAtRequest['company_id'],
             ]
         );
 
