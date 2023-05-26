@@ -129,6 +129,8 @@ Route::post('interestedAt', [InterestedProductController::class, 'interestedAt']
 //Newsletter
 Route::post('/newsletter', [NewsletterController::class, 'addNewsletter']);
 
+Route::post('/sendnewsletter', [NewsletterController::class, 'sendNewsletter']);
+
 //Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 
