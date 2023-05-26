@@ -3,7 +3,6 @@ namespace App\Services\Services;
 
 use App\Http\Requests\InterestedAtRequest;
 use App\Models\interestedAt;
-use App\Models\interestedIn;
 use App\Services\Interfaces\InterestedAtInterface;
 
 class InterestedAtService implements InterestedAtInterface
