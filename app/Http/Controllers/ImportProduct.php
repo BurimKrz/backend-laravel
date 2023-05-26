@@ -37,6 +37,7 @@ class ImportProduct extends Controller
             ->join('product_category as pc', 'pc.id', '=', 'p.category_id')
             ->where('import_product.product_id', $id)
             ->select(
+                'p.id',
                 'p.name',
                 'p.description',
                 'p.price',
