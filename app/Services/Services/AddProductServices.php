@@ -11,9 +11,9 @@ class AddProductServices implements AddProductInterface
 {
 
     public function createProduct(AddProductRequest $addProductRequest, AddImportInterface $addImportInterface,
-        AddExportInterface $addExportInterface): product {
+        AddExportInterface $addExportInterface): Product {
 
-        return product::create(
+        return Product::create(
             [
                 'name'           => $addProductRequest['name'],
                 'description'    => $addProductRequest['description'],
@@ -35,7 +35,7 @@ class AddProductServices implements AddProductInterface
             $addExportInterface->createExportProduct($addProductRequest);
         }
         if ($typeImportExport == 'import') {
-            $addExportInterface->createExportProduct($addProductRequest);
+            $addImportInterface->createImportProduct($addProductRequest);
         }
 
     }

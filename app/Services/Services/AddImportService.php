@@ -8,7 +8,7 @@ use App\Services\Interfaces\AddImportInterface;
 class AddImportService implements AddImportInterface
 {
 
-    public function createImportProduct(AddProductRequest $addProductRequest): import_product
+    public function createImportProduct(AddProductRequest $addProductRequest): Import_product
     {
         return Import_product::create([
             'product_id' => $addProductRequest['product_id'],

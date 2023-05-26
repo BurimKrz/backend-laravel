@@ -9,9 +9,9 @@ use App\Services\Interfaces\AddExportInterface;
 class AddExportService implements AddExportInterface
 {
 
-    public function createExportProduct(AddProductRequest $addProductRequest): export_product
+    public function createExportProduct(AddProductRequest $addProductRequest): Export_product
     {
-        return export_product::create([
+        return Export_product::create([
             'product_id' => $addProductRequest['product_id'],
         ]);
     }

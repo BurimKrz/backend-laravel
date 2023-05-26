@@ -7,6 +7,6 @@ use App\Models\import_product;
 
 interface AddImportInterface{
 
-    public function createImportProduct(AddProductRequest $addProductRequest): export_product;
+    public function createImportProduct(AddProductRequest $addProductRequest): Import_product;
 
 }

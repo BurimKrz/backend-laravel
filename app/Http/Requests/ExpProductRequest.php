@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ActivityRequest extends FormRequest
+class ExpProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,8 +22,7 @@ class ActivityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'activity_area_id' => 'required|integer',
-            'company_id'       => 'required|integer',
+            //
         ];
     }
 }

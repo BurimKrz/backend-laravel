@@ -2,36 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Request;
+use App\Services\Interfaces\AuthInterface;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Mailer\Transport\Smtp\Auth\AuthenticatorInterface;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    public function login(AuthRequest $authRequest, AuthInterface $authInterface)
     {
-        $credentials = $request->validate([
-            'email'    => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-
-        if (Auth::attempt($credentials)) {
-            session()->regenerate();
-
-            // $request->session()->regenerate();
-
-            return response()->json([
-                'message' => 'Welcome new user',
-                'user'    => Auth::user(),
-            ], 200);
-        }
-
-        return response()->json([
-            'message' => 'The provided credentials are incorrect',
-        ], 401);
-
-        // return ValidationException::withMessages([
-        //     'email' => ['The provided credentials are incorrect.'],
-        // ]);
+        return response()->json($authInterface->createAuth($authRequest));
     }
 
     public function logout(Request $request)

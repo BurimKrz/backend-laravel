@@ -5,13 +5,11 @@ use App\Http\Requests\CompanyRequest;
 use App\Models\company;
 use App\Services\Interfaces\CompanyInterface;
 
-
 class CompanyService implements CompanyInterface
 {
 
     public function createCompany(CompanyRequest $companyRequest): Company
     {
-   
 
         return Company::create(
             [
@@ -28,6 +26,6 @@ class CompanyService implements CompanyInterface
                 'subcategory_id'  => $companyRequest['subcategory_id'],
             ]
         );
-       
+
     }
 }

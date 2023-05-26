@@ -7,6 +7,6 @@ use App\Models\export_product;
 interface AddExportInterface{
 
 
-    public function createExportProduct(AddProductRequest $addProductRequest): export_product;
+    public function createExportProduct(AddProductRequest $addProductRequest): Export_product;
 
 }
