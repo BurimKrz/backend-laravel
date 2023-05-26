@@ -10,8 +10,6 @@ class BuyerService implements BuyerInterface
 
     public function createBuyer(BuyerRequest $buyerRequest): BuyerConfirmation
     {
-       
-
         return BuyerConfirmation::create(
             [
                 'user_id'      => $buyerRequest['user_id'],
@@ -19,6 +17,6 @@ class BuyerService implements BuyerInterface
                 'confirmation' => $buyerRequest['confirmation'],
             ]
         );
-        
+
     }
 }

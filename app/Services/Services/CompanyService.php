@@ -2,16 +2,18 @@
 namespace App\Services\Services;
 
 use App\Http\Requests\CompanyRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\company;
+use App\Models\userCompany;
 use App\Services\Interfaces\CompanyInterface;
 
 class CompanyService implements CompanyInterface
 {
 
-    public function createCompany(CompanyRequest $companyRequest): Company
+    public function createCompany(CompanyRequest $companyRequest, $userId)
     {
 
-        return Company::create(
+        $company = Company::create(
             [
                 'name'            => $companyRequest['name'],
                 'keywords'        => $companyRequest['keywords'],
@@ -27,5 +29,12 @@ class CompanyService implements CompanyInterface
             ]
         );
 
+        if($company){
+            userCompany::create([
+                'user_id' => $userId,
+                'company_id' => $company->id
+            ]);
+        }
+        return response()->json($company);
     }
 }

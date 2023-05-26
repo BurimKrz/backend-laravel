@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BuyerRequest;
 use App\Http\Requests\InterestedInRequest;
-use App\Models\buyerConfirmation;
-use App\Services\BuyerService;
 use App\Services\Interfaces\BuyerInterface;
 use App\Services\Interfaces\InterestedInterface;
-use App\Services\Services\InterestedInService;
 
 class BuyerController extends Controller
 {

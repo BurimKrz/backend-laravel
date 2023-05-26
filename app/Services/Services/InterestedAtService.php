@@ -3,6 +3,7 @@ namespace App\Services\Services;
 
 use App\Http\Requests\InterestedAtRequest;
 use App\Models\interestedAt;
+use App\Models\interestedIn;
 use App\Services\Interfaces\InterestedAtInterface;
 
 class InterestedAtService implements InterestedAtInterface
@@ -26,7 +27,15 @@ class InterestedAtService implements InterestedAtInterface
             ->join('users', 'interested_at.user_id', '=', 'users.id')
             ->select('product.name', 'product.description', 'product.price')
             ->where('users.id', '=', $id)
-            ->firstOrFail();
+            ->get();
+    }
+
+    public function delete($id)
+    {
+        $product = InterestedAt::findOrFail($id);
+        $product->delete();
+        return response()->json("Product deleted");
+
     }
 
 }

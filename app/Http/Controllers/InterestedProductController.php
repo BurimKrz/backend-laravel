@@ -19,10 +19,8 @@ class InterestedProductController extends Controller
         return response()->json(($interestedAtInterface->selectInterstedProduct($id)), 200);
     }
 
-    public function deleteInterestedAT($id)
+    public function deleteInterestedAT(InterestedAtInterface $interestedAtInterface, $id)
     {
-        $product = InterestedAt::findOrFail($id);
-        $product->delete();
-        return response()->json("Product deleted");
+       return response()->json($interestedAtInterface->delete($id));
     }
 }

@@ -10,5 +10,5 @@ interface InterestedAtInterface{
 
     public function selectInterstedProduct($id): interestedAt;
 
-
+    public function delete($id);
 }

@@ -84,6 +84,8 @@ Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filte
 //Filter company base on category
 Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompany']);
 
+Route::get('/filterProduct/{id}', [FilterProductController::class, 'filterProductCategory']);
+
 //Products people are interested at for user
 Route::get('/interstedProduct/{id}', [InterestedProductController::class, 'interestedProduct']);
 
@@ -105,7 +107,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 //Create a new company
-Route::post('/company', [CompanyController::class, 'company']);
+Route::post('/company/{userId}', [CompanyController::class, 'company']);
 
 //Activity area for comapany
 Route::post('/activity', [ActivityController::class, 'activitycontroller']);
@@ -131,7 +133,7 @@ Route::post('/interestedIn', [InterestedInListController::class, 'interestedInPr
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 
 //Delete a product from InterestedAt
-Route::delete('/deleteProduct', [InterestedProductController::class, 'deleteInterestedAT']);
+Route::delete('/deleteProduct/{id}', [InterestedProductController::class, 'deleteInterestedAT']);
 
 //Delete a product from InterestedInList
 Route::delete('/delete/{id}', [InterestedInListController::class, 'destroy']);

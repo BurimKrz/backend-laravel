@@ -3,27 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\product;
+use App\Services\Interfaces\ViewInterface;
 
 class ViewController extends Controller
 {
-    public function view($id)
+    public function view(ViewInterface $viewInterface, $id)
     {
-        $product = Product::find($id);
-        $views   = $product->views;
-        if ($product) {
-            $product->increment('views');
-            return response()->json(['views' => $views]);
-        } else {
-            return response()->json(['views' => $views]);
-        }
-        // $views = $product ? $product->views : null;
-        // return response()->json(['views' => $views]);
+        return response()->json([$viewInterface->views($id)], 200);
     }
 
-    public function date($id)
+    public function date(ViewInterface $viewInterface, $id)
     {
-        $product = Product::find($id);
-        $created = $product ? $product->created_at : null;
-        return response()->json(['created_at' => $created]);
+        return response()->json([$viewInterface->dateOfView($id)], 200);
     }
 }
