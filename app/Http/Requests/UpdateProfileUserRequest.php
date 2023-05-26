@@ -25,7 +25,6 @@ class UpdateProfileUserRequest extends FormRequest
             'name'         => 'required|string|max:255',
             'surname'      => 'required|string|max:255',
             'email'        => 'required|string|email|max:255|unique:users',
-            'password'     => 'required|string|min:8',
             'phone_number' => 'required|string|max:255|unique:users,phone_number',
             'country_id'   => 'required|integer',
             'gender'       => 'required|string|max:255',
