@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use TijsVerkoyen\CssToInlineStyles\Css\Rule\Rule;
 
 class UpdateProfileUserRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class UpdateProfileUserRequest extends FormRequest
         return [
             'name'         => 'required|string|max:255',
             'surname'      => 'required|string|max:255',
-            'email'        => 'required|string|email|max:255|unique:users',
+            'email'        => ['required', Rule::unique('users')->ignore($this->user)],
             'phone_number' => 'required|string|max:255|unique:users,phone_number',
             'country_id'   => 'required|integer',
             'gender'       => 'required|string|max:255',
