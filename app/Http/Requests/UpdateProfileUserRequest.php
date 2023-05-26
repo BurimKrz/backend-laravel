@@ -23,12 +23,12 @@ class UpdateProfileUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'         => 'required|string|max:255',
-            'surname'      => 'required|string|max:255',
+            'name'         => ['required', 'max:255'],
+            'surname'      => ['required', 'max:255'],
             'email'        => ['required', Rule::unique('users')->ignore($this->user)],
-            'phone_number' => 'required|string|max:255|unique:users,phone_number',
-            'country_id'   => 'required|integer',
-            'gender'       => 'required|string|max:255',
+            'phone_number' => ['required', Rule::unique('users')->ignore($this->phone_number)],
+            'country_id'   => ['required', 'numeric'],
+            'gender'       => ['required', 'max:255'],
         ];
     }
 }
