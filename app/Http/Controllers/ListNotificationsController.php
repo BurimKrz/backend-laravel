@@ -12,7 +12,8 @@ class ListNotificationsController extends Controller
             ->where('notifiable_id', $id)
             ->get();
 
-        return $notifications;
+        return response()->json($notifications, 200);
+
         if (!$notifications) {
             return response()->json(['error' => 'Notification not found'], 404);
         }
