@@ -2,34 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\buyerConfirmation;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\BuyerRequest;
+use App\Http\Requests\InterestedInRequest;
+use App\Services\Interfaces\BuyerInterface;
+use App\Services\Interfaces\InterestedInterface;
 
 class BuyerController extends Controller
 {
-    public function buyerConfirmation(Request $request)
-    {
+    public function buyerConfirmation(BuyerRequest $buyerRequest, BuyerInterface $buyerInterface,
+        InterestedInterface $interestedInterface, InterestedInRequest $interestedInRequest) {
+        
+        $buyer = $buyerInterface->createBuyer($buyerRequest);
 
-        $validated = Validator::make(
-            $request->all(),
-            [
-                'user_id'      => 'required|integer',
-                'product_id'   => 'required|integer',
-                'confirmation' => 'required|boolean:true, false',
-            ]
-        );
-        if ($validated->fails()) {
-            return response()->json(['errors' => $validated->errors()], 400);
+        $confirm = $buyerRequest->confirmation;
+        if ($confirm === true) {
+
+            $interestedInterface->createInterestedIn($interestedInRequest);
         }
-
-        $buyer = BuyerConfirmation::create(
-            [
-                'user_id'      => $request->user_id,
-                'product_id'   => $request->product_id,
-                'confirmation' => $request->confirmation,
-            ]
-        );
-        return response()->json(['buyer' => $buyer], 201);
+        return response()->json(['buyer' => $buyer, $confirm], 201);
     }
 }

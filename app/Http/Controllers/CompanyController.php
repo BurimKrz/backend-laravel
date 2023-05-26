@@ -2,50 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\company;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\CompanyRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Services\Interfaces\CompanyInterface;
 
 class CompanyController extends Controller
 {
-    public function company(Request $request)
+    public function company(CompanyRequest $companyRequest,  $userId, CompanyInterface $companyInterface)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'name'            => 'required|string|max:255',
-                'keywords'        => 'required|string|max:255',
-                'country'         => 'required|string|max:255',
-                'web_address'     => 'required|string|max:255',
-                'web_address'     => 'required|string|max:255',
-                'more_info'       => 'required|string|max:255',
-                'budged'          => 'required|string|max:255',
-                'type'            => 'required|string|max:255',
-                'taxpayer_office' => 'required|string|max:255',
-                'TIN'             => 'required|string|max:255',
-                'category_id'     => 'required|integer',
-                'subcategory_id'  => 'required|integer',
-            ]
-        );
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
-
-        $company = Company::create([
-            'name'            => $request->name,
-            'keywords'        => $request->keywords,
-            'country'         => $request->country,
-            'web_address'     => $request->web_address,
-            'more_info'       => $request->more_info,
-            'budged'          => $request->budged,
-            'type'            => $request->type,
-            'taxpayer_office' => $request->taxpayer_office,
-            'TIN'             => $request->TIN,
-            'category_id'     => $request->category_id,
-            'subcategory_id'  => $request->subcategory_id,
-        ]);
-
-        return response()->json(['company' => $company], 201);
+        return response()->json([$companyInterface->createCompany($companyRequest, $userId)], 201);
 
     }
 }
