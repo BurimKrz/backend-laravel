@@ -11,6 +11,6 @@ class ActivityController extends Controller
     public function activitycontroller(ActivityRequest $activityRequest, ActivityInterface $activityInterface)
     {
     
-        return response()->json($activityInterface->activity($activityRequest));
+        return response()->json($activityInterface->activity($activityRequest), 200);
     }
 }
