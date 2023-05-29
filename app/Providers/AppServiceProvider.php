@@ -68,7 +68,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(SellerInterface::class, SellerService::class);
         $this->app->bind(TokenInterface::class, TokenService::class);
         $this->app->bind(ViewInterface::class, ViewService::class);
-
     }
 
     /**
