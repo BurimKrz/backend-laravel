@@ -4,7 +4,8 @@ namespace App\Services\Interfaces;
 use App\Http\Requests\InterestedAtRequest;
 use App\Models\interestedAt;
 
-interface InterestedAtInterface{
+interface InterestedAtInterface
+{
 
     public function createInterestedAt(InterestedAtRequest $interestedAtRequest): interestedAt;
 

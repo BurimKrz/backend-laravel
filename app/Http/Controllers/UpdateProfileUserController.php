@@ -12,7 +12,7 @@ class UpdateProfileUserController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->validated());
         if ($user) {
-            return response()->json("User updated", 200);
+            return response()->json(["message" => "User updated"], 200);
         } else {
             return response()->json(['error' => 'User not found'], 404);
         }

@@ -16,12 +16,12 @@ class ExportProduct extends Controller
 
     public function showList(ExportProductInterface $exportProductInterface)
     {
-       return response()->json($exportProductInterface->showProducts());
+       return response()->json([$exportProductInterface->showProducts()], 200);
     }
 
     public function show(ExportProductInterface $exportProductInterface, $id)
     {
-       return response()->json($exportProductInterface->showProduct($id));
+       return response()->json([$exportProductInterface->showProduct($id)], 200);
     }
 
 }

@@ -16,6 +16,6 @@ class CompanyListController extends Controller
 
     public function companyDetails(CompanyListInterface $companyListInterface, $id)
     {
-       return response()->json($companyListInterface->detailsOfCompany($id));
+       return response()->json([$companyListInterface->detailsOfCompany($id)], 200);
     }
 }

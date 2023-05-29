@@ -11,6 +11,6 @@ class CompanyFilterController extends Controller
 {
     public function filterCompany(CompanyFilterInterface $companyFilterInterface, $id)
     {
-       return response()->json($companyFilterInterface->companyFilter($id));
+       return response()->json([$companyFilterInterface->companyFilter($id), 200]);
     }
 }

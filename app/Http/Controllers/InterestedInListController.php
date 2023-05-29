@@ -15,7 +15,7 @@ class InterestedInListController extends Controller
 
     public function destroy(InterestedInterface $interestedInterface, $id)
     {
-        return response()->json($interestedInterface->delete($id));
+        return response()->json([$interestedInterface->delete($id)], 200);
     }
 
 }

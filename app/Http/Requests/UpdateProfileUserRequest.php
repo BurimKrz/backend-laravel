@@ -29,7 +29,7 @@ class UpdateProfileUserRequest extends FormRequest
             'surname'      => ['required', 'max:255'],
             'email'        => ['required', Rule::unique('users')->ignore($userId)],
             'phone_number' => ['required', Rule::unique('users')->ignore($userId)],
-            'country_id'   => ['required', 'numeric'],
+            'country_id'   => ['required', 'integer'],
             'gender'       => ['required', 'max:255'],
         ];
 

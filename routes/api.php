@@ -26,6 +26,7 @@ use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -145,6 +146,11 @@ Route::post('/trade', [TradeController::class, 'store']);
 Route::post('/interestedAt', [InterestedProductController::class, 'interestedAt']);
 
 Route::post('/interestedIn', [InterestedInListController::class, 'interestedInProduct']);
+
+//Newsletter
+Route::post('/newsletter', [NewsletterController::class, 'addNewsletter']);
+
+Route::post('/sendnewsletter', [NewsletterController::class, 'sendNewsletter']);
 
 //Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);

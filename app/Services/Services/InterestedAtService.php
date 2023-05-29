@@ -3,7 +3,6 @@ namespace App\Services\Services;
 
 use App\Http\Requests\InterestedAtRequest;
 use App\Models\interestedAt;
-use App\Models\interestedIn;
 use App\Services\Interfaces\InterestedAtInterface;
 
 class InterestedAtService implements InterestedAtInterface
@@ -16,6 +15,7 @@ class InterestedAtService implements InterestedAtInterface
             [
                 'product_id' => $interestedAtRequest['product_id'],
                 'user_id'    => $interestedAtRequest['user_id'],
+                'company_id'    => $interestedAtRequest['company_id'],
             ]
         );
 

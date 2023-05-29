@@ -9,11 +9,11 @@ class ModifyItem extends Controller
 {
     public function update(ModifyItemInterface $modifyItemInterface, ModifyItemRequest $modifyItemRequest, $id)
     {
-        return response()->json($modifyItemInterface->modifyProduct($modifyItemRequest, $id));
+        return response()->json([$modifyItemInterface->modifyProduct($modifyItemRequest, $id)], 200);
     }
 
     public function destroy(ModifyItemInterface $modifyItemInterface, $id)
     {
-        return response()->json($modifyItemInterface->deleteProduct($id));
+        return response()->json([$modifyItemInterface->deleteProduct($id)], 200);
     }
 }

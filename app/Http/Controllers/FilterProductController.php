@@ -11,10 +11,10 @@ class FilterProductController extends Controller
 {
     public function filterProductCategory(FilterProductInterface $filterProductInterface, $id)
     {
-        return response()->json($filterProductInterface->filterProduct($id));
+        return response()->json([$filterProductInterface->filterProduct($id)], 200);
     }
     public function filterProductSubCategory(FilterProductInterface $filterProductInterface, $category_id, $subcategory_id)
     {
-       return response()->json($filterProductInterface->filterSubcategory($subcategory_id, $category_id));
+       return response()->json([$filterProductInterface->filterSubcategory($subcategory_id, $category_id)], 200);
     }
 }
