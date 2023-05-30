@@ -11,5 +11,5 @@ class export_product extends Model
 
     public $table = 'export_product';
 
-    protected $fillable = ['name', 'product_id'];
+    protected $fillable = ['product_id'];
 }

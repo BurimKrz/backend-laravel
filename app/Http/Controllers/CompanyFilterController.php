@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\company;
-use App\Models\company_category;
-use App\Services\Interfaces\CompanyFilterInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Services\CompanyFilterService;
 
 class CompanyFilterController extends Controller
 {
-    public function filterCompany(CompanyFilterInterface $companyFilterInterface, $id)
+    private CompanyFilterService $companyFilterService;
+
+    public function __construct(CompanyFilterService $companyFilterService)
     {
-       return response()->json($companyFilterInterface->companyFilter($id));
+        $this->companyFilterService = $companyFilterService;
+    }
+    public function filterCompany(CompanyFilterService $companyFilterService, $id)
+    {
+        return response()->json([
+            $this->companyFilterService->companyFilter($id),
+        ], 200);
     }
 }

@@ -1,13 +1,14 @@
 <?php
-namespace App\Services\Services;
-use App\Models\company_category;
-use App\Services\Interfaces\CompanyFilterInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
+namespace App\Services;
+
 use App\Models\company;
+use App\Models\company_category;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
-class CompanyFilterService implements CompanyFilterInterface{
-
-    public function companyFilter($id){
+class CompanyFilterService
+{
+    public function companyFilter($id)
+    {
 
         $companyCategory = company_category::find($id);
 

@@ -1,19 +1,19 @@
 <?php
-namespace App\Services\Services;
+
+namespace App\Implementations;
 
 use App\Http\Requests\AddProductRequest;
+use App\Interfaces\ProductInterface;
+use App\Models\export_product;
+use App\Models\import_product;
 use App\Models\product;
-use App\Services\Interfaces\AddExportInterface;
-use App\Services\Interfaces\AddImportInterface;
-use App\Services\Interfaces\AddProductInterface;
 
-class AddProductServices implements AddProductInterface
+class ProductImplementation implements ProductInterface
 {
 
-    public function createProduct(AddProductRequest $addProductRequest, AddImportInterface $addImportInterface,
-        AddExportInterface $addExportInterface): Product {
-
-        return Product::create(
+    public function createProduct(AddProductRequest $addProductRequest): Product
+    {
+        $product = Product::create(
             [
                 'name'           => $addProductRequest['name'],
                 'description'    => $addProductRequest['description'],
@@ -29,15 +29,26 @@ class AddProductServices implements AddProductInterface
 
         $typeImportExport = $addProductRequest->type;
 
-        $productId = $addProductRequest->id;
+        $productId = $product->id;
 
         if ($typeImportExport == 'export') {
-            $addExportInterface->createExportProduct($addProductRequest);
+            $this->createExportProduct($productId);
         }
         if ($typeImportExport == 'import') {
-            $addImportInterface->createImportProduct($addProductRequest);
+            $this->createImportProduct($productId);
         }
-
+        return $product;
     }
-
+    public function createExportProduct($id): Export_product
+    {
+        return export_product::create([
+            'product_id' => $id,
+        ]);
+    }
+    public function createImportProduct($id): Import_product
+    {
+        return import_product::create([
+            'product_id' => $id,
+        ]);
+    }
 }

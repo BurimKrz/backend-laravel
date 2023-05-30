@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddProductRequest;
-use App\Models\export_product;
-use App\Models\import_product;
-use App\Services\Interfaces\AddExportInterface;
-use App\Services\Interfaces\AddImportInterface;
-use App\Services\Interfaces\AddProductInterface;
+use App\Interfaces\ProductInterface;
 
 class AddProduct extends Controller
 {
-    public function AddProduct(AddProductRequest $addProductRequest, AddImportInterface $addImportInterface,
-    AddExportInterface $addExportInterface, AddProductInterface $addProductInterface)
+    private ProductInterface $prductInterface;
+
+    public function __construct(ProductInterface $ProductInterface){
+        $this->prductInterface = $ProductInterface;
+    }
+    public function AddProduct(AddProductRequest $addProductRequest, ProductInterface $ProductInterface)
     {
-        return response()->json(($addProductInterface->createProduct($addProductRequest, $addImportInterface, $addExportInterface)), 200);
+        return response()->json(['Product' => $this->prductInterface->createProduct($addProductRequest)], 200);
 
     }
 }
