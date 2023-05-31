@@ -1,11 +1,11 @@
 <?php
-namespace App\Services\Services;
+namespace App\Services;
 
 use App\Http\Resources\CompanyDetailsResource;
 use App\Services\Interfaces\CompanyListInterface;
 use App\Models\company;
 
-class CompanyListService implements CompanyListInterface
+class CompanyListService
 {
 
     public function detailsOfCompany($id)

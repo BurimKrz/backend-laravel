@@ -1,11 +1,10 @@
 <?php
-namespace App\Services\Services;
+namespace App\Services;
 
 use App\Http\Resources\ImportResource;
 use App\Models\import_product;
-use App\Services\Interfaces\ImportproductInterface;
 
-class ImportProductService implements ImportproductInterface
+class ImportProductService
 {
 
     public function importProducts()

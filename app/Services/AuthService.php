@@ -1,11 +1,11 @@
 <?php
-namespace App\Services\Services;
+namespace App\Services;
 
 use App\Http\Requests\AuthRequest;
 use App\Services\Interfaces\AuthInterface;
 use Illuminate\Support\Facades\Auth;
 
-class AuthService implements AuthInterface
+class AuthService
 {
     public function createAuth(AuthRequest $authRequest)
     {

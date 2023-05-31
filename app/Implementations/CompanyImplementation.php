@@ -2,9 +2,11 @@
 namespace App\Implementations;
 
 use App\Http\Requests\CompanyRequest;
+use App\Http\Resources\CompanyListResource;
 use App\Interfaces\CompanyInterface;
 use App\Models\company;
 use App\Models\userCompany;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class CompanyImplementation implements CompanyInterface
 {
@@ -34,6 +36,11 @@ class CompanyImplementation implements CompanyInterface
             ]);
         }
         return $company;
+    }
+
+    public function companyList():JsonResource
+    {
+        return CompanyListResource::collection(Company::all());
     }
 
 }

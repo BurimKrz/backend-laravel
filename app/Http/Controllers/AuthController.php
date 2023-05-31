@@ -3,16 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
+use App\Services\AuthService;
 use Illuminate\Http\Request;
-use App\Services\Interfaces\AuthInterface;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\Mailer\Transport\Smtp\Auth\AuthenticatorInterface;
 
 class AuthController extends Controller
 {
-    public function login(AuthRequest $authRequest, AuthInterface $authInterface)
+
+    private AuthService $authService;
+
+    public function __construct(AuthService $authService){
+        $this->authService = $authService;
+    }
+
+    public function login(AuthRequest $authRequest)
     {
-        return response()->json($authInterface->createAuth($authRequest));
+        return response()->json($this->authService->createAuth($authRequest));
     }
 
     public function logout(Request $request)

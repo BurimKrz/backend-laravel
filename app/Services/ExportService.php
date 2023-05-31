@@ -1,11 +1,10 @@
 <?php
-namespace App\Services\Services;
+namespace App\Services;
 
 use App\Http\Resources\ExportResource;
 use App\Models\export_product;
-use App\Services\Interfaces\ExportProductInterface;
 
-class ExportProductService implements ExportProductInterface
+class ExportService 
 {
     public function showProducts()
     {
