@@ -1,12 +1,11 @@
 <?php
-namespace App\Services\Services;
+namespace App\Services;
 
 use App\Models\product;
 use App\Models\product_category;
-use App\Services\Interfaces\FilterProductInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class FilterProductService implements FilterProductInterface
+class FilterProductService 
 {
 
     public function filterProduct($id)

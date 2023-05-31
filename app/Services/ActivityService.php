@@ -1,13 +1,12 @@
 <?php
-namespace App\Services\Services;
+namespace App\Services;
 
 use App\Http\Requests\ActivityRequest;
 use App\Models\activity_company;
 use App\Services\Interfaces\ActivityInterface;
 
-class ActivityService implements ActivityInterface
+class ActivityService
 {
-
     public function activity(ActivityRequest $activityRequest)
     {
 

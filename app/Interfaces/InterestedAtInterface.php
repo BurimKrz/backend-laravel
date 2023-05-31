@@ -1,15 +1,11 @@
 <?php
-namespace App\Services\Interfaces;
 
+namespace App\Interfaces;
 use App\Http\Requests\InterestedAtRequest;
 use App\Models\interestedAt;
 
-interface InterestedAtInterface
-{
-
+interface InterestedAtInterface{
     public function createInterestedAt(InterestedAtRequest $interestedAtRequest): interestedAt;
-
-    public function selectInterstedProduct($id): interestedAt;
 
     public function delete($id);
 }

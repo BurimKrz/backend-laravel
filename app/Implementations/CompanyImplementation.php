@@ -1,18 +1,18 @@
 <?php
-namespace App\Services\Services;
+namespace App\Implementations;
 
 use App\Http\Requests\CompanyRequest;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\CompanyListResource;
+use App\Interfaces\CompanyInterface;
 use App\Models\company;
 use App\Models\userCompany;
-use App\Services\Interfaces\CompanyInterface;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class CompanyService implements CompanyInterface
+class CompanyImplementation implements CompanyInterface
 {
 
-    public function createCompany(CompanyRequest $companyRequest, $userId)
+    public function createCompany(CompanyRequest $companyRequest, $userId): Company
     {
-
         $company = Company::create(
             [
                 'name'            => $companyRequest['name'],
@@ -29,12 +29,18 @@ class CompanyService implements CompanyInterface
             ]
         );
 
-        if($company){
+        if ($company) {
             userCompany::create([
-                'user_id' => $userId,
-                'company_id' => $company->id
+                'user_id'    => $userId,
+                'company_id' => $company->id,
             ]);
         }
-        return response()->json($company);
+        return $company;
     }
+
+    public function companyList():JsonResource
+    {
+        return CompanyListResource::collection(Company::all());
+    }
+
 }
