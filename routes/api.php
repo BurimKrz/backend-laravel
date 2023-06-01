@@ -27,6 +27,7 @@ use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\EmailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -151,6 +152,8 @@ Route::post('/interestedIn', [InterestedInListController::class, 'interestedInPr
 Route::post('/newsletter', [NewsletterController::class, 'addNewsletter']);
 
 Route::post('/sendnewsletter', [NewsletterController::class, 'sendNewsletter']);
+
+Route::post('/email', [EmailController::class, 'email']);
 
 //Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);

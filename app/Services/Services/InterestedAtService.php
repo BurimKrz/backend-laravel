@@ -4,6 +4,7 @@ namespace App\Services\Services;
 use App\Http\Requests\InterestedAtRequest;
 use App\Models\interestedAt;
 use App\Services\Interfaces\InterestedAtInterface;
+use Illuminate\Support\Collection;
 
 class InterestedAtService implements InterestedAtInterface
 {
@@ -21,13 +22,14 @@ class InterestedAtService implements InterestedAtInterface
 
     }
 
-    public function selectInterstedProduct($id): interestedAt
+    public function selectInterstedProduct($id): Collection
     {
-        return InterestedAt::join('product', 'interested_at.product_id', '=', 'product.id')
-            ->join('users', 'interested_at.user_id', '=', 'users.id')
-            ->select('product.name', 'product.description', 'product.price')
-            ->where('users.id', '=', $id)
-            ->get();
+        $test = interestedAt::join('product', 'interested_at.product_id', '=', 'product.id')
+        ->join('users', 'interested_at.user_id', '=', 'users.id')
+        ->select('product.name', 'product.description', 'product.price')
+        ->where('users.id', '=', $id)
+        ->get();
+        return  $test;
     }
 
     public function delete($id)
