@@ -1,10 +1,10 @@
 <?php
-namespace App\Services\Services;
+namespace App\Services;
 
 use App\Models\product;
 use App\Services\Interfaces\ViewInterface;
 
-class ViewService implements ViewInterface
+class ViewService
 {
 
     public function views($id)

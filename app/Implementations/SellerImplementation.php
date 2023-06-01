@@ -1,16 +1,15 @@
 <?php
-namespace App\Services\Services;
-
+namespace App\Implementations;
 use App\Http\Requests\SellerRequest;
+use App\Interfaces\SellerInterface;
 use App\Models\sellerConfirmation;
 use App\Models\transaction;
-use App\Services\Interfaces\SellerInterface;
 
-class SellerService implements SellerInterface
-{
+class SellerImplementation implements SellerInterface{
+
     public function confirmSell(SellerRequest $sellerRequest)
     {
-        SellerConfirmation::create(
+        sellerConfirmation::create(
             [
                 'company_id'   => $sellerRequest->company_id,
                 'product_id'   => $sellerRequest->product_id,
@@ -23,6 +22,6 @@ class SellerService implements SellerInterface
 
             $transaction = new Transaction($sellerRequest->validated());
         }
-        return response($transaction);
+        return $transaction;
     }
 }

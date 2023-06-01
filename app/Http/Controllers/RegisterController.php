@@ -6,13 +6,17 @@ use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UsersTokenRequest;
 use App\Http\Resources\CountryResource;
 use App\Models\countries;
-use App\Services\Interfaces\RegisterInterface;
+use App\Interfaces\RegisterInterface;
 
 class RegisterController extends Controller
 {
-    public function register(RegisterRequest $registerRequest, UsersTokenRequest $usersTokenRequest, RegisterInterface $registerInterface)
+    private RegisterInterface $registerInterface;
+    public function __construct(RegisterInterface $registerInterface){
+        $this->registerInterface = $registerInterface;
+    }
+    public function register(RegisterInterface $registerInterface, RegisterRequest $registerRequest, UsersTokenRequest $usersTokenRequest)
     {
-        return response()->json([$registerInterface->userRegister($registerRequest, $usersTokenRequest)], 201);
+        return response()->json([$this->registerInterface->userRegister($registerRequest, $usersTokenRequest)], 201);
     }
     public function index()
     {

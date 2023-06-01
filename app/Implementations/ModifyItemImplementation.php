@@ -1,16 +1,16 @@
 <?php
-namespace App\Services\Services;
+namespace App\Implementations;
 
 use App\Http\Requests\ModifyItemRequest;
+use App\Interfaces\ModifyItemInterface;
 use App\Models\product;
-use App\Services\Interfaces\ModifyItemInterface;
 
-class ModifyItemService implements ModifyItemInterface
+class ModifyItemImplementation implements ModifyItemInterface
 {
 
     public function modifyProduct(ModifyItemRequest $modifyItemRequest, $id)
     {
-        $product = Product::findOrFail($id);
+        $product = product::findOrFail($id);
 
         $product->name        = $modifyItemRequest['name'];
         $product->description = $modifyItemRequest['description'];
@@ -18,7 +18,7 @@ class ModifyItemService implements ModifyItemInterface
         $product->imageURL    = $modifyItemRequest['imageURL'];
         $product->save();
 
-        return response()->json(['product' => $product]);
+        return $product;
     }
 
     public function deleteProduct($id)
@@ -26,7 +26,6 @@ class ModifyItemService implements ModifyItemInterface
         $product = Product::findOrFail($id);
         $product->delete();
         return response()->json("Product deleted");
-
-        //this API never has been used in front
     }
+
 }
