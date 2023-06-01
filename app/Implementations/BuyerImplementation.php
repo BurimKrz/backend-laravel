@@ -1,14 +1,13 @@
 <?php
-namespace App\Services\Services;
-
+namespace App\Implementations;
 use App\Http\Requests\BuyerRequest;
+use App\Interfaces\BuyerInterface;
 use App\Models\buyerConfirmation;
-use App\Services\Interfaces\BuyerInterface;
 
-class BuyerService implements BuyerInterface
-{
 
-    public function createBuyer(BuyerRequest $buyerRequest): BuyerConfirmation
+class BuyerImplementation implements BuyerInterface{
+
+    public function createBuyer(BuyerRequest $buyerRequest): buyerConfirmation
     {
         return BuyerConfirmation::create(
             [

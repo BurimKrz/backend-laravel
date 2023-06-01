@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\product;
 use App\Services\Interfaces\ViewInterface;
+use App\Services\ViewService;
 
 class ViewController extends Controller
 {
-    public function view(ViewInterface $viewInterface, $id)
+
+    private ViewService $viewService;
+    public function __construct(ViewService $viewService){
+        $this->viewService = $viewService;
+    }
+    public function view(ViewService $viewService, $id)
     {
-        return response()->json([$viewInterface->views($id)], 200);
+        return response()->json([$this->viewService->views($id)], 200);
     }
 
-    public function date(ViewInterface $viewInterface, $id)
+    public function date(ViewService $viewService, $id)
     {
-        return response()->json([$viewInterface->dateOfView($id)], 200);
+        return response()->json([$this->viewService->dateOfView($id)], 200);
     }
 }

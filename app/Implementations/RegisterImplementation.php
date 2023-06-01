@@ -1,19 +1,19 @@
 <?php
-namespace App\Services\Services;
+namespace App\Implementations;
 
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UsersTokenRequest;
+use App\Interfaces\RegisterInterface;
 use App\Models\token;
 use App\Models\User;
 use App\Models\usersToken;
-use App\Services\Interfaces\RegisterInterface;
 
-class RegisterService implements RegisterInterface
+class RegisterImplementation implements RegisterInterface
 {
 
-    public function userRegister(RegisterRequest $registerRequest, UsersTokenRequest $usersTokenRequest)
+    public function userRegister(RegisterRequest $registerRequest, UsersTokenRequest $usersTokenRequest):User
     {
-        $user =  User::create([
+        $user = User::create([
             'name'         => $registerRequest->name,
             'surname'      => $registerRequest->surname,
             'email'        => $registerRequest->email,
@@ -34,7 +34,6 @@ class RegisterService implements RegisterInterface
             ]);
         }
 
-        return response()->json(['user' => $user], 201);
+        return $user;
     }
-
 }

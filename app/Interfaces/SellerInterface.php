@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Interfaces;
+namespace App\Interfaces;
 use App\Http\Requests\SellerRequest;
 
 
