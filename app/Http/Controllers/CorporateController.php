@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\corporate;
+use App\Services\CorporateService;
 
 class CorporateController extends Controller
 {
-    public function showCorporate()
+    private CorporateService $corporateService;
+
+    public function __construct(CorporateService $corporateService)
     {
-        $corporate = Corporate::join('company', 'corporate.company_id', '=', 'company.id')
-            ->select('company.name', 'company.keywords', 'company.country', 'company.web_address', 'company.more_info',
-                'corporate.short_history', 'corporate.mission', 'corporate.version', 'corporate.responsibility', 'corporate.export_stories')
-            ->get();
-        return response()->json($corporate);
+        $this->corporateService = $corporateService;
+    }
+    public function showCorporate(CorporateService $corporateService, $id)
+    {
+        return response()->json($this->corporateService->coroprate($id), 200);
     }
 }

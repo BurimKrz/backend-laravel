@@ -11,7 +11,9 @@ use App\Models\product;
 use App\Models\token;
 use App\Models\User;
 use App\Models\usersToken;
+use App\Models\corporate;
 use Illuminate\Database\Seeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -47,6 +49,8 @@ class DatabaseSeeder extends Seeder
         export_product::factory(10)->create();
 
         import_product::factory(10)->create();
+
+        corporate::factory(10)->create();
 
         // usersToken::factory(20)->create();
 

@@ -2,35 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\token;
-use Illuminate\Http\Request;
+use App\Http\Requests\TokenRequest;
+use App\Interfaces\TokenInterface;
+use App\Services\TokenService;
 
 class TokenController extends Controller
 {
+    private TokenInterface $tokenInterface;
+    private TokenService $tokenService;
 
-    public function token($id)
+    public function __construct(TokenInterface $tokenInterface, TokenService $tokenService){
+        $this->tokenInterface = $tokenInterface;
+        $this->tokenService = $tokenService;
+    }
+    public function token(TokenService $tokenService, $id)
     {
-        $user_token = Token::select('token_coin.id', 'token_coin.amount')
-            ->join('users_token', 'token_coin.id', '=', 'users_token.token_id')
-            ->join('users', 'users.id', '=', 'users_token.user_id')
-            ->where('users.id', '=', $id)
-            ->first();
-
-        return response()->json($user_token);
+        return response()->json([$this->tokenService->showToken($id)], 200);
     }
 
-    public function updateToken(Request $request, $id)
+    public function updateToken(TokenInterface $tokenInterface, TokenRequest $tokenRequest, $user_id)
     {
-        $token     = Token::findOrFail($id);
-        $validated = $request->validate([
-            'amount' => 'required|integer',
-        ]);
-
-        $token->amount = $validated['amount'];
-        $token->save();
-
-        return response()->json(['amount' => $token]);
-
+        return response()->json($this->tokenInterface->tokenUpdate($tokenRequest, $user_id));
     }
 
 }

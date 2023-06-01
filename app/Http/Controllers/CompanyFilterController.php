@@ -2,25 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\company;
-use App\Models\company_category;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Services\CompanyFilterService;
 
 class CompanyFilterController extends Controller
 {
-    public function filterCompany($id)
+    private CompanyFilterService $companyFilterService;
+
+    public function __construct(CompanyFilterService $companyFilterService)
     {
-        $companyCategory = Company_category::find($id);
-
-        if (!$companyCategory) {
-            return new JsonResponse(['message' => 'Not found']);
-        }
-
-        $companies = Company::select('company.name', 'company.keywords', 'company.country', 'company.web_address', 'company.more_info', 'company.type')
-            ->join('company_categories', 'company_categories.id', '=', 'company.category_id')
-            ->where('company_categories.id', '=', $id)
-            ->get();
-
-        return $companies;
+        $this->companyFilterService = $companyFilterService;
+    }
+    public function filterCompany(CompanyFilterService $companyFilterService, $id)
+    {
+        return response()->json([
+            $this->companyFilterService->companyFilter($id),
+        ], 200);
     }
 }

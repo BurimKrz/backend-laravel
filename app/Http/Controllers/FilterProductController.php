@@ -4,36 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\product;
 use App\Models\product_category;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Services\FilterProductService;
+use App\Services\Interfaces\FilterProductInterface;
 
 class FilterProductController extends Controller
 {
-    public function filterProductCategory($id)
-    {
-        $productCategory = product_category::find($id);
+    private FilterProductService $filterProductService;
 
-        if (!$productCategory) {
-            return new JsonResponse(['message' => 'Not found'], 404);
-        }
-
-        $productCategory = Product::select('product.name', 'product.description', 'product.price', 'product.imageURL', 'company.name as company', 'company.country as country')
-            ->join('product_category', 'product_category.id', '=', 'product.category_id')
-            ->join('company', 'company.id', '=', 'product.company_id')
-            ->where('product_category.id', $id)
-            ->get();
-
-        return $productCategory;
+    public function __construct(FilterProductService $filterProductService){
+        $this->filterProductService = $filterProductService;
     }
-    public function filterProductSubCategory($category_id, $subcategory_id)
+    public function filterProductCategory(FilterProductService $filterProductService, $id)
     {
-        $products = Product::select('product.name', 'product.description', 'product.price', 'product.imageURL', 'company.name as company', 'company.country as country')
-            ->join('product_subcategory', 'product.subcategory_id', '=', 'product_subcategory.id')
-            ->join('product_category', 'product_subcategory.category_id', '=', 'product_category.id')
-            ->join('company', 'company.id', '=', 'product.company_id')
-            ->where('product.category_id', $category_id, )
-            ->where('product.subcategory_id', $subcategory_id)
-            ->get();
-
-        return response()->json($products);
+        return response()->json([$this->filterProductService->filterProduct($id)], 200);
+    }
+    public function filterProductSubCategory(FilterProductService $filterProductService, $category_id, $subcategory_id)
+    {
+       return response()->json([$this->filterProductService->filterSubcategory($category_id, $subcategory_id)], 200);
     }
 }

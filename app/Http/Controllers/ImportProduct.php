@@ -2,54 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ImportResource;
-use App\Models\import_product;
+use App\Services\ImportProductService;
+use App\Services\Interfaces\ImportproductInterface;
 
 class ImportProduct extends Controller
 {
-    public function import()
-    {
-        $importProducts = Import_product::join('product as p', 'import_product.product_id', '=', 'p.id')
-            ->join('company as c', 'c.id', '=', 'p.company_id')
-            ->join('product_category as pc', 'pc.id', '=', 'p.category_id')
-            ->select(
-                'p.id',
-                'p.name',
-                'p.description',
-                'p.price',
-                'p.imageURL',
-                'p.views',
-                'c.name as company_name',
-                'c.country',
-                'c.keywords',
-                'pc.name as category_name',
-                'p.created_at'
-            )
-            ->get();
+    private ImportProductService $importProductService;
 
-        return ImportResource::collection($importProducts);
+    public function __construct(ImportProductService $importProductService){
+        $this->importProductService = $importProductService;
     }
 
-    public function show($id)
+    public function import(ImportProductService $importProductService)
     {
-        $importProducts = Import_product::join('product as p', 'import_product.product_id', '=', 'p.id')
-            ->join('company as c', 'c.id', '=', 'p.company_id')
-            ->join('product_category as pc', 'pc.id', '=', 'p.category_id')
-            ->where('import_product.product_id', $id)
-            ->select(
-                'p.name',
-                'p.description',
-                'p.price',
-                'p.imageURL',
-                'p.views',
-                'c.name as company_name',
-                'c.country',
-                'c.keywords',
-                'pc.name as category_name',
-                'import_product.created_at'
-            )
-            ->get();
+        return response()->json([$this->importProductService->importProducts()], 200);
+    }
 
-        return ImportResource::collection($importProducts);
+    public function show(ImportProductService $importProductService, $id)
+    {
+        return response()->json([$this->importProductService->importProduct($id)], 200);
     }
 }

@@ -2,48 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\interestedAt;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\InterestedAtRequest;
+
+use App\Interfaces\InterestedAtInterface;
+use App\Services\InterestedAtService;
 
 class InterestedProductController extends Controller
 {
-    public function interestedAt(Request $request)
-    {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'product_id' => 'required|integer',
-                'user_id'    => 'required|integer',
-            ]
-        );
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
-
-        $interestedAt = InterestedAt::create([
-            'product_id' => $request->product_id,
-            'user_id'    => $request->user_id,
-        ]);
-
-        return response()->json(['interestedAt' => $interestedAt], 200);
+    private InterestedAtInterface $interestedAtInterface;
+    private InterestedAtService $interestedAtService;
+    public function __construct(InterestedAtInterface $interestedAtInterface, InterestedAtService $interestedAtService){
+        $this->interestedAtInterface = $interestedAtInterface;
+        $this->interestedAtService = $interestedAtService;
     }
 
-    public function interestedProduct($id)
+    public function interestedAt( InterestedAtInterface $interestedAtInterface, InterestedAtRequest $interestedAtRequest)
     {
-        $interestedProduct = InterestedAt::join('product', 'interested_at.product_id', '=', 'product.id')
-            ->join('users', 'interested_at.user_id', '=', 'users.id')
-            ->select('product.name', 'product.description', 'product.price')
-            ->where('users.id', '=', $id)
-            ->get();
+        return response()->json([$this->interestedAtInterface->createInterestedAt($interestedAtRequest)], 200);
 
-        return response()->json($interestedProduct);
     }
 
-    public function deleteInterestedAT($id)
+    public function interestedProduct(InterestedAtService $interestedAtService, $id)
     {
-        $product = InterestedAt::findOrFail($id);
-        $product->delete();
-        return response()->json("Product deleted");
+        return response()->json([$this->interestedAtService->selectInterstedProduct($id)], 200);
+    }
+
+    public function deleteInterestedAT(InterestedAtInterface $interestedAtInterface, $id)
+    {
+       return response()->json([$this->interestedAtInterface->delete($id)]);
     }
 }

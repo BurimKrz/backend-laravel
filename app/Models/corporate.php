@@ -14,7 +14,7 @@ class corporate extends Model
     protected $fillable = [
         'short_history',
         'mission',
-        'version',
+        'vision',
         'responsibility',
         'export_stories',
         'human_resources',

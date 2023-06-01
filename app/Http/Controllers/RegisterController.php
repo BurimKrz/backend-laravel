@@ -2,57 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\UsersTokenRequest;
 use App\Http\Resources\CountryResource;
 use App\Models\countries;
-use App\Models\Token;
-use App\Models\User;
-use App\Models\usersToken;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Interfaces\RegisterInterface;
 
 class RegisterController extends Controller
 {
-    public function register(Request $request)
+    private RegisterInterface $registerInterface;
+    public function __construct(RegisterInterface $registerInterface){
+        $this->registerInterface = $registerInterface;
+    }
+    public function register(RegisterInterface $registerInterface, RegisterRequest $registerRequest, UsersTokenRequest $usersTokenRequest)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'name'         => 'required|string|max:255',
-                'surname'      => 'required|string|max:255',
-                'email'        => 'required|string|email|max:255|unique:users',
-                'password'     => 'required|string|min:8',
-                'phone_number' => 'required|string|max:255|unique:users,phone_number',
-                'country_id'   => 'required|integer',
-                'gender'       => 'required|string|max:255',
-                'agreements'   => 'required|boolean:true,false',
-            ]
-        );
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
-        $user = User::create([
-            'name'         => $request->name,
-            'surname'      => $request->surname,
-            'email'        => $request->email,
-            'password'     => bcrypt($request->password),
-            'phone_number' => $request->phone_number,
-            'country_id'   => $request->country_id,
-            'gender'       => $request->gender,
-
-        ]);
-
-        if ($user) {
-            $token = Token::create([
-                'amount' => 100,
-            ]);
-            UsersToken::create([
-                'user_id'  => $user->id,
-                'token_id' => $token->id,
-            ]);
-        }
-
-        return response()->json(['user' => $user], 201);
+        return response()->json([$this->registerInterface->userRegister($registerRequest, $usersTokenRequest)], 201);
     }
     public function index()
     {

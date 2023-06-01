@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('short_history', 500);
             $table->string('mission');
-            $table->string('version');
+            $table->string('vision');
             $table->string('responsibility');
             $table->string('export_stories');
             $table->string('human_resources');

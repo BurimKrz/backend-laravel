@@ -3,27 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\product;
+use App\Services\Interfaces\ViewInterface;
+use App\Services\ViewService;
 
 class ViewController extends Controller
 {
-    public function view($id)
+
+    private ViewService $viewService;
+    public function __construct(ViewService $viewService){
+        $this->viewService = $viewService;
+    }
+    public function view(ViewService $viewService, $id)
     {
-        $product = Product::find($id);
-        $views   = $product->views;
-        if ($product) {
-            $product->increment('views');
-            return response()->json(['views' => $views]);
-        } else {
-            return response()->json(['views' => $views]);
-        }
-        // $views = $product ? $product->views : null;
-        // return response()->json(['views' => $views]);
+        return response()->json([$this->viewService->views($id)], 200);
     }
 
-    public function date($id)
+    public function date(ViewService $viewService, $id)
     {
-        $product = Product::find($id);
-        $created = $product ? $product->created_at : null;
-        return response()->json(['created_at' => $created]);
+        return response()->json([$this->viewService->dateOfView($id)], 200);
     }
 }

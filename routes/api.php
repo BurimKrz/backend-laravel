@@ -15,14 +15,19 @@ use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\InterestedInListController;
 use App\Http\Controllers\InterestedProductController;
+use App\Http\Controllers\ListNotificationsController;
+use App\Http\Controllers\MailFormController;
+use App\Http\Controllers\ModifyItem;
 // use App\Http\Controllers\ItemExportController;
 // use App\Http\Controllers\ItemImportController;
-use App\Http\Controllers\ModifyItem;
+use App\Http\Controllers\NotifyBuyerInterested;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
+use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -85,20 +90,34 @@ Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filte
 //Filter company base on category
 Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompany']);
 
+Route::get('/filterProduct/{id}', [FilterProductController::class, 'filterProductCategory']);
+
 //Products people are interested at for user
 Route::get('/interstedProduct/{id}', [InterestedProductController::class, 'interestedProduct']);
+
+//Notification for the buyer that is interested in a product
+Route::get('/Notify/{Oid}/{Pid}/{Uid}', [NotifyBuyerInterested::class, 'notify']);
 
 //Products people are interested in for company
 Route::get('/interstedIn/{id}', [InterestedInListController::class, 'interestedIn']);
 
+//Getting data for the "Form" communication
+Route::get('/form/{id}', [MailFormController::class, 'mailForm']);
+
+//Get the the Notifications for the Owner
+Route::get('/Notify/{id}', [ListNotificationsController::class, 'findNotifications']);
+
 //
-Route::get('/corporate', [CorporateController::class, 'showCorporate']);
+Route::get('/corporate/{id}', [CorporateController::class, 'showCorporate']);
 
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
-//Deduct token
+//Updating Token
 Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
+
+//Updating User Profile Data
+Route::put('/updateUser/{id}', [UpdateProfileUserController::class, 'update']);
 
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
@@ -110,7 +129,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 //Create a new company
-Route::post('/company', [CompanyController::class, 'company']);
+Route::post('/company/{userId}', [CompanyController::class, 'company']);
 
 //Activity area for comapany
 Route::post('/activity', [ActivityController::class, 'activitycontroller']);
@@ -128,13 +147,20 @@ Route::post('/sellConfirm', [SellerController::class, 'sellConfirmation']);
 Route::post('/trade', [TradeController::class, 'store']);
 
 //Add a product at interested list
-Route::post('interestedAt', [InterestedProductController::class, 'interestedAt']);
+Route::post('/interestedAt', [InterestedProductController::class, 'interestedAt']);
+
+Route::post('/interestedIn', [InterestedInListController::class, 'interestedInProduct']);
+
+//Newsletter
+Route::post('/newsletter', [NewsletterController::class, 'addNewsletter']);
+
+Route::post('/sendnewsletter', [NewsletterController::class, 'sendNewsletter']);
 
 //Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
 
 //Delete a product from InterestedAt
-Route::delete('/deleteProduct', [InterestedProductController::class, 'deleteInterestedAT']);
+Route::delete('/deleteProduct/{id}', [InterestedProductController::class, 'deleteInterestedAT']);
 
 //Delete a product from InterestedInList
 Route::delete('/delete/{id}', [InterestedInListController::class, 'destroy']);
