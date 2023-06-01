@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\userCompany;
+use App\Services\MailService;
+
 
 class MailFormController extends Controller
 {
-    public function mailForm($id)
-    {
-        $formData = userCompany::join('company', 'user_company.company_id', '=', 'company.id')
-            ->join('users', 'user_company.user_id', '=', 'users.id')
-            ->join('product', 'product.company_id', '=', 'company.id')
-            ->where('product.id', $id)
-            ->select('product.id as Product_ID', 'company.id as Company_id', 'users.id as Owner_id', 'product.name as Product', 'users.email')
-            ->get();
+    private MailService $mailService;
 
-        return response()->json($formData, 200);
+    public function __construct(MailService $mailService){
+        $this->mailService = $mailService;
+    }
+    public function mailForm(MailService $mailService, $id)
+    {
+        return response()->json($this->mailService->mail($id));
     }
 }

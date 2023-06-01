@@ -16,10 +16,10 @@ class FilterProductController extends Controller
     }
     public function filterProductCategory(FilterProductService $filterProductService, $id)
     {
-        return response()->json([$this->filterProductService->filterProduct($id)], 200);
+        return response()->json($this->filterProductService->filterProduct($id), 200);
     }
     public function filterProductSubCategory(FilterProductService $filterProductService, $category_id, $subcategory_id)
     {
-       return response()->json([$this->filterProductService->filterSubcategory($category_id, $subcategory_id)], 200);
+       return response()->json($this->filterProductService->filterSubcategory($category_id, $subcategory_id), 200);
     }
 }

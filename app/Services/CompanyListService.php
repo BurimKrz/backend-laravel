@@ -18,7 +18,7 @@ class CompanyListService
                 'company.web_address', 'company.more_info', 'company.profile_picture', 'company.membership', 'cc.name as category', 'cs.name as subcategory')
             ->get();
 
-        return CompanyDetailsResource::collection($company_details);
+        return $company_details;
         
     }
 }

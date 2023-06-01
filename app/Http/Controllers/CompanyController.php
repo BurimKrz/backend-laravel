@@ -16,7 +16,7 @@ class CompanyController extends Controller
     }
     public function company(CompanyRequest $companyRequest, $userId):JsonResponse
     {
-        return response()->json(['Company' => $this->companyInterface->createCompany($companyRequest, $userId)], 200);
+        return response()->json($this->companyInterface->createCompany($companyRequest, $userId), 200);
 
 
     }

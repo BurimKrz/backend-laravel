@@ -17,17 +17,17 @@ class ExportProduct extends Controller
     }
     public function index()
     {
-        return response()->json([$this->exportInterface->productList()], 200);
+        return response()->json($this->exportInterface->productList(), 200);
     }
 
     public function showList(ExportService $exportService)
     {
-       return response()->json([$this->exportService->showProducts()], 200);
+       return response()->json($this->exportService->showProducts(), 200);
     }
 
     public function show(ExportService $exportService, $id)
     {
-       return response()->json([$this->exportService->showProduct($id)], 200);
+       return response()->json($this->exportService->showProduct($id), 200);
     }
 
 }

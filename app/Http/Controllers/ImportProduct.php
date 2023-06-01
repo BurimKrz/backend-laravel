@@ -15,11 +15,11 @@ class ImportProduct extends Controller
 
     public function import(ImportProductService $importProductService)
     {
-        return response()->json([$this->importProductService->importProducts()], 200);
+        return response()->json($this->importProductService->importProducts(), 200);
     }
 
     public function show(ImportProductService $importProductService, $id)
     {
-        return response()->json([$this->importProductService->importProduct($id)], 200);
+        return response()->json($this->importProductService->importProduct($id), 200);
     }
 }

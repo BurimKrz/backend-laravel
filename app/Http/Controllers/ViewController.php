@@ -15,11 +15,11 @@ class ViewController extends Controller
     }
     public function view(ViewService $viewService, $id)
     {
-        return response()->json([$this->viewService->views($id)], 200);
+        return response()->json($this->viewService->views($id), 200);
     }
 
     public function date(ViewService $viewService, $id)
     {
-        return response()->json([$this->viewService->dateOfView($id)], 200);
+        return response()->json($this->viewService->dateOfView($id), 200);
     }
 }

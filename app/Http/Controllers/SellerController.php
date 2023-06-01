@@ -15,7 +15,7 @@ class SellerController extends Controller
     public function sellConfirmation(SellerRequest $sellerRequest, SellerInterface $sellerInterface)
     {
 
-        return response()->json([$this->sellerInterface->confirmSell($sellerRequest)], 200);
+        return response()->json($this->sellerInterface->confirmSell($sellerRequest), 200);
 
     }
 }

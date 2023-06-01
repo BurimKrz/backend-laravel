@@ -17,7 +17,7 @@ class TokenController extends Controller
     }
     public function token(TokenService $tokenService, $id)
     {
-        return response()->json([$this->tokenService->showToken($id)], 200);
+        return response()->json($this->tokenService->showToken($id), 200);
     }
 
     public function updateToken(TokenInterface $tokenInterface, TokenRequest $tokenRequest, $user_id)

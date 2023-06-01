@@ -14,8 +14,6 @@ class CompanyFilterController extends Controller
     }
     public function filterCompany(CompanyFilterService $companyFilterService, $id)
     {
-        return response()->json([
-            $this->companyFilterService->companyFilter($id),
-        ], 200);
+        return response()->json($this->companyFilterService->companyFilter($id), 200);
     }
 }

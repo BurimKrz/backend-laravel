@@ -24,11 +24,11 @@ class InterestedProductController extends Controller
 
     public function interestedProduct(InterestedAtService $interestedAtService, $id)
     {
-        return response()->json([$this->interestedAtService->selectInterstedProduct($id)], 200);
+        return response()->json($this->interestedAtService->selectInterstedProduct($id), 200);
     }
 
     public function deleteInterestedAT(InterestedAtInterface $interestedAtInterface, $id)
     {
-       return response()->json([$this->interestedAtInterface->delete($id)]);
+       return response()->json($this->interestedAtInterface->delete($id), 200);
     }
 }

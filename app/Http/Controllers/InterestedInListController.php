@@ -16,12 +16,12 @@ class InterestedInListController extends Controller
 
     public function interestedIn(InterestedInService $interestedInService, $id)
     {
-        return response()->json([$this->interestedInService->showInterestedIn($id)], 200);
+        return response()->json($this->interestedInService->showInterestedIn($id), 200);
     }
 
     public function destroy(InterestedInterface $interestedInterface, $id)
     {
-        return response()->json([$this->interestedInterface->delete($id)], 200);
+        return response()->json($this->interestedInterface->delete($id), 200);
     }
 
 }

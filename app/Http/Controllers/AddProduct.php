@@ -14,7 +14,7 @@ class AddProduct extends Controller
     }
     public function AddProduct(AddProductRequest $addProductRequest, ProductInterface $ProductInterface)
     {
-        return response()->json(['Product' => $this->prductInterface->createProduct($addProductRequest)], 200);
+        return response()->json($this->prductInterface->createProduct($addProductRequest), 200);
 
     }
 }

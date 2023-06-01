@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Newsletter;
 use App\Models\newsletters;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class NewsletterController extends Controller

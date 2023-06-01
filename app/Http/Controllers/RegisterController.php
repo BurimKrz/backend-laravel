@@ -16,7 +16,7 @@ class RegisterController extends Controller
     }
     public function register(RegisterInterface $registerInterface, RegisterRequest $registerRequest, UsersTokenRequest $usersTokenRequest)
     {
-        return response()->json([$this->registerInterface->userRegister($registerRequest, $usersTokenRequest)], 201);
+        return response()->json($this->registerInterface->userRegister($registerRequest, $usersTokenRequest), 201);
     }
     public function index()
     {

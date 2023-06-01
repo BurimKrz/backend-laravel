@@ -20,11 +20,11 @@ class CompanyListController extends Controller
     }
     public function companyList()
     {
-        return response()->json([$this->companyInterface->companyList()], 200);
+        return response()->json($this->companyInterface->companyList(), 200);
     }
 
     public function companyDetails(CompanyListService $companyListService, $id)
     {
-       return response()->json([$this->companyListService->detailsOfCompany($id)], 200);
+       return response()->json($this->companyListService->detailsOfCompany($id), 200);
     }
 }
