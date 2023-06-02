@@ -12,6 +12,7 @@ use App\Implementations\ProductImplementation;
 use App\Implementations\RegisterImplementation;
 use App\Implementations\SellerImplementation;
 use App\Implementations\TokenImplementation;
+use App\Implementations\UpdateProfileUserImplementation;
 use App\Interfaces\BuyerInterface;
 use App\Interfaces\CategoryInterface;
 use App\Interfaces\CompanyInterface;
@@ -23,6 +24,7 @@ use App\Interfaces\ProductInterface;
 use App\Interfaces\RegisterInterface;
 use App\Interfaces\SellerInterface;
 use App\Interfaces\TokenInterface;
+use App\Interfaces\UpdateProfileUserInterface;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -45,6 +47,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(SellerInterface::class, SellerImplementation::class);
         $this->app->bind(TokenInterface::class, TokenImplementation::class);
         $this->app->bind(BuyerInterface::class, BuyerImplementation::class);
+        $this->app->bind(UpdateProfileUserInterface::class, UpdateProfileUserImplementation::class);
     }
 
     /**

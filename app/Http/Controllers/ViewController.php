@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\product;
-use App\Services\Interfaces\ViewInterface;
 use App\Services\ViewService;
 
 class ViewController extends Controller
