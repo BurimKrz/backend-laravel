@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ActivityRequest;
-use App\Models\activity_company;
-use App\Services\Interfaces\ActivityInterface;
+
+use App\Services\ActivityService;
+
 
 class ActivityController extends Controller
 {
-    public function activitycontroller(ActivityRequest $activityRequest, ActivityInterface $activityInterface)
+    private ActivityService $acticityService;
+
+    public function __construct(ActivityService $acticityService){
+        $this->acticityService = $acticityService;
+    }
+    public function activitycontroller(ActivityRequest $activityRequest)
     {
-    
-        return response()->json($activityInterface->activity($activityRequest), 200);
+        return response()->json($this->acticityService->activity($activityRequest));
     }
 }

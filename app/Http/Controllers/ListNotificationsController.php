@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use App\Services\NotificationService;
 
 class ListNotificationsController extends Controller
 {
-    public function findNotifications($id)
+    private NotificationService $notificationService;
+
+    public function __construct(NotificationService $notificationService)
     {
-        $notifications = DB::table('notifications')
-            ->where('notifiable_id', $id)
-            ->get();
-
-        return response()->json($notifications, 200);
-
-        if (!$notifications) {
-            return response()->json(['error' => 'Notification not found'], 404);
-        }
-
+        $this->notificationService = $notificationService;
+    }
+    public function findNotifications(NotificationService $notificationService, $id)
+    {
+        return response()->json($this->notificationService->notification($id), 200);
     }
 }

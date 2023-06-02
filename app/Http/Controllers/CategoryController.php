@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CategoryResource;
-use App\Http\Resources\ProductCategory;
-use App\Models\company_category;
-use App\Models\company_subcategory;
-use App\Models\product_category;
+use App\Interfaces\CategoryInterface;
 
 class CategoryController extends Controller
 {
+    private CategoryInterface $categoryInterface;
+
+    public function __construct(CategoryInterface $categoryInterface){
+        $this->categoryInterface = $categoryInterface;
+    }
     public function category()
     {
-        return CategoryResource::collection(company_category::all());
+        return response()->json($this->categoryInterface->companyCategory(),200);
     }
     public function subcategory()
     {
-        return CategoryResource::collection(company_subcategory::all());
+        return response()->json($this->categoryInterface->companySubcategory(), 200);
     }
     public function productcategory()
     {
-        return ProductCategory::collection(product_category::all());
+        return response()->json($this->categoryInterface->productCategory(), 200);
     }
 }
