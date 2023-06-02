@@ -8,6 +8,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyFilterController;
 use App\Http\Controllers\CompanyListController;
+// use Tests\Feature\Auth\RegistrationTest;
+use App\Http\Controllers\CorporateController;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ImportProduct;
@@ -102,6 +104,9 @@ Route::get('/form/{id}', [MailFormController::class, 'mailForm']);
 
 //Get the the Notifications for the Owner
 Route::get('/Notify/{id}', [ListNotificationsController::class, 'findNotifications']);
+
+//
+Route::get('/corporate/{id}', [CorporateController::class, 'showCorporate']);
 
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);

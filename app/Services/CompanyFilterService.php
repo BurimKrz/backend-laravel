@@ -1,6 +1,6 @@
 <?php
 namespace App\Services;
-
+ 
 use App\Models\company;
 use App\Models\company_category;
 use Symfony\Component\HttpFoundation\JsonResponse;
