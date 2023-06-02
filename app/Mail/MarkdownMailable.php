@@ -53,11 +53,15 @@ class MarkdownMailable extends Mailable
 
     public function build()
     {
-        $toAddress = env('MAIL_USERNAME');
-        $toName    = env('MAIL_TO_NAME');
+        // $toAddress = env('MAIL_USERNAME');
+        // $toName = env('MAIL_TO_NAME');
 
-        return $this->markdown('emails.contact')
-            ->subject('New Contact Form Submission')
-            ->to($toAddress);
+        // return $this->from($toAddress, $toName)
+        //     ->markdown('emails.contact')
+        //     ->subject('New Contact Form Submission');
+
+        return $this->subject('New Contact Form Submission')
+        ->text('emails.example');
+            
     }
 }

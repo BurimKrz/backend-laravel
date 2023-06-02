@@ -9,19 +9,22 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\MarkdownMailable;
+use App\Mail\MarkdownMailable; 
 
 class SendEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $email;
+
     /**
      * Create a new job instance.
      */
     public function __construct(MarkdownMailable $email)
     {
-       $this->email = $email;
+        $this->email = $email;
+        // $this->toAddress = $toAddress;
+        // $this->toName = $toName;
     }
 
     /**
@@ -29,6 +32,8 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle(): void
     {
-        Mail::send($this->email);
+        // $mailable = new MarkdownMailable($this->email);
+        // Mail::to($this->toAddress, $this->toName)->send($mailable);
+        Mail::to($this->email->contactData['email'])->send($this->email);
     }
 }

@@ -1,12 +1,6 @@
-<x-mail::message>
-# Introduction
+Hello,
 
-The body of your message.
+This is an example of a plain text email.
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
-
-Thanks,<br>
-{{ config('app.name') }}
-</x-mail::message>
+Regards,
+Your Application

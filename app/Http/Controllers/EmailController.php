@@ -11,15 +11,30 @@ class EmailController extends Controller
 {
     public function email(Request $request)
     {
-        $request->validate([
+       $validatedData =  $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email', 
             'message' => 'required',
         ]);
 
-        $email = new MarkdownMailable($request->all());
+        // $sendData = [
+        //     'recipient' => 'teamnova3@gmail.com',
+        //     'fromEmail' => $request->email,
+        //     'fromName' => $request->name,
+        //     'message' => $request->message,
+        // ];
+
+        // $toAddress = env('MAIL_USERNAME');
+        // $toName = env('MAIL_TO_NAME');
+
+        $email = new MarkdownMailable($validatedData);
       
         SendEmailJob::dispatch($email);
+
+        // Mail::send($sendData, function ($message) use ($sendData) {
+        //     $message->to($sendData['recipient'])
+        //         ->from($sendData['fromEmail'], $sendData['fromName']);
+        // });
 
         return response()->json(['message' => 'Email sent successfully'], 200);
     }
