@@ -4,12 +4,12 @@ namespace Database\Seeders;
 
 use App\Models\ActivityArea;
 use App\Models\Company;
+use App\Models\Corporate;
 use App\Models\Countries;
 use App\Models\ExportProduct;
 use App\Models\ImportProduct;
 use App\Models\Product;
 use App\Models\User;
-use App\Models\Corporate;
 use Illuminate\Database\Seeder;
 
 
@@ -54,11 +54,15 @@ class DatabaseSeeder extends Seeder
 
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        // \App\Models\User::factory(10)->create();
+        User::factory()->create([
+            'name'         => 'Test User',
+            'email'        => 'test@protonmail.ch',
+            'surname'      => 'nova',
+            'phone_number' => '+383',
+            'country_id'   => 1,
+            'gender'       => 'm',
+            'password'     => bcrypt('123'),
+        ]);
 
     }
 }

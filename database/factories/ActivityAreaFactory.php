@@ -2,13 +2,15 @@
 
 namespace Database\Factories;
 
+use App\Models\ActivityArea;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ActivityArea>
  */
-class activity_areaFactory extends Factory
+class ActivityAreaFactory extends Factory
 {
+    protected $model = ActivityArea::class;
     /**
      * Define the model's default state.
      *
