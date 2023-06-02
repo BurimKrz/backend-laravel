@@ -29,7 +29,7 @@ class ProductFactory extends Factory
             'type'           => $this->faker->randomElement(['import', 'export']),
             'category_id'    => ProductCategory::inRandomOrder()->first()->id,
             'subcategory_id' => ProductCategory::inRandomOrder()->first()->id,
-            'company_id'     => Company::factory(),
+            'company_id'=> Company::inRandomOrder()->first()->id,
         ];
     }
 }
