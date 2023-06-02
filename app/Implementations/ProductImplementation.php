@@ -4,9 +4,9 @@ namespace App\Implementations;
 
 use App\Http\Requests\AddProductRequest;
 use App\Interfaces\ProductInterface;
-use App\Models\export_product;
-use App\Models\import_product;
-use App\Models\product;
+use App\Models\ExportProduct;
+use App\Models\ImportProduct;
+use App\Models\Product;
 
 class ProductImplementation implements ProductInterface
 {
@@ -39,15 +39,15 @@ class ProductImplementation implements ProductInterface
         }
         return $product;
     }
-    public function createExportProduct($id): Export_product
+    public function createExportProduct($id): ExportProduct
     {
-        return export_product::create([
+        return ExportProduct::create([
             'product_id' => $id,
         ]);
     }
-    public function createImportProduct($id): Import_product
+    public function createImportProduct($id): ImportProduct
     {
-        return import_product::create([
+        return ImportProduct::create([
             'product_id' => $id,
         ]);
     }

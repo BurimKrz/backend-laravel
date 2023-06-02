@@ -2,7 +2,7 @@
 namespace App\Interfaces;
 
 use App\Http\Requests\BuyerRequest;
-use App\Models\buyerConfirmation;
+use App\Models\BuyerConfirmation;
 
 interface BuyerInterface{
 

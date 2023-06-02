@@ -2,14 +2,14 @@
 namespace App\Implementations;
 use App\Http\Requests\SellerRequest;
 use App\Interfaces\SellerInterface;
-use App\Models\sellerConfirmation;
-use App\Models\transaction;
+use App\Models\SellerConfirmation;
+use App\Models\Transaction;
 
 class SellerImplementation implements SellerInterface{
 
     public function confirmSell(SellerRequest $sellerRequest)
     {
-        sellerConfirmation::create(
+        SellerConfirmation::create(
             [
                 'company_id'   => $sellerRequest->company_id,
                 'product_id'   => $sellerRequest->product_id,

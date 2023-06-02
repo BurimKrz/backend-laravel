@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 use App\Http\Requests\CompanyRequest;
-use App\Models\company;
+use App\Models\Company;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 interface CompanyInterface{

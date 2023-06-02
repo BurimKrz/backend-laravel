@@ -3,14 +3,14 @@ namespace App\Implementations;
 
 use App\Http\Requests\InterestedInRequest;
 use App\Interfaces\InterestedInterface;
-use App\Models\interestedIn;
+use App\Models\InterestedIn;
 
 class InterestedInImplementation implements InterestedInterface
 {
-    public function createInterestedIn(InterestedInRequest $interestedInRequest): interestedIn
+    public function createInterestedIn(InterestedInRequest $interestedInRequest): InterestedIn
     {
 
-        return interestedIn::create(
+        return InterestedIn::create(
             [
                 'buyer_id'   => $interestedInRequest['buyer_id'],
                 'product_id' => $interestedInRequest['product_id'],

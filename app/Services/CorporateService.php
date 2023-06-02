@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Models\corporate;
+use App\Models\Corporate;
 
 class CorporateService
 {

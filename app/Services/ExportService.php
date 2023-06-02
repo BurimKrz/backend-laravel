@@ -2,13 +2,13 @@
 namespace App\Services;
 
 use App\Http\Resources\ExportResource;
-use App\Models\export_product;
+use App\Models\ExportProduct;
 
 class ExportService 
 {
     public function showProducts()
     {
-        $exportProducts = export_product::join('product as p', 'export_product.product_id', '=', 'p.id')
+        $exportProducts = ExportProduct::join('product as p', 'export_product.product_id', '=', 'p.id')
             ->join('company as c', 'c.id', '=', 'p.company_id')
             ->join('product_category as pc', 'pc.id', '=', 'p.category_id')
             ->select(
@@ -32,7 +32,7 @@ class ExportService
 
     public function showProduct($id)
     {
-        $exportProducts = Export_product::join('product as p', 'export_product.product_id', '=', 'p.id')
+        $exportProducts = ExportProduct::join('product as p', 'export_product.product_id', '=', 'p.id')
             ->join('company as c', 'c.id', '=', 'p.company_id')
             ->join('product_category as pc', 'pc.id', '=', 'p.category_id')
             ->where('export_product.product_id', $id)

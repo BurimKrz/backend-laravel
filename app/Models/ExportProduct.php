@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class modify_items extends Model
+class ExportProduct extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'imageURL'];
+    public $table = 'export_product';
+
+    protected $fillable = ['product_id'];
 }

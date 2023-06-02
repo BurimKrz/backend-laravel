@@ -2,12 +2,12 @@
 namespace App\Implementations;
 use App\Http\Requests\BuyerRequest;
 use App\Interfaces\BuyerInterface;
-use App\Models\buyerConfirmation;
+use App\Models\BuyerConfirmation;
 
 
 class BuyerImplementation implements BuyerInterface{
 
-    public function createBuyer(BuyerRequest $buyerRequest): buyerConfirmation
+    public function createBuyer(BuyerRequest $buyerRequest): BuyerConfirmation
     {
         return BuyerConfirmation::create(
             [

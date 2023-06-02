@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\userCompany;
+use App\Models\UserCompany;
 use App\Services\MailService;
 
 

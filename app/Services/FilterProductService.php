@@ -1,8 +1,8 @@
 <?php
 namespace App\Services;
 
-use App\Models\product;
-use App\Models\product_category;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class FilterProductService 
@@ -10,7 +10,7 @@ class FilterProductService
 
     public function filterProduct($id)
     {
-        $productCategory = product_category::find($id);
+        $productCategory = ProductCategory::find($id);
 
         if (!$productCategory) {
             return new JsonResponse(['message' => 'Not found'], 404);

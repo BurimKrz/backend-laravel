@@ -3,14 +3,14 @@ namespace App\Implementations;
 
 use App\Http\Requests\ModifyItemRequest;
 use App\Interfaces\ModifyItemInterface;
-use App\Models\product;
+use App\Models\Product;
 
 class ModifyItemImplementation implements ModifyItemInterface
 {
 
     public function modifyProduct(ModifyItemRequest $modifyItemRequest, $id)
     {
-        $product = product::findOrFail($id);
+        $product = Product::findOrFail($id);
 
         $product->name        = $modifyItemRequest['name'];
         $product->description = $modifyItemRequest['description'];

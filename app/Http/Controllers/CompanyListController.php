@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CompanyDetailsResource;
-use App\Http\Resources\CompanyListResource;
 use App\Interfaces\CompanyInterface;
-use App\Models\company;
 use App\Services\CompanyListService;
-use App\Services\Interfaces\CompanyListInterface;
 
 class CompanyListController extends Controller
 {

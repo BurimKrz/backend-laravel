@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Models\product;
+use App\Models\Product;
 use App\Models\User;
 use App\Notifications\BuyerInterestedProduct;
 
@@ -11,7 +11,7 @@ class NotifyBuyerService
     {
         $Owner   = User::find($Oid);
         $user    = User::find($Uid);
-        $product = product::find($Pid);
+        $product = Product::find($Pid);
         if ($user && $product) {
             $notification = new BuyerInterestedProduct($Owner, $user, $product);
             $Owner->notify($notification);

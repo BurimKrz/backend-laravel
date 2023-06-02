@@ -4,8 +4,8 @@ namespace App\Implementations;
 use App\Http\Requests\CompanyRequest;
 use App\Http\Resources\CompanyListResource;
 use App\Interfaces\CompanyInterface;
-use App\Models\company;
-use App\Models\userCompany;
+use App\Models\Company;
+use App\Models\UserCompany;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CompanyImplementation implements CompanyInterface
@@ -30,7 +30,7 @@ class CompanyImplementation implements CompanyInterface
         );
 
         if ($company) {
-            userCompany::create([
+            UserCompany::create([
                 'user_id'    => $userId,
                 'company_id' => $company->id,
             ]);

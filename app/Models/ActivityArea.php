@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class company_subcategory extends Model
+class ActivityArea extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'category_id'];
+    public $table = 'activity_area';
+
+    protected $fillable = ['name'];
 }

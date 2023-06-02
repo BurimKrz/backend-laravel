@@ -2,11 +2,11 @@
 namespace App\Implementations;
 
 use App\Http\Resources\CategoryResource;
-use App\Http\Resources\ProductCategory;
+use App\Http\Resources\ProductCategoryResource;
 use App\Interfaces\CategoryInterface;
-use App\Models\company_category;
-use App\Models\company_subcategory;
-use App\Models\product_category;
+use App\Models\CompanyCategory;
+use App\Models\CompanySubcategory;
+use App\Models\ProductCategory;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CategoryImplementation implements CategoryInterface
@@ -14,17 +14,17 @@ class CategoryImplementation implements CategoryInterface
 
     public function companyCategory(): JsonResource
     {
-        return CategoryResource::collection(company_category::all());
+        return CategoryResource::collection(CompanyCategory::all());
     }
 
     public function companySubcategory(): JsonResource
     {
-        return CategoryResource::collection(company_subcategory::all());
+        return CategoryResource::collection(CompanySubcategory::all());
 
     }
     public function productCategory(): JsonResource
     {
-        return ProductCategory::collection(product_category::all());
+        return ProductCategoryResource::collection(ProductCategory::all());
     }
 
 }

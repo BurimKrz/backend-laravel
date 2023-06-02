@@ -4,9 +4,9 @@ namespace App\Implementations;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UsersTokenRequest;
 use App\Interfaces\RegisterInterface;
-use App\Models\token;
+use App\Models\Token;
 use App\Models\User;
-use App\Models\usersToken;
+use App\Models\UsersToken;
 
 class RegisterImplementation implements RegisterInterface
 {

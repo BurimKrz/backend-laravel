@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Models\interestedIn;
+use App\Models\InterestedIn;
 
 class InterestedInService 
 {

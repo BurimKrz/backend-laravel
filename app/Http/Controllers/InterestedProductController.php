@@ -18,7 +18,7 @@ class InterestedProductController extends Controller
 
     public function interestedAt( InterestedAtInterface $interestedAtInterface, InterestedAtRequest $interestedAtRequest)
     {
-        return response()->json([$this->interestedAtInterface->createInterestedAt($interestedAtRequest)], 200);
+        return response()->json($this->interestedAtInterface->createInterestedAt($interestedAtRequest), 200);
 
     }
 

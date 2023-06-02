@@ -1,8 +1,8 @@
 <?php
 namespace App\Services;
  
-use App\Models\company;
-use App\Models\company_category;
+use App\Models\Company;
+use App\Models\CompanyCategory;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CompanyFilterService
@@ -10,7 +10,7 @@ class CompanyFilterService
     public function companyFilter($id)
     {
 
-        $companyCategory = company_category::find($id);
+        $companyCategory = CompanyCategory::find($id);
 
         if (!$companyCategory) {
             return new JsonResponse(['message' => 'Not found']);

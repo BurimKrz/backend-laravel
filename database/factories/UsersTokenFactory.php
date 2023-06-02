@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\token;
+use App\Models\Token;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,7 +21,7 @@ class UsersTokenFactory extends Factory
         return [
 
             'user_id'  => User::inRandomOrder()->first()->id,
-            'token_id' => token::inRandomOrder()->first()->id,
+            'token_id' => Token::inRandomOrder()->first()->id,
         ];
     }
 }

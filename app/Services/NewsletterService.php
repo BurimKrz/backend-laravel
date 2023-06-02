@@ -2,7 +2,7 @@
 namespace App\Services;
 
 use App\Http\Requests\NewsletterRequest;
-use App\Models\newsletters;
+use App\Models\Newsletters;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 

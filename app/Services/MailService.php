@@ -1,14 +1,14 @@
 <?php
 namespace App\Services;
 
-use App\Models\userCompany;
+use App\Models\UserCompany;
 
 class MailService
 {
 
     public function mail($id)
     {
-        $formData = userCompany::join('company', 'user_company.company_id', '=', 'company.id')
+        $formData = UserCompany::join('company', 'user_company.company_id', '=', 'company.id')
             ->join('users', 'user_company.user_id', '=', 'users.id')
             ->join('product', 'product.company_id', '=', 'company.id')
             ->where('product.id', $id)

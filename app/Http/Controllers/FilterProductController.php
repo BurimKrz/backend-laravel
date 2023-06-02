@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\product;
-use App\Models\product_category;
 use App\Services\FilterProductService;
-use App\Services\Interfaces\FilterProductInterface;
 
 class FilterProductController extends Controller
 {

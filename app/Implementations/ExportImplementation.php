@@ -4,7 +4,7 @@ namespace App\Implementations;
 
 use App\Http\Resources\ExportResource;
 use App\Interfaces\ExportInterface;
-use App\Models\product;
+use App\Models\Product;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ExportImplementation implements ExportInterface

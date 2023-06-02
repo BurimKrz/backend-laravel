@@ -2,14 +2,14 @@
 namespace App\Services;
 
 use App\Http\Resources\ImportResource;
-use App\Models\import_product;
+use App\Models\ImportProduct;
 
 class ImportProductService
 {
 
     public function importProducts()
     {
-        $importProducts = import_product::join('product as p', 'import_product.product_id', '=', 'p.id')
+        $importProducts = ImportProduct::join('product as p', 'import_product.product_id', '=', 'p.id')
             ->join('company as c', 'c.id', '=', 'p.company_id')
             ->join('product_category as pc', 'pc.id', '=', 'p.category_id')
             ->select(
@@ -32,7 +32,7 @@ class ImportProductService
 
     public function importProduct($id)
     {
-        $importProducts = Import_product::join('product as p', 'import_product.product_id', '=', 'p.id')
+        $importProducts = ImportProduct::join('product as p', 'import_product.product_id', '=', 'p.id')
             ->join('company as c', 'c.id', '=', 'p.company_id')
             ->join('product_category as pc', 'pc.id', '=', 'p.category_id')
             ->where('import_product.product_id', $id)

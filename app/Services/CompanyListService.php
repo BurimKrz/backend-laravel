@@ -1,17 +1,14 @@
 <?php
 namespace App\Services;
 
-use App\Http\Resources\CompanyDetailsResource;
-use App\Services\Interfaces\CompanyListInterface;
-use App\Models\company;
+use App\Models\Company;
 
 class CompanyListService
 {
 
     public function detailsOfCompany($id)
     {
-        $company_details = Company::find($id)
-            ->join('company_categories as cc', 'company.category_id', '=', 'cc.id')
+        $company_details = Company::join('company_categories as cc', 'company.category_id', '=', 'cc.id')
             ->join('company_subcategories as cs', 'company.subcategory_id', '=', 'cs.id')
             ->where('company.id', '=', $id)
             ->select('company.id', 'company.name', 'company.keywords', 'company.country',
@@ -19,6 +16,6 @@ class CompanyListService
             ->get();
 
         return $company_details;
-        
+
     }
 }

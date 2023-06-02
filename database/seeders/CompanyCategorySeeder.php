@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\company_category;
+use App\Models\CompanyCategory;
 use Illuminate\Database\Seeder;
 
 class CompanyCategorySeeder extends Seeder
@@ -20,8 +20,8 @@ class CompanyCategorySeeder extends Seeder
         ];
 
         foreach ($categories as $category) {
-            if (!company_category::where('name', $category['name'])->exists()) {
-                company_category::create($category);
+            if (!CompanyCategory::where('name', $category['name'])->exists()) {
+                CompanyCategory::create($category);
             }
         }
     }
