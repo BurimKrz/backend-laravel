@@ -19,6 +19,7 @@ class PrioritySeeder extends Seeder
             ProductSubcategorySeeder::class,
             ActivityAreaSeeder::class,
             AdminSeeder::class,
+            CountrySeeder::class,
             DatabaseSeeder::class
         ]);
     }
