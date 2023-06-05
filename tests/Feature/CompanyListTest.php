@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Models\company;
+use App\Models\Company;
 use Tests\TestCase;
 
 class CompanyListTest extends TestCase

@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyRequest;
-use App\Http\Requests\RegisterRequest;
-use App\Services\Interfaces\CompanyInterface;
+use App\Interfaces\CompanyInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CompanyController extends Controller
 {
-    public function company(CompanyRequest $companyRequest,  $userId, CompanyInterface $companyInterface)
+    private CompanyInterface $companyInterface;
+
+    public function __construct(CompanyInterface $companyInterface)
     {
-        return response()->json([$companyInterface->createCompany($companyRequest, $userId)], 201);
+        $this->companyInterface = $companyInterface;
+    }
+    public function company(CompanyRequest $companyRequest, $userId):JsonResponse
+    {
+        return response()->json($this->companyInterface->createCompany($companyRequest, $userId), 200);
+
 
     }
 }

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class sellerConfirmation extends Model
+class SellerConfirmation extends Model
 {
     use HasFactory;
 
     protected $table = 'seller_confirm';
 
-    protected $fillable = ['id', 'company_id', 'product_id', 'buyer_id', 'confirmation'];
+    protected $fillable = ['company_id', 'product_id', 'buyer_id', 'confirmation'];
 }

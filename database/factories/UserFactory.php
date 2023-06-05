@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\countries;
+use App\Models\Countries;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -26,7 +26,7 @@ class UserFactory extends Factory
             // password
             'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
             'phone_number'      => fake()->phoneNumber(),
-            'country_id'        => countries::factory()->create()->id,
+            'country_id'        => Countries::factory()->create()->id,
             'gender'            => $this->faker->randomElement(['male', 'female']),
             'agreements'        => $this->faker->boolean(),
             'remember_token'    => Str::random(10),
