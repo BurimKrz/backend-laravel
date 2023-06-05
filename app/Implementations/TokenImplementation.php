@@ -13,7 +13,7 @@ class TokenImplementation implements TokenInterface
     {
         $userToken = UsersToken::where('user_id', $user_id)->first();
         if (!$userToken) {
-            return response()->json(['error' => 'User token not found'], 404);
+            return response()->json('User token not found', 404);
         }
 
         $token         = Token::findOrFail($userToken->token_id);
