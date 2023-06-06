@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\CompanySubcatrgory;
 
 class CompanySubCategorySeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class CompanySubCategorySeeder extends Seeder
      */
     public function run(): void
     {
-          DB::table('company_subcategories') -> insert([
+        CompanySubcategories::insert([
               ['name' => 'Limited by Sheares', 'category_id' => 1],
             ['name' => 'Limited by Guarante', 'category_id' => 1],
             ['name' => 'Unlimited Company', 'category_id' => 1],
