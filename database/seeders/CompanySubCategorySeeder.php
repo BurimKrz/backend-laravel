@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\ProductSubcategory;
+use App\Models\CompanySubcategory;
 use Illuminate\Database\Seeder;
 
 class CompanySubCategorySeeder extends Seeder
@@ -12,7 +12,7 @@ class CompanySubCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        ProductSubcategory::insert([
+        CompanySubcategory::insert([
             ['name' => 'Limited by Sheares', 'category_id' => 1],
             ['name' => 'Limited by Guarante', 'category_id' => 1],
             ['name' => 'Unlimited Company', 'category_id' => 1],
