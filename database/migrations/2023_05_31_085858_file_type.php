@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('file_id');
             $table->string('PDF');
-            $table->string('is_main_image');
-            $table->string('is_slide_image');
+            $table->string('cover_image');
+            $table->string('slide_image');
             $table->foreign('file_id')->references('id')->on('file');
             $table->timestamps();
 

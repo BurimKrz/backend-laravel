@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FileType extends Model
+class FileAssociated extends Model
 {
     use HasFactory;
-    protected $fillable = ['file_id', 'type','PDF', 'is_main_image', 'is_slide_image'];
+    protected $fillable = ['file_id', 'type_id'];
 }
