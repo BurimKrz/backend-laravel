@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\FileTypeSeeder;
 use Illuminate\Database\Seeder;
 
 class PrioritySeeder extends Seeder
@@ -20,7 +20,8 @@ class PrioritySeeder extends Seeder
             ActivityAreaSeeder::class,
             AdminSeeder::class,
             CountrySeeder::class,
-            DatabaseSeeder::class
+            FileTypeSeeder::class,
+            DatabaseSeeder::class,
         ]);
     }
 }
