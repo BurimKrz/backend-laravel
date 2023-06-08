@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('file_associated', function (Blueprint $table) {
+        Schema::create('file_has_types', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('file_id');
             $table->unsignedBigInteger('type_id');
             $table->foreign('file_id')->references('id')->on('file');
             $table->foreign('type_id')->references('id')->on('file_type');
-
             $table->timestamps();
         });
+
     }
 
     /**
@@ -27,6 +27,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('file_associated');
+        Schema::dropIfExists('file_has_type');
+
     }
 };

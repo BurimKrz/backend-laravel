@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class FileType extends Model
 {
     use HasFactory;
-    protected $fillable = ['file_id', 'type','PDF', 'is_main_image', 'is_slide_image'];
+    public $table       = 'file_type';
+    protected $fillable = ['file_id', 'type', 'PDF', 'cover_image', 'slide_image'];
 }

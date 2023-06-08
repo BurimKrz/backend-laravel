@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FileRequest;
 use App\Services\FileService;
-use Illuminate\Http\Request;
 
 class FileController extends Controller
 {
@@ -14,7 +14,7 @@ class FileController extends Controller
         $this->FileService = $FileService;
     }
 
-    public function addFile(Request $request)
+    public function addFile(FileRequest $request)
     {
         return response()->json($this->FileService->addFile($request), 200);
     }
