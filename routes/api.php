@@ -11,6 +11,7 @@ use App\Http\Controllers\CompanyListController;
 // use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\CorporateController;
 use App\Http\Controllers\ExportProduct;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\InterestedInListController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\InterestedProductController;
 use App\Http\Controllers\ListNotificationsController;
 use App\Http\Controllers\MailFormController;
 use App\Http\Controllers\ModifyItem;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\NotifyBuyerInterested;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SellerController;
@@ -25,7 +27,6 @@ use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
-use App\Http\Controllers\NewsletterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -153,6 +154,8 @@ Route::post('/interestedIn', [InterestedInListController::class, 'interestedInPr
 Route::post('/newsletter', [NewsletterController::class, 'addNewsletter']);
 
 Route::post('/sendnewsletter', [NewsletterController::class, 'sendNewsletter']);
+
+Route::post('/addFile', [FileController::class, 'addFile']);
 
 //Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
