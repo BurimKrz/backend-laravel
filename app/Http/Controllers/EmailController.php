@@ -17,24 +17,11 @@ class EmailController extends Controller
             'message' => 'required',
         ]);
 
-        // $sendData = [
-        //     'recipient' => 'teamnova3@gmail.com',
-        //     'fromEmail' => $request->email,
-        //     'fromName' => $request->name,
-        //     'message' => $request->message,
-        // ];
-
-        // $toAddress = env('MAIL_USERNAME');
-        // $toName = env('MAIL_TO_NAME');
-
-        $email = new MarkdownMailable($validatedData);
+        // $email = new MarkdownMailable($validatedData);
       
-        SendEmailJob::dispatch($email);
+        // SendEmailJob::dispatch($email);
 
-        // Mail::send($sendData, function ($message) use ($sendData) {
-        //     $message->to($sendData['recipient'])
-        //         ->from($sendData['fromEmail'], $sendData['fromName']);
-        // });
+        dispatch(new SendEmailJob($validatedData));
 
         return response()->json(['message' => 'Email sent successfully'], 200);
     }

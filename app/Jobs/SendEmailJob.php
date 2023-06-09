@@ -15,25 +15,23 @@ class SendEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $email;
+    public $validatedData;
 
     /**
      * Create a new job instance.
      */
-    public function __construct(MarkdownMailable $email)
+    public function __construct($validatedData)
     {
-        $this->email = $email;
-        // $this->toAddress = $toAddress;
-        // $this->toName = $toName;
+        $this->validatedData = $validatedData;
     }
 
     /**
      * Execute the job.
      */
-    public function handle(): void
+    public function handle()
     {
-        // $mailable = new MarkdownMailable($this->email);
-        // Mail::to($this->toAddress, $this->toName)->send($mailable);
-        Mail::to($this->email->contactData['email'])->send($this->email);
+        $email = new MarkdownMailable($this->validatedData);
+        Mail::to($this->validatedData['email'])->send($email);
     }
 }
+ 
