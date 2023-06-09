@@ -22,6 +22,7 @@ use App\Http\Controllers\MailFormController;
 use App\Http\Controllers\ModifyItem;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\NotifyBuyerInterested;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\testController;
@@ -119,6 +120,9 @@ Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
 
 //Updating User Profile Data
 Route::put('/updateUser/{id}', [UpdateProfileUserController::class, 'update']);
+
+//Forgot password
+Route::put('/password', [PasswordController::class, 'password']);
 
 Route::put('/updateFile/{id}', [FileUpdateDeleteController::class, 'updateFile']);
 
