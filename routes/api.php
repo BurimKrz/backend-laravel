@@ -163,7 +163,10 @@ Route::post('/sendnewsletter', [NewsletterController::class, 'sendNewsletter']);
 Route::post('/addFile', [FileController::class, 'addFile']);
 
 //Search for company
-Route::post('/searchCompany', [SearchController::class, 'search']);
+Route::post('/searchCompany', [SearchController::class, 'companySearch']);
+
+//Search for product
+Route::post('/searchProduct', [SearchController::class, 'productSearch']);
 
 //Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);

@@ -13,8 +13,12 @@ class SearchController extends Controller
         $this -> search = $search;
     }
 
-    public function search(SearchRequest $search)
+    public function companySearch(SearchRequest $search)
     {
         return response() -> json($this -> search -> searchCompany($search));
+    }
+
+    function productSearch(SearchRequest $search){
+        return response() -> json($this -> search -> searchProduct($search));
     }
 }
