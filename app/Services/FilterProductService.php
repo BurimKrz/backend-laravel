@@ -16,24 +16,22 @@ class FilterProductService
             return new JsonResponse(['message' => 'Not found'], 404);
         }
 
-        $productCategory = Product::select('product.name', 'product.description', 'product.price', 'product.imageURL', 'company.name as company', 'company.country as country')
-            ->join('product_category', 'product_category.id', '=', 'product.category_id')
-            ->join('company', 'company.id', '=', 'product.company_id')
+        $productCategory = Product::join('product_category', 'product_category.id', 'product.category_id')
+            ->join('company', 'company.id', 'product.company_id')
             ->where('product_category.id', $id)
-            ->get();
+            ->get(['product.name', 'product.description', 'product.price', 'product.imageURL', 'company.name as company', 'company.country as country']);
 
         return $productCategory;
     }
 
     public function filterSubcategory($category_id, $subcategory_id)
     {
-        $products = Product::select('product.name', 'product.description', 'product.price', 'product.imageURL', 'company.name as company', 'company.country as country')
-            ->join('product_subcategory', 'product.subcategory_id', '=', 'product_subcategory.id')
-            ->join('product_category', 'product_subcategory.category_id', '=', 'product_category.id')
-            ->join('company', 'company.id', '=', 'product.company_id')
+        $products = Product::join('product_subcategory', 'product.subcategory_id', '=', 'product_subcategory.id')
+            ->join('product_category', 'product_subcategory.category_id', 'product_category.id')
+            ->join('company', 'company.id', 'product.company_id')
             ->where('product.category_id', $category_id, )
             ->where('product.subcategory_id', $subcategory_id)
-            ->get();
+            ->get(['product.name', 'product.description', 'product.price', 'product.imageURL', 'company.name as company', 'company.country as country']);
 
         return response()->json($products);
     }
