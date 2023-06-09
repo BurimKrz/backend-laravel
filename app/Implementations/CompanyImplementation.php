@@ -43,7 +43,7 @@ class CompanyImplementation implements CompanyInterface
 
     public function companyList():JsonResource
     {
-        return CompanyListResource::collection(Company::all());
+        return CompanyListResource::collection(Company::paginate(10));
     }
 
 }

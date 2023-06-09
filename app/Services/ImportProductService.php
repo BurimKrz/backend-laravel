@@ -12,7 +12,7 @@ class ImportProductService
         $importProducts = ImportProduct::join('product as p', 'import_product.product_id', 'p.id')
             ->join('company as c', 'c.id', 'p.company_id')
             ->join('product_category as pc', 'pc.id', 'p.category_id')
-            ->get(['p.id',
+            ->select(['p.id',
                 'p.name',
                 'p.description',
                 'p.price',
@@ -22,7 +22,8 @@ class ImportProductService
                 'c.country',
                 'c.keywords',
                 'pc.name as category_name',
-                'p.created_at']);
+                'p.created_at'])
+                ->paginate(10);
 
         return ImportResource::collection($importProducts);
     }
