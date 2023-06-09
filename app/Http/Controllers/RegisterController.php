@@ -20,7 +20,7 @@ class RegisterController extends Controller
     }
     public function index()
     {
-        return CountryResource::collection(Countries::paginate());
+        return CountryResource::collection(Countries::all());
     }
 
 }
