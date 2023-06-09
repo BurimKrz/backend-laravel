@@ -12,7 +12,7 @@ class ExportImplementation implements ExportInterface
 
     public function productList(): JsonResource
     {
-        return ExportResource::collection(Product::all());
+        return ExportResource::collection(Product::paginate());
     }
 
 }
