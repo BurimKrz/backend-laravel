@@ -35,6 +35,9 @@ class CompanyImplementation implements CompanyInterface
                 'company_id' => $company->id,
             ]);
         }
+
+        $keywordsArray = explode(",", $companyRequest['keywords']);
+
         return $company;
     }
 
