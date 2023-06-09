@@ -28,6 +28,7 @@ use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -160,6 +161,9 @@ Route::post('/newsletter', [NewsletterController::class, 'addNewsletter']);
 Route::post('/sendnewsletter', [NewsletterController::class, 'sendNewsletter']);
 
 Route::post('/addFile', [FileController::class, 'addFile']);
+
+//Search for company
+Route::post('/searchCompany', [SearchController::class, 'search']);
 
 //Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
