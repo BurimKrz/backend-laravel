@@ -27,6 +27,7 @@ use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\PasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -117,6 +118,9 @@ Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
 
 //Updating User Profile Data
 Route::put('/updateUser/{id}', [UpdateProfileUserController::class, 'update']);
+
+//Forgot password
+Route::put('/password', [PasswordController::class, 'password']);
 
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
