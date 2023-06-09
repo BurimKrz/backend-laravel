@@ -12,6 +12,7 @@ use App\Http\Controllers\CompanyListController;
 use App\Http\Controllers\CorporateController;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\FileUpdateDeleteController;
 use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\InterestedInListController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\NotifyBuyerInterested;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\testController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateProfileUserController;
@@ -118,6 +120,8 @@ Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
 //Updating User Profile Data
 Route::put('/updateUser/{id}', [UpdateProfileUserController::class, 'update']);
 
+Route::put('/updateFile/{id}', [FileUpdateDeleteController::class, 'updateFile']);
+
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
 
@@ -166,9 +170,12 @@ Route::delete('/deleteProduct/{id}', [InterestedProductController::class, 'delet
 //Delete a product from InterestedInList
 Route::delete('/delete/{id}', [InterestedInListController::class, 'destroy']);
 
+Route::delete('/deleteFile/{id}', [FileUpdateDeleteController::class, 'deleteFile']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/img', [testController::class, 'test']);
