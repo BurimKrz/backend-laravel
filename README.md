@@ -92,6 +92,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 # MAIL_FROM_ADDRESS=teamnova709@gmail.com
 # MAIL_FROM_NAME=Team
 
-## php artisan queue:work
+## 1. php artisan queue:work
 
-## php artisan config:cache
+## 2. php artisan config:cache
+
+## 3. php artisan serve
