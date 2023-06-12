@@ -31,7 +31,8 @@ class SendEmailJob implements ShouldQueue
     public function handle()
     {
         $email = new MarkdownMailable($this->validatedData);
-        Mail::to($this->validatedData['email'])->send($email);
+        // Mail::to($this->validatedData['email'])->send($email);
+        Mail::to('teamnova3@outlook.com') ->send($email);
     }
 }
  

@@ -27,7 +27,7 @@ class MarkdownMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject:'Markdown Mailable',
+            subject:'Support email',
         );
     }
 
@@ -51,15 +51,23 @@ class MarkdownMailable extends Mailable
         return [];
     }
 
+    // public function build() 
+    // {
+    //     return $this ->from('teamnova709@gmail.com')
+    //     ->subject('New Contact Form Submission')
+    //     ->markdown('emails.example')
+    //     ->with([
+    //         'contactData' => $this->contactData,
+    //     ]);
+            
+    // }
     public function build()
     {
-        return $this ->from('teamnova709@gmail.com')
-        ->subject('New Contact Form Submission');
-        // ->text('emails.example')
-        // ->with([
-        //     'contactData' => $this->contactData,
-        // ]);
-            
+        return $this->markdown('emails.example')
+            ->from('teamnova709@gmail.com')
+            ->with([
+                'contactData' => $this->contactData,
+            ]);
     }
 }
  
