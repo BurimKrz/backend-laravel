@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Http\Requests\FileRequest;
-use App\Models\File;
 use App\Models\FileHasProduct;
 use App\Models\FileHasType;
+use App\Models\FileUpload;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,9 +19,8 @@ class FileService
         $fileDataArray = $request->input('files', []);
 
         foreach ($fileDataArray as $fileData) {
-            $fileDirectory = ($fileData['typeId'] === 1 || $fileData['typeId'] === 2) ? 'images' : 'pdf';
 
-            $file = File::create([
+            $file = FileUpload::create([
                 'URL' => $fileData['URL'],
             ]);
 
@@ -34,10 +33,15 @@ class FileService
                 'file_id' => $file->id,
                 'type_id' => $fileData['typeId'],
             ]);
+            $newFilePath = public_path('storage/' . $fileData['URL']);
+            Storage::disk('public')->put($file->URL, $newFilePath);
+            $destinationPath = 'public/' . $file->URL;
 
-            // Move the file to the respective directory
-            $newFilePath = public_path('storage/' . $fileDirectory . '/');
-            Storage::move($newFilePath, $file->URL);
+            if (file_exists($newFilePath)) {
+                Storage::putFileAs($destinationPath, $newFilePath, $fileData['URL']);
+            } else {
+                return 'File not found: ' . $newFilePath;
+            }
 
         }
     }

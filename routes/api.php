@@ -24,13 +24,13 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\NotifyBuyerInterested;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
-use App\Http\Controllers\SearchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
