@@ -21,6 +21,7 @@ use App\Http\Controllers\MailFormController;
 use App\Http\Controllers\ModifyItem;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\NotifyBuyerInterested;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\TokenController;
@@ -48,7 +49,7 @@ Route::get('/country', [RegisterController::class, 'index']);
 Route::get('/ilist', [ImportProduct::class, 'import']);
 
 //All product list
-Route::get('/ProductAllList', [ExportProduct::class, 'index']);
+Route::get('/ProductAllList', [ProductController::class, 'products']);
 
 //Route for export list
 Route::get('/elist', [ExportProduct::class, 'showList']);
