@@ -36,9 +36,7 @@ class DatabaseSeeder extends Seeder
         // Seed the product table
         Product::factory(20)->create();
 
-        // Seed the activity table - no more then 6
-        ActivityArea::factory(6)->create();
-
+        
         // comment this line when migrate seed for more then 1 time
         // or just migrate:fresh --seed
         User::factory(20)->create();

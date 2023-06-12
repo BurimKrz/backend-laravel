@@ -23,9 +23,7 @@ class AuthService
             return $user;
         }
 
-        $message = "The provided credentials are incorrect";
-
-        return response()->json(['error' => $message], 401);
+        return response()->json(['error' => 'The provided credentials are incorrect'], 401);
     }
 
 }

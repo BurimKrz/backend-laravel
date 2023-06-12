@@ -4,15 +4,14 @@ namespace App\Services;
 use App\Http\Resources\ExportResource;
 use App\Models\ExportProduct;
 
-class ExportService 
+class ExportService
 {
     public function showProducts()
     {
-        $exportProducts = ExportProduct::join('product as p', 'export_product.product_id', '=', 'p.id')
-            ->join('company as c', 'c.id', '=', 'p.company_id')
-            ->join('product_category as pc', 'pc.id', '=', 'p.category_id')
-            ->select(
-                'p.name',
+        $exportProducts = ExportProduct::join('product as p', 'export_product.product_id', 'p.id')
+            ->join('company as c', 'c.id', 'p.company_id')
+            ->join('product_category as pc', 'pc.id', 'p.category_id')
+            ->select(['p.name',
                 'p.description',
                 'p.price',
                 'p.imageURL',
@@ -22,9 +21,8 @@ class ExportService
                 'c.keywords',
                 'pc.name as category_name',
                 'p.id',
-                'p.created_at'
-            )
-            ->get();
+                'p.created_at'])
+            ->paginate(10);
 
         return ExportResource::collection($exportProducts);
 
@@ -32,12 +30,11 @@ class ExportService
 
     public function showProduct($id)
     {
-        $exportProducts = ExportProduct::join('product as p', 'export_product.product_id', '=', 'p.id')
-            ->join('company as c', 'c.id', '=', 'p.company_id')
-            ->join('product_category as pc', 'pc.id', '=', 'p.category_id')
+        $exportProducts = ExportProduct::join('product as p', 'export_product.product_id', 'p.id')
+            ->join('company as c', 'c.id', 'p.company_id')
+            ->join('product_category as pc', 'pc.id', 'p.category_id')
             ->where('export_product.product_id', $id)
-            ->select(
-                'export_product.id',
+            ->get(['export_product.id',
                 'p.name',
                 'p.description',
                 'p.price',
@@ -47,9 +44,7 @@ class ExportService
                 'c.country',
                 'c.keywords',
                 'pc.name as category_name',
-                'export_product.created_at'
-            )
-            ->get();
+                'export_product.created_at']);
 
         return ExportResource::collection($exportProducts);
     }

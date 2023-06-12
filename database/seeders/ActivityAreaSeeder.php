@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ActivityArea;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +13,7 @@ class ActivityAreaSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('activity_area')->insert([
+        ActivityArea::insert([
             ['name' => 'Exporter'],
             ['name' => 'Importer'],
             ['name' => 'Servicer'],

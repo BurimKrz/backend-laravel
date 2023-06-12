@@ -11,6 +11,8 @@ use App\Http\Controllers\CompanyListController;
 // use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\CorporateController;
 use App\Http\Controllers\ExportProduct;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\FileUpdateDeleteController;
 use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\InterestedInListController;
@@ -18,14 +20,18 @@ use App\Http\Controllers\InterestedProductController;
 use App\Http\Controllers\ListNotificationsController;
 use App\Http\Controllers\MailFormController;
 use App\Http\Controllers\ModifyItem;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\NotifyBuyerInterested;
+use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\testController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
-use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\EmailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -48,7 +54,7 @@ Route::get('/country', [RegisterController::class, 'index']);
 Route::get('/ilist', [ImportProduct::class, 'import']);
 
 //All product list
-Route::get('/ProductAllList', [ExportProduct::class, 'index']);
+Route::get('/ProductAllList', [ProductController::class, 'products']);
 
 //Route for export list
 Route::get('/elist', [ExportProduct::class, 'showList']);
@@ -118,6 +124,11 @@ Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
 //Updating User Profile Data
 Route::put('/updateUser/{id}', [UpdateProfileUserController::class, 'update']);
 
+//Forgot password
+Route::put('/password', [PasswordController::class, 'password']);
+
+Route::put('/updateFile/{id}', [FileUpdateDeleteController::class, 'updateFile']);
+
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
 
@@ -155,6 +166,14 @@ Route::post('/newsletter', [NewsletterController::class, 'addNewsletter']);
 
 Route::post('/sendnewsletter', [NewsletterController::class, 'sendNewsletter']);
 
+Route::post('/addFile', [FileController::class, 'addFile']);
+
+//Search for company
+Route::post('/searchCompany', [SearchController::class, 'companySearch']);
+
+//Search for product
+Route::post('/searchProduct', [SearchController::class, 'productSearch']);
+
 Route::post('/email', [EmailController::class, 'email']);
 
 //Detele a product
@@ -166,9 +185,12 @@ Route::delete('/deleteProduct/{id}', [InterestedProductController::class, 'delet
 //Delete a product from InterestedInList
 Route::delete('/delete/{id}', [InterestedInListController::class, 'destroy']);
 
+Route::delete('/deleteFile/{id}', [FileUpdateDeleteController::class, 'deleteFile']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/img', [testController::class, 'test']);

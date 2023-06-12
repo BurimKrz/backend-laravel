@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\ProductCategory;
 
 class ProductCategorySeeder extends Seeder
 {
@@ -14,13 +14,12 @@ class ProductCategorySeeder extends Seeder
 
     public function run(): void
     {
-        DB::table('product_category')->insert([
+        ProductCategory::insert([
             ['name' => 'Fashion'],
             ['name' => 'Home'],
             ['name' => 'Accessories'],
             ['name' => 'Sporting'],
             ['name' => 'Health'],
-            ['name' => 'Medical'],
             ['name' => 'Pets'],
         ]);
     }

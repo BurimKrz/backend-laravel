@@ -35,12 +35,15 @@ class CompanyImplementation implements CompanyInterface
                 'company_id' => $company->id,
             ]);
         }
+
+        $keywordsArray = explode(",", $companyRequest['keywords']);
+
         return $company;
     }
 
     public function companyList():JsonResource
     {
-        return CompanyListResource::collection(Company::all());
+        return CompanyListResource::collection(Company::paginate(10));
     }
 
 }

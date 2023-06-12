@@ -69,6 +69,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## composer require laravel/sanctum
 
+## php artisan key:generate
+
 ## composer require spatie/laravel-permission
 
 ### "Migrate and seed"
