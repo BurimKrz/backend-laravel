@@ -2,22 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\ExportInterface;
 use App\Services\ExportService;
 
 class ExportProduct extends Controller
 {
-    private ExportInterface $exportInterface;
     private ExportService $exportService;
 
 
-    public function __construct(ExportInterface $exportInterface, ExportService $exportService){
-        $this->exportInterface = $exportInterface;
+    public function __construct(ExportService $exportService){
         $this->exportService = $exportService;
-    }
-    public function index()
-    {
-        return response()->json($this->exportInterface->productList(), 200);
     }
 
     public function showList(ExportService $exportService)

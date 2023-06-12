@@ -22,7 +22,11 @@ use App\Http\Controllers\MailFormController;
 use App\Http\Controllers\ModifyItem;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\NotifyBuyerInterested;
+<<<<<<< HEAD
 use App\Http\Controllers\PasswordController;
+=======
+use App\Http\Controllers\ProductController;
+>>>>>>> 26ec05178a3f77b427fce67aef46528399c870ee
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\testController;
@@ -52,7 +56,7 @@ Route::get('/country', [RegisterController::class, 'index']);
 Route::get('/ilist', [ImportProduct::class, 'import']);
 
 //All product list
-Route::get('/ProductAllList', [ExportProduct::class, 'index']);
+Route::get('/ProductAllList', [ProductController::class, 'products']);
 
 //Route for export list
 Route::get('/elist', [ExportProduct::class, 'showList']);
