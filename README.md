@@ -79,18 +79,18 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## 2. php artisan db:seed --class=PrioritySeeder
 
-### Send email
+# Send email
 
 ## .env
 
-# MAIL_MAILER=smtp
-# MAIL_HOST=smtp.gmail.com
-# MAIL_PORT=587
-# MAIL_USERNAME=teamnova709@gmail.com
-# MAIL_PASSWORD=phbohnwczlxiukya
-# MAIL_ENCRYPTION=tls
-# MAIL_FROM_ADDRESS=teamnova709@gmail.com
-# MAIL_FROM_NAME=Team
+### MAIL_MAILER=smtp
+### MAIL_HOST=smtp.gmail.com
+### MAIL_PORT=587
+### MAIL_USERNAME=teamnova709@gmail.com
+### MAIL_PASSWORD=phbohnwczlxiukya
+### MAIL_ENCRYPTION=tls
+### MAIL_FROM_ADDRESS=teamnova709@gmail.com
+### MAIL_FROM_NAME=Team
 
 ## 1. php artisan queue:work
 
