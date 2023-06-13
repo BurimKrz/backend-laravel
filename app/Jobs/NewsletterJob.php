@@ -38,6 +38,8 @@ class NewsletterJob implements ShouldQueue
     {
         $emails = Newsletters::pluck('email')->toArray();
         $email = new NewsletterMail($this->subject, $this->message);
-        Mail::to($emails)->send($email);
+        Mail::to('teamnova3@outlook.com')
+        ->bcc($emails)
+        ->send($email);
     }
 }
