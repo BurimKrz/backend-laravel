@@ -168,6 +168,7 @@ Route::post('/interestedIn', [InterestedInListController::class, 'interestedInPr
 //Newsletter
 Route::post('/newsletter', [NewsletterController::class, 'addNewsletter']);
 
+//Admin can send newsletter
 Route::post('/sendnewsletter', [NewsletterController::class, 'sendNewsletter']);
 
 Route::post('/addFile', [FileController::class, 'addFile']);
