@@ -33,6 +33,7 @@ use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\SuccessStoriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -115,6 +116,9 @@ Route::get('/Notify/{id}', [ListNotificationsController::class, 'findNotificatio
 //
 Route::get('/corporate/{id}', [CorporateController::class, 'showCorporate']);
 
+//Show the success stories
+Route::get('/successStory', [SuccessStoriesController::class, 'successStories']);
+
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
@@ -174,7 +178,11 @@ Route::post('/searchCompany', [SearchController::class, 'companySearch']);
 //Search for product
 Route::post('/searchProduct', [SearchController::class, 'productSearch']);
 
+//Send support email
 Route::post('/email', [EmailController::class, 'email']);
+
+//Add a success sotory
+Route::post('/successStory', [SuccessStoriesController::class, 'addSucessStories']);
 
 //Detele a product
 Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
