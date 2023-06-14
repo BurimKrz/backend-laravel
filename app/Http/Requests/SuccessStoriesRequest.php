@@ -22,11 +22,12 @@ class SuccessStoriesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'company_id' =>'required|integer',
-            'topic' => 'required|string|max:255',
+            'company_id'     => 'required|integer',
+            'topic'          => 'required|string|max:255',
             'representative' => 'required|string|max:255',
-            'message'=>'required|string|max:500',
-            'image_URL'=>'required|string|max:255'
+            'position'       => 'required|string|max:255',
+            'message'        => 'required|string|max:500',
+            'image_URL'      => 'required|string|max:255',
         ];
     }
 }

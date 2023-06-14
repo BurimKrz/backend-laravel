@@ -11,5 +11,5 @@ class SuccessStories extends Model
 
     protected $table = 'success_stories';
 
-    protected $fillable = ['company_id', 'topic', 'representative', 'message', 'image_URL'];
+    protected $fillable = ['company_id', 'topic', 'representative', 'position', 'message', 'image_URL'];
 }

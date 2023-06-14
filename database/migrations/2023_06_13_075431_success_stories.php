@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('company_id')->references('id')->on('company');
             $table->string('topic');
             $table->string('representative');
+            $table->string('position');
             $table->string('message', 500);
             $table->string('image_URL');
             $table->timestamps();
