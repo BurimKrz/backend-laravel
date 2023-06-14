@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\NotificationService;
+use Illuminate\Support\Facades\App;
 
 class ListNotificationsController extends Controller
 {
@@ -12,8 +13,10 @@ class ListNotificationsController extends Controller
     {
         $this->notificationService = $notificationService;
     }
-    public function findNotifications(NotificationService $notificationService, $id)
+    public function findNotifications(NotificationService $notificationService, $id, $language)
     {
-        return response()->json($this->notificationService->notification($id), 200);
+        $locale = config('app.available_locales');
+        App::setLocale($locale[$language]);
+        return response()->json($this->notificationService->notification($id, $language), 200);
     }
 }

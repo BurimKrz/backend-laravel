@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\NotifyBuyerService;
+use Illuminate\Support\Facades\App;
 
 class NotifyBuyerInterested extends Controller
 {
@@ -11,8 +12,10 @@ class NotifyBuyerInterested extends Controller
     {
         $this->notifyBuyerService = $notifyBuyerService;
     }
-    public function notify($Oid, $Uid, $Pid)
+    public function notify($Oid, $Uid, $Pid, $language)
     {
-        return $this->notifyBuyerService->notifyBuyer($Oid, $Uid, $Pid);
+        $locale = config('app.available_locales');
+        App::setLocale($locale[$language]);
+        return $this->notifyBuyerService->notifyBuyer($Oid, $Uid, $Pid, $language);
     }
 }

@@ -11,12 +11,12 @@ use App\Jobs\NewsletterJob;
 class NewsletterService
 {
 
-    public function newsletter(NewsletterRequest $newsletterRequest)
+    public function newsletter(NewsletterRequest $newsletterRequest, $language)
     {
         $count = Newsletters::where('email', $newsletterRequest->email)->count();
 
         if ($count === 1) {
-            return response()->json(['error' => 'Email already exists'], 400);
+            return response()->json(['error' => __('messages.emailExist')], 400);
         } else {
             try {
                 $newsletter = Newsletters::create([
@@ -25,16 +25,16 @@ class NewsletterService
 
                 return response()->json(['newsletter' => $newsletter], 201);
             } catch (QueryException $e) {
-                return response()->json(['error' => 'Something went wrong'], 500);
+                return response()->json(['error' => __('messages.emailWrong')], 500);
             }
         }
     }
 
-    public function newsletterSent(SendNewsletterRequest $newsletter){
+    public function newsletterSent(SendNewsletterRequest $newsletter, $language){
         {
             dispatch(new NewsletterJob($newsletter->subject, $newsletter->message));
 
-            return response()->json(['message' => 'Newsletter sent successfully'], 200);
+            return response()->json(['message' =>  __('messages.newsletter')], 200);
         }
     }
 }

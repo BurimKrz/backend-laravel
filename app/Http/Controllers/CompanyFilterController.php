@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\CompanyFilterService;
+use Illuminate\Support\Facades\App;
 
 class CompanyFilterController extends Controller
 {
@@ -12,8 +13,10 @@ class CompanyFilterController extends Controller
     {
         $this->companyFilterService = $companyFilterService;
     }
-    public function filterCompany(CompanyFilterService $companyFilterService, $id)
+    public function filterCompany(CompanyFilterService $companyFilterService, $id, $language)
     {
-        return response()->json($this->companyFilterService->companyFilter($id), 200);
+        $locale = config('app.available_locales');
+        App::setLocale($locale[$language]);
+        return response()->json($this->companyFilterService->companyFilter($id, $language), 200);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FileRequest;
 use App\Interfaces\FileUpdateDeleteInterface;
+use Illuminate\Support\Facades\App;
 
 class FileUpdateDeleteController extends Controller
 {
@@ -12,12 +13,16 @@ class FileUpdateDeleteController extends Controller
     {
         $this->fileUpdateDeleteInterface = $fileUpdateDeleteInterface;
     }
-    public function updateFile(FileRequest $request, $id)
+    public function updateFile(FileRequest $request, $id, $language)
     {
-        return response()->json($this->fileUpdateDeleteInterface->updateFile($request, $id), 200);
+        $locale = config('app.available_locales');
+        App::setLocale($locale[$language]);
+        return response()->json($this->fileUpdateDeleteInterface->updateFile($request, $id, $language), 200);
     }
-    public function deleteFile($id)
+    public function deleteFile($id, $language)
     {
-        return response()->json($this->fileUpdateDeleteInterface->deleteFile($id), 200);
+        $locale = config('app.available_locales');
+        App::setLocale($locale[$language]);
+        return response()->json($this->fileUpdateDeleteInterface->deleteFile($id, $language), 200);
     }
 }
