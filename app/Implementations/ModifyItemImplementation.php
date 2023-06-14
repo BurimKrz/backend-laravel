@@ -21,11 +21,11 @@ class ModifyItemImplementation implements ModifyItemInterface
         return $product;
     }
 
-    public function deleteProduct($id)
+    public function deleteProduct($id, $language)
     {
         $product = Product::findOrFail($id);
         $product->delete();
-        return response()->json("Product deleted");
+        return response()->json(__('messages.delete'));
     }
 
 }

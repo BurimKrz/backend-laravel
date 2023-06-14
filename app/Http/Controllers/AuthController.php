@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AuthRequest;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -16,19 +17,24 @@ class AuthController extends Controller
         $this->authService = $authService;
     }
 
-    public function login(AuthRequest $authRequest)
+    public function login(AuthRequest $authRequest, $language)
     {
-        return response()->json($this->authService->createAuth($authRequest));
+        $locale = config('app.available_locales');
+        App::setLocale($locale[$language]);
+        return response()->json($this->authService->createAuth($authRequest, $language));
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request, $language)
     {
+        $locale = config('app.available_locales');
+        App::setLocale($locale[$language]);
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return response()->json(['message' => 'Successfully logged out'], 200);
+        return response()->json(['message' => __('messages.logout')], 200);
     }
 }

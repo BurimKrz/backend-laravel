@@ -123,7 +123,7 @@ Route::put('/updateUser/{id}', [UpdateProfileUserController::class, 'update']);
 Route::post('/register', [RegisterController::class, 'register']);
 
 //Login
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login/{language}', [AuthController::class, 'login']);
 
 //Logout
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
@@ -132,7 +132,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 Route::post('/company/{userId}', [CompanyController::class, 'company']);
 
 //Activity area for comapany
-Route::post('/activity', [ActivityController::class, 'activitycontroller']);
+Route::post('/activity/{lang}', [ActivityController::class, 'activitycontroller']);
 
 //Add a new product
 Route::post('/add', [AddProduct::class, 'AddProduct']);
@@ -159,13 +159,13 @@ Route::post('/sendnewsletter', [NewsletterController::class, 'sendNewsletter']);
 Route::post('/addFile', [FileController::class, 'addFile']);
 
 //Detele a product
-Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
+Route::delete('/product/{id}/{lang}', [ModifyItem::class, 'destroy']);
 
 //Delete a product from InterestedAt
-Route::delete('/deleteProduct/{id}', [InterestedProductController::class, 'deleteInterestedAT']);
+Route::delete('/deleteProduct/{id}/{lang}', [InterestedProductController::class, 'deleteInterestedAT']);
 
 //Delete a product from InterestedInList
-Route::delete('/delete/{id}', [InterestedInListController::class, 'destroy']);
+Route::delete('/delete/{id}/{lang}', [InterestedInListController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ModifyItemRequest;
 use App\Interfaces\ModifyItemInterface;
+use Illuminate\Support\Facades\App;
 
 class ModifyItem extends Controller
 {
@@ -18,8 +19,10 @@ class ModifyItem extends Controller
         return response()->json($this->modifyItemInterface->modifyProduct($modifyItemRequest, $id), 200);
     }
 
-    public function destroy(ModifyItemInterface $modifyItemInterface, $id)
+    public function destroy(ModifyItemInterface $modifyItemInterface, $id, $language)
     {
-        return response()->json($this->modifyItemInterface->deleteProduct($id), 200);
+        $locale = config('app.available_locales');
+        App::setLocale($locale[$language]);
+        return response()->json($this->modifyItemInterface->deleteProduct($id, $language), 200);
     }
 }
