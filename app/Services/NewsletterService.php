@@ -5,7 +5,6 @@ use App\Http\Requests\NewsletterRequest;
 use App\Http\Requests\SendNewsletterRequest;
 use App\Models\Newsletters;
 use Illuminate\Database\QueryException;
-use Illuminate\Http\Request;
 use App\Jobs\NewsletterJob;
 
 class NewsletterService
