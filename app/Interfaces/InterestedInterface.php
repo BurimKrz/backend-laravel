@@ -7,6 +7,6 @@ use App\Models\InterestedIn;
 interface InterestedInterface
 {
     public function createInterestedIn(InterestedInRequest $interestedInRequest): InterestedIn;
-    public function delete($id);
+    public function delete($id, $language);
 
 }

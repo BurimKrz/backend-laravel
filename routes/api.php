@@ -94,7 +94,7 @@ Route::get('/CompanyList', [CompanyListController::class, 'companyList']);
 Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filterProductSubCategory']);
 
 //Filter company base on category
-Route::get('/filterCompany/{id}', [CompanyFilterController::class, 'filterCompany']);
+Route::get('/filterCompany/{id}/{lang}', [CompanyFilterController::class, 'filterCompany']);
 
 Route::get('/filterProduct/{id}', [FilterProductController::class, 'filterProductCategory']);
 
@@ -102,7 +102,7 @@ Route::get('/filterProduct/{id}', [FilterProductController::class, 'filterProduc
 Route::get('/interstedProduct/{id}', [InterestedProductController::class, 'interestedProduct']);
 
 //Notification for the buyer that is interested in a product
-Route::get('/Notify/{Oid}/{Pid}/{Uid}', [NotifyBuyerInterested::class, 'notify']);
+Route::get('/Notify/{Oid}/{Pid}/{Uid}/{lang}', [NotifyBuyerInterested::class, 'notify']);
 
 //Products people are interested in for company
 Route::get('/interstedIn/{id}', [InterestedInListController::class, 'interestedIn']);
@@ -111,7 +111,7 @@ Route::get('/interstedIn/{id}', [InterestedInListController::class, 'interestedI
 Route::get('/form/{id}', [MailFormController::class, 'mailForm']);
 
 //Get the the Notifications for the Owner
-Route::get('/Notify/{id}', [ListNotificationsController::class, 'findNotifications']);
+Route::get('/Notify/{id}/{lang}', [ListNotificationsController::class, 'findNotifications']);
 
 //
 Route::get('/corporate/{id}', [CorporateController::class, 'showCorporate']);
@@ -123,21 +123,21 @@ Route::get('/successStory', [SuccessStoriesController::class, 'successStories'])
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
 //Updating Token
-Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
+Route::put('/updateToken/{id}/{lang}', [TokenController::class, 'updateToken']);
 
 //Updating User Profile Data
-Route::put('/updateUser/{id}', [UpdateProfileUserController::class, 'update']);
+Route::put('/updateUser/{id}/{lang}', [UpdateProfileUserController::class, 'update']);
 
 //Forgot password
-Route::put('/password', [PasswordController::class, 'password']);
+Route::put('/password/{lang}', [PasswordController::class, 'password']);
 
-Route::put('/updateFile/{id}', [FileUpdateDeleteController::class, 'updateFile']);
+Route::put('/updateFile/{id}/{lang}', [FileUpdateDeleteController::class, 'updateFile']);
 
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
 
 //Login
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login/{language}', [AuthController::class, 'login']);
 
 //Logout
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
@@ -146,7 +146,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 Route::post('/company/{userId}', [CompanyController::class, 'company']);
 
 //Activity area for comapany
-Route::post('/activity', [ActivityController::class, 'activitycontroller']);
+Route::post('/activity/{lang}', [ActivityController::class, 'activitycontroller']);
 
 //Add a new product
 Route::post('/add', [AddProduct::class, 'AddProduct']);
@@ -166,10 +166,10 @@ Route::post('/interestedAt', [InterestedProductController::class, 'interestedAt'
 Route::post('/interestedIn', [InterestedInListController::class, 'interestedInProduct']);
 
 //Newsletter
-Route::post('/newsletter', [NewsletterController::class, 'addNewsletter']);
+Route::post('/newsletter/{lang}', [NewsletterController::class, 'addNewsletter']);
 
 //Admin can send newsletter
-Route::post('/sendnewsletter', [NewsletterController::class, 'sendNewsletter']);
+Route::post('/sendnewsletter/{lang}', [NewsletterController::class, 'sendNewsletter']);
 
 Route::post('/addFile', [FileController::class, 'addFile']);
 
@@ -180,21 +180,21 @@ Route::post('/searchCompany', [SearchController::class, 'companySearch']);
 Route::post('/searchProduct', [SearchController::class, 'productSearch']);
 
 //Send support email
-Route::post('/email', [EmailController::class, 'email']);
+Route::post('/email/{lang}', [EmailController::class, 'email']);
 
 //Add a success sotory
 Route::post('/successStory', [SuccessStoriesController::class, 'addSucessStories']);
 
 //Detele a product
-Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
+Route::delete('/product/{id}/{lang}', [ModifyItem::class, 'destroy']);
 
 //Delete a product from InterestedAt
-Route::delete('/deleteProduct/{id}', [InterestedProductController::class, 'deleteInterestedAT']);
+Route::delete('/deleteProduct/{id}/{lang}', [InterestedProductController::class, 'deleteInterestedAT']);
 
 //Delete a product from InterestedInList
-Route::delete('/delete/{id}', [InterestedInListController::class, 'destroy']);
+Route::delete('/delete/{id}/{lang}', [InterestedInListController::class, 'destroy']);
 
-Route::delete('/deleteFile/{id}', [FileUpdateDeleteController::class, 'deleteFile']);
+Route::delete('/deleteFile/{id}/{lang}', [FileUpdateDeleteController::class, 'deleteFile']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -10,7 +10,7 @@ use App\Models\User;
 
 class ForgotPasswordImplementation implements PasswordInterface{
 
-    public function resetPassword(ForgotPasswordRequest $forgotPassword)
+    public function resetPassword(ForgotPasswordRequest $forgotPassword, $language)
     {
         $email = $forgotPassword -> email;
         $newPassword = $forgotPassword -> newPassword;
@@ -19,17 +19,17 @@ class ForgotPasswordImplementation implements PasswordInterface{
         $user = User::where('email', $email)->first();
 
         if(!$user){
-            return 'This user does not exist';
+            return __('messages.userNotExist');
         }
 
         if(Hash::check($newPassword, $user->password)){
-            return 'New password must be different from the current password.';
+            return __('messages.newPass');
         }
         if ($newPassword == $confirmPassword){
             $user->password  = bcrypt($newPassword);
             $user->save();
 
-            return 'Password changed successfully';
+            return __('messages.pass');
         }
     }
 }

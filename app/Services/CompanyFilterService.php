@@ -7,13 +7,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CompanyFilterService
 {
-    public function companyFilter($id)
+    public function companyFilter($id, $language)
     {
 
         $companyCategory = CompanyCategory::find($id);
 
         if (!$companyCategory) {
-            return new JsonResponse(['message' => 'Not found']);
+            return new JsonResponse(['message' => __('messages.notFound')]);
         }
 
         $companies = Company::join('company_categories', 'company_categories.id', 'company.category_id')

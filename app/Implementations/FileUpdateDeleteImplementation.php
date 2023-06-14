@@ -9,7 +9,7 @@ use App\Models\FileHasType;
 
 class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
 {
-    public function updateFile(FileRequest $request, $id)
+    public function updateFile(FileRequest $request, $id, $language)
     {
         $fileDataArray = $request->input('files', []);
 
@@ -17,7 +17,7 @@ class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
             $file = File::find($id);
 
             if (!$file) {
-                return response()->json(['message' => 'File not found'], 404);
+                return response()->json(['message' => __('messages.fileUpdate')], 404);
             }
 
             $file->URL = $fileData['URL'];
@@ -25,9 +25,9 @@ class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
 
         }
 
-        return 'Files updated successfully';
+        return __('message.fileUpdateS');
     }
-    public function deleteFile($id)
+    public function deleteFile($id, $language)
     {
         $file = File::find($id);
 

@@ -3,7 +3,6 @@ namespace App\Services;
 
 use App\Http\Requests\FileRequest;
 use App\Models\File;
-use App\Models\FileHasProduct;
 
 class FileUpdateService
 {
@@ -15,7 +14,7 @@ class FileUpdateService
             $file = File::find($id);
 
             if (!$file) {
-                return response()->json(['message' => 'File not found'], 404);
+                return response()->json(['message' => __('messages.fileUpdate')], 404);
             }
 
             $file->URL = $fileData['URL'];
@@ -23,6 +22,6 @@ class FileUpdateService
 
         }
 
-        return response()->json(['message' => 'Files updated successfully'], 200);
+        return response()->json(['message' => __('messages.fileUpdateS')], 200);
     }
 }

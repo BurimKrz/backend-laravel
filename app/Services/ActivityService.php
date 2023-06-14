@@ -6,9 +6,8 @@ use App\Models\ActivityCompany;
 
 class ActivityService
 {
-    public function activity(ActivityRequest $activityRequest)
+    public function activity(ActivityRequest $activityRequest, $language)
     {
-
         $activityAreaId = strval($activityRequest->activity_area_id);
 
         $split = str_split($activityAreaId, 1);
@@ -19,7 +18,7 @@ class ActivityService
                 'company_id'       => 2,
             ]);
         }
-        return response()->json('ok');
+        return response()->json(__('messages.successfully'));
     }
 
 }

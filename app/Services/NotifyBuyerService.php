@@ -7,7 +7,7 @@ use App\Notifications\BuyerInterestedProduct;
 
 class NotifyBuyerService
 {
-    public function notifyBuyer($Oid, $Uid, $Pid)
+    public function notifyBuyer($Oid, $Uid, $Pid, $language)
     {
         $Owner   = User::find($Oid);
         $user    = User::find($Uid);
@@ -21,10 +21,10 @@ class NotifyBuyerService
             return response()->json($notificationData, 200);
         } else if (!$user) {
 
-            return response()->json(['error' => 'User not found'], 404);
+            return response()->json(['error' => __('messages.notFound')], 404);
         } else if (!$product) {
 
-            return response()->json(['error' => 'Product not found'], 404);
+            return response()->json(['error' => __('messages.notFound')], 404);
         }
     }
 }
