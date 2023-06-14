@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BuyerConfirmation extends Model
 {
+    
     use HasFactory;
 
     protected $table = 'buyer_confirm';

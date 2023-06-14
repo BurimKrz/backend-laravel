@@ -12,6 +12,7 @@ use App\Http\Controllers\CompanyListController;
 use App\Http\Controllers\CorporateController;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\FileUpdateDeleteController;
 use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ImportProduct;
 use App\Http\Controllers\InterestedInListController;
@@ -21,13 +22,18 @@ use App\Http\Controllers\MailFormController;
 use App\Http\Controllers\ModifyItem;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\NotifyBuyerInterested;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\testController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\SuccessStoriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -110,6 +116,9 @@ Route::get('/Notify/{id}', [ListNotificationsController::class, 'findNotificatio
 //
 Route::get('/corporate/{id}', [CorporateController::class, 'showCorporate']);
 
+//Show the success stories
+Route::get('/successStory', [SuccessStoriesController::class, 'successStories']);
+
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
@@ -118,6 +127,11 @@ Route::put('/updateToken/{id}', [TokenController::class, 'updateToken']);
 
 //Updating User Profile Data
 Route::put('/updateUser/{id}', [UpdateProfileUserController::class, 'update']);
+
+//Forgot password
+Route::put('/password', [PasswordController::class, 'password']);
+
+Route::put('/updateFile/{id}', [FileUpdateDeleteController::class, 'updateFile']);
 
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
@@ -154,9 +168,22 @@ Route::post('/interestedIn', [InterestedInListController::class, 'interestedInPr
 //Newsletter
 Route::post('/newsletter', [NewsletterController::class, 'addNewsletter']);
 
+//Admin can send newsletter
 Route::post('/sendnewsletter', [NewsletterController::class, 'sendNewsletter']);
 
 Route::post('/addFile', [FileController::class, 'addFile']);
+
+//Search for company
+Route::post('/searchCompany', [SearchController::class, 'companySearch']);
+
+//Search for product
+Route::post('/searchProduct', [SearchController::class, 'productSearch']);
+
+//Send support email
+Route::post('/email', [EmailController::class, 'email']);
+
+//Add a success sotory
+Route::post('/successStory', [SuccessStoriesController::class, 'addSucessStories']);
 
 //Detele a product
 Route::delete('/product/{id}/{lang}', [ModifyItem::class, 'destroy']);
@@ -167,9 +194,12 @@ Route::delete('/deleteProduct/{id}/{lang}', [InterestedProductController::class,
 //Delete a product from InterestedInList
 Route::delete('/delete/{id}/{lang}', [InterestedInListController::class, 'destroy']);
 
+Route::delete('/deleteFile/{id}', [FileUpdateDeleteController::class, 'deleteFile']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/img', [testController::class, 'test']);

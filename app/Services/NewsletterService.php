@@ -2,9 +2,11 @@
 namespace App\Services;
 
 use App\Http\Requests\NewsletterRequest;
+use App\Http\Requests\SendNewsletterRequest;
 use App\Models\Newsletters;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use App\Jobs\NewsletterJob;
 
 class NewsletterService
 {
@@ -28,18 +30,10 @@ class NewsletterService
         }
     }
 
-    public function newsletterSent(Request $request){
+    public function newsletterSent(SendNewsletterRequest $newsletter){
         {
+            dispatch(new NewsletterJob($newsletter->subject, $newsletter->message));
 
-            // $newsletterEmails = Newsletters::pluck('email')->all();
-            // $subject = $request->input('subject');
-            // $message = $request->input('message');
-    
-            // foreach ($newsletterEmails as $email) {
-            //     Mail::raw($message, function ($m) use ($email, $subject) {
-            //         $m->to($email)->subject($subject);
-            //     });
-            // }
             return response()->json(['message' => 'Newsletter sent successfully'], 200);
         }
     }
