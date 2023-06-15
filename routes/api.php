@@ -12,6 +12,7 @@ use App\Http\Controllers\CompanyListController;
 use App\Http\Controllers\CorporateController;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\FileGetDataController;
 use App\Http\Controllers\FileUpdateDeleteController;
 use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ImportProduct;
@@ -26,7 +27,6 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SellerController;
-use App\Http\Controllers\testController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateProfileUserController;
@@ -113,6 +113,10 @@ Route::get('/Notify/{id}', [ListNotificationsController::class, 'findNotificatio
 //
 Route::get('/corporate/{id}', [CorporateController::class, 'showCorporate']);
 
+Route::get('/allFiles', [FileGetDataController::class, 'showAllFiles']);
+
+Route::get('/indexFiles/{productId}', [FileGetDataController::class, 'showIndexFile']);
+
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
@@ -125,7 +129,7 @@ Route::put('/updateUser/{id}', [UpdateProfileUserController::class, 'update']);
 //Forgot password
 Route::put('/password', [PasswordController::class, 'password']);
 
-Route::put('/updateFile/{id}', [FileUpdateDeleteController::class, 'updateFile']);
+Route::post('/updateFile/{id}', [FileUpdateDeleteController::class, 'updateFile']);
 
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
@@ -189,4 +193,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/img', [testController::class, 'test']);

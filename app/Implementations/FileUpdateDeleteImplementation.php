@@ -3,36 +3,46 @@ namespace App\Implementations;
 
 use App\Http\Requests\FileRequest;
 use App\Interfaces\FileUpdateDeleteInterface;
-use App\Models\File;
 use App\Models\FileHasProduct;
 use App\Models\FileHasType;
+use App\Models\FileUpload;
+use Illuminate\Support\Facades\File;
 
 class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
 {
+
     public function updateFile(FileRequest $request, $id)
     {
-        $fileDataArray = $request->input('files', []);
+        $fileData = FileUpload::find($id);
 
-        foreach ($fileDataArray as $fileData) {
-            $file = File::find($id);
-
-            if (!$file) {
-                return response()->json(['message' => 'File not found'], 404);
-            }
-
-            $file->URL = $fileData['URL'];
-            $file->save();
-
+        if (!$fileData) {
+            return response()->json(['message' => 'File not found'], 404);
         }
 
-        return 'Files updated successfully';
+        $existingFilePath = public_path('storage/' . $fileData->URL);
+
+        File::delete($existingFilePath);
+
+        $filePath = $request->file('files')->store('pdf', 'public');
+
+        $fileData->URL = $filePath;
+        $fileData->save();
+
+        return 'File updated successfully';
+
     }
+
     public function deleteFile($id)
     {
-        $file = File::find($id);
+        $file = FileUpload::find($id);
 
         if (!$file) {
             return response()->json(['message' => 'File not found'], 404);
+        }
+
+        $filePath = public_path('storage/' . $file->URL);
+        if (File::exists($filePath)) {
+            File::delete($filePath);
         }
 
         FileHasProduct::where('file_id', $file->id)->delete();
@@ -42,6 +52,5 @@ class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
         $file->delete();
 
         return 'Data deleted successfully';
-
     }
 }

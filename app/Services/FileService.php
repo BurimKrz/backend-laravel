@@ -35,7 +35,6 @@ class FileService
             'file_id' => $file->id,
             'type_id' => $request->typeId,
         ]);
-
     }
     // private function processData($data)
 // {
