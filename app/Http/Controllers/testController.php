@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\File;
+use Illuminate\Support\Facades\File;
 
 class testController extends Controller
 {
     public function test()
     {
-        $data = File::all();
+        $files = File::allFiles(public_path('storage'));
 
-        return response()->json($data);
+        $fileUrls = [];
 
+        foreach ($files as $file) {
+            $url        = asset('storage/' . $file->getRelativePathname());
+            $fileUrls[] = $url;
+        }
+
+        return $fileUrls;
     }
 }

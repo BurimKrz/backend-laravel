@@ -12,15 +12,18 @@ class FileService
 {
     public function AddFile(FileRequest $request)
     {
-        error_log("hello");
+        // $storedData = Session::get('stored_data');
+
+        // if ($storedData) {
+        // $productId = $this->processData($storedData)
 
         $latestProduct      = Product::latest()->first();
         $lastKnownProductId = $latestProduct ? $latestProduct->id : null;
 
-        $test = $request->file('files')->store('pdf/', 'public');
+        $filePath = $request->file('files')->store('pdf', 'public');
 
         $file = FileUpload::create([
-            'URL' => $test,
+            'URL' => $filePath,
         ]);
 
         FileHasProduct::create([
@@ -34,4 +37,18 @@ class FileService
         ]);
 
     }
+    // private function processData($data)
+// {
+//     $processedData = [];
+
+//     foreach ($data as $item) {
+
+//         $processedItem = $item;
+
+//         $processedData[] = $processedItem;
+//     }
+
+//     return $processedData;
+// }
+// }
 }
