@@ -12,6 +12,7 @@ use App\Http\Controllers\CompanyListController;
 use App\Http\Controllers\CorporateController;
 use App\Http\Controllers\ExportProduct;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\FileGetDataController;
 use App\Http\Controllers\FileUpdateDeleteController;
 use App\Http\Controllers\FilterProductController;
 use App\Http\Controllers\ImportProduct;
@@ -25,8 +26,8 @@ use App\Http\Controllers\NotifyBuyerInterested;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SellerController;
-use App\Http\Controllers\testController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateProfileUserController;
@@ -119,6 +120,14 @@ Route::get('/corporate/{id}', [CorporateController::class, 'showCorporate']);
 //Show the success stories
 Route::get('/successStory', [SuccessStoriesController::class, 'successStories']);
 
+Route::get('/allFiles', [FileGetDataController::class, 'showAllFiles']);
+
+Route::get('/coverFiles/{productId}/{fileType}', [FileGetDataController::class, 'showCoverFile']);
+
+Route::get('/slideFiles/{productId}/{fileType}', [FileGetDataController::class, 'showSlideFile']);
+
+Route::get('/pdfFiles/{productId}/{fileType}', [FileGetDataController::class, 'showPdfFile']);
+
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);
 
@@ -131,7 +140,7 @@ Route::put('/updateUser/{id}/{lang}', [UpdateProfileUserController::class, 'upda
 //Forgot password
 Route::put('/password/{lang}', [PasswordController::class, 'password']);
 
-Route::put('/updateFile/{id}/{lang}', [FileUpdateDeleteController::class, 'updateFile']);
+Route::post('/updateFile/{id}', [FileUpdateDeleteController::class, 'updateFile']);
 
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
@@ -202,4 +211,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/img', [testController::class, 'test']);

@@ -3,36 +3,55 @@ namespace App\Implementations;
 
 use App\Http\Requests\FileRequest;
 use App\Interfaces\FileUpdateDeleteInterface;
-use App\Models\File;
 use App\Models\FileHasProduct;
 use App\Models\FileHasType;
+use App\Models\FileUpload;
+use Illuminate\Support\Facades\File;
 
 class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
 {
     public function updateFile(FileRequest $request, $id, $language)
     {
-        $fileDataArray = $request->input('files', []);
+        $fileData = FileUpload::find($id);
 
-        foreach ($fileDataArray as $fileData) {
-            $file = File::find($id);
-
-            if (!$file) {
-                return response()->json(['message' => __('messages.fileUpdate')], 404);
-            }
-
-            $file->URL = $fileData['URL'];
-            $file->save();
-
+        if (!$fileData) {
+            return response()->json(['message' => 'File not found'], 404);
         }
 
-        return __('message.fileUpdateS');
+        $existingFilePath = public_path('storage/' . $fileData->URL);
+        File::delete($existingFilePath);
+
+        $typeId        = $request->typeId;
+        $filePath      = '';
+        $fileExtension = $request->file('files')->getClientOriginalExtension();
+        $imgMimes      = ['jpg', 'png', 'jpeg'];
+
+        if ($typeId == 1 && in_array($fileExtension, $imgMimes)) {
+            $filePath = $request->file('files')->store('Images/cover', 'public');
+        } elseif ($typeId == 2 && in_array($fileExtension, $imgMimes)) {
+            $filePath = $request->file('files')->store('Images/slide', 'public');
+        } elseif ($typeId == 3 && $fileExtension === 'pdf') {
+            $filePath = $request->file('files')->store('Documents/pdf', 'public');
+        } else {
+            return response()->json(['error' => 'Invalid file type or type ID'], 400);
+        }
+
+        $fileData->URL = $filePath;
+        $fileData->save();
+
+        return response()->json(['message' => 'File updated successfully']);
     }
     public function deleteFile($id, $language)
     {
-        $file = File::find($id);
+        $file = FileUpload::find($id);
 
         if (!$file) {
             return response()->json(['message' => 'File not found'], 404);
+        }
+
+        $filePath = public_path('storage/' . $file->URL);
+        if (File::exists($filePath)) {
+            File::delete($filePath);
         }
 
         FileHasProduct::where('file_id', $file->id)->delete();
@@ -42,6 +61,5 @@ class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
         $file->delete();
 
         return 'Data deleted successfully';
-
     }
 }
