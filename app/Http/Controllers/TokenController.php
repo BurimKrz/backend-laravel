@@ -21,11 +21,9 @@ class TokenController extends Controller
         return response()->json($this->tokenService->showToken($id), 200);
     }
 
-    public function updateToken(TokenInterface $tokenInterface, TokenRequest $tokenRequest, $user_id, $language)
+    public function updateToken(TokenInterface $tokenInterface, TokenRequest $tokenRequest, $user_id, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return response()->json($this->tokenInterface->tokenUpdate($tokenRequest, $user_id, $language));
+        return response()->json($this->tokenInterface->tokenUpdate($tokenRequest, $user_id, $languageId));
     }
 
 }

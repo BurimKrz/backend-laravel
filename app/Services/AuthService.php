@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthService
 {
-    public function createAuth(AuthRequest $authRequest, $language)
+    public function createAuth(AuthRequest $authRequest, $languageId)
     {
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
 
         $credentials = $authRequest->validated();
 

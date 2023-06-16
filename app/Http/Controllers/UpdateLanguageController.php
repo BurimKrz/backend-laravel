@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ChangeLanguageService;
 use App\Services\UpdateLanguageService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class UpdateLanguageController extends Controller
 {

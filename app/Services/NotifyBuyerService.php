@@ -7,8 +7,11 @@ use App\Notifications\BuyerInterestedProduct;
 
 class NotifyBuyerService
 {
-    public function notifyBuyer($Oid, $Uid, $Pid, $language)
+    public function notifyBuyer($Oid, $Uid, $Pid, $languageId)
     {
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
+        
         $Owner   = User::find($Oid);
         $user    = User::find($Uid);
         $product = Product::find($Pid);

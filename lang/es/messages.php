@@ -19,7 +19,8 @@ return [
    'emailExist' => 'el Email ya existe',
    'emailWrong' => 'Algo salió mal',
    'newsletter' => 'Boletín enviado con éxito',
-
+   'currentLanguage' => 'Ya estás usando este lenguaje.',
+   'updateL' => 'Idioma actualizado.',
 
 
 ];

@@ -13,10 +13,8 @@ class ListNotificationsController extends Controller
     {
         $this->notificationService = $notificationService;
     }
-    public function findNotifications(NotificationService $notificationService, $id, $language)
+    public function findNotifications(NotificationService $notificationService, $id, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return response()->json($this->notificationService->notification($id, $language), 200);
+        return response()->json($this->notificationService->notification($id, $languageId), 200);
     }
 }

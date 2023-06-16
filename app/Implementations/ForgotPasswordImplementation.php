@@ -2,6 +2,7 @@
 
 namespace App\Implementations;
 
+use App\Services\ChangeLanguageService;
 use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\ForgotPasswordRequest;
@@ -10,8 +11,11 @@ use App\Models\User;
 
 class ForgotPasswordImplementation implements PasswordInterface{
 
-    public function resetPassword(ForgotPasswordRequest $forgotPassword, $language)
+    public function resetPassword(ForgotPasswordRequest $forgotPassword, $languageId)
     {
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
+        
         $email = $forgotPassword -> email;
         $newPassword = $forgotPassword -> newPassword;
         $confirmPassword = $forgotPassword -> confirmPassword;

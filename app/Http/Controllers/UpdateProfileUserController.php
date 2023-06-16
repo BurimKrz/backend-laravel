@@ -13,11 +13,9 @@ class UpdateProfileUserController extends Controller
     public function __construct(UpdateProfileUserInterface $updateProfileUserInterface){
         $this->updateProfileUserInterface = $updateProfileUserInterface;
     }
-    public function update(UpdateProfileUserRequest $updateProfileUserRequest, $id, $language)
+    public function update(UpdateProfileUserRequest $updateProfileUserRequest, $id, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
         return response()->json($this->updateProfileUserInterface
-        ->updateProfileUser($updateProfileUserRequest, $id, $language));
+        ->updateProfileUser($updateProfileUserRequest, $id, $languageId));
     }
 }

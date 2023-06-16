@@ -13,16 +13,12 @@ class FileUpdateDeleteController extends Controller
     {
         $this->fileUpdateDeleteInterface = $fileUpdateDeleteInterface;
     }
-    public function updateFile(FileRequest $request, $id, $language)
+    public function updateFile(FileRequest $request, $id, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return response()->json($this->fileUpdateDeleteInterface->updateFile($request, $id, $language), 200);
+        return response()->json($this->fileUpdateDeleteInterface->updateFile($request, $id, $languageId), 200);
     }
-    public function deleteFile($id, $language)
+    public function deleteFile($id, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return response()->json($this->fileUpdateDeleteInterface->deleteFile($id, $language), 200);
+        return response()->json($this->fileUpdateDeleteInterface->deleteFile($id, $languageId), 200);
     }
 }

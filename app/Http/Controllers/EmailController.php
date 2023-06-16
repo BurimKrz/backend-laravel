@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\SendEmailJob;
+use App\Services\ChangeLanguageService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
 class EmailController extends Controller
 {
-    public function email(Request $request, $language)
+    public function email(Request $request, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
         $validatedData = $request->validate([
             'name'    => 'required',
             'email'   => 'required|email',

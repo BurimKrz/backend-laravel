@@ -20,11 +20,9 @@ class InterestedInListController extends Controller
         return response()->json($this->interestedInService->showInterestedIn($id), 200);
     }
 
-    public function destroy(InterestedInterface $interestedInterface, $id, $language)
+    public function destroy(InterestedInterface $interestedInterface, $id, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return response()->json($this->interestedInterface->delete($id, $language), 200);
+        return response()->json($this->interestedInterface->delete($id, $languageId), 200);
     }
 
 }

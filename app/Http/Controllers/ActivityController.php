@@ -15,11 +15,8 @@ class ActivityController extends Controller
     public function __construct(ActivityService $acticityService){
         $this->acticityService = $acticityService;
     }
-    public function activitycontroller(ActivityRequest $activityRequest, $language)
-    {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        
-        return response()->json($this->acticityService->activity($activityRequest, $language));
+    public function activitycontroller(ActivityRequest $activityRequest, $languageId)
+    {        
+        return response()->json($this->acticityService->activity($activityRequest, $languageId));
     }
 }

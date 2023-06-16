@@ -20,7 +20,7 @@ class InterestedInImplementation implements InterestedInterface
 
     }
 
-    public function delete($id, $language)
+    public function delete($id, $languageId)
     {
         $product = InterestedIn::findOrFail($id);
         $product->delete();

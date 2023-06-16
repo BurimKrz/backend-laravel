@@ -6,11 +6,16 @@ use App\Interfaces\FileUpdateDeleteInterface;
 use App\Models\File;
 use App\Models\FileHasProduct;
 use App\Models\FileHasType;
+use App\Services\ChangeLanguageService;
 
 class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
 {
-    public function updateFile(FileRequest $request, $id, $language)
+
+    public function updateFile(FileRequest $request, $id, $languageId)
     {
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
+        
         $fileDataArray = $request->input('files', []);
 
         foreach ($fileDataArray as $fileData) {
@@ -27,12 +32,14 @@ class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
 
         return __('message.fileUpdateS');
     }
-    public function deleteFile($id, $language)
+    public function deleteFile($id, $languageId)
     {
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
         $file = File::find($id);
 
         if (!$file) {
-            return response()->json(['message' => 'File not found'], 404);
+            return response()->json(['message' =>  __('messages.notFound')], 404);
         }
 
         FileHasProduct::where('file_id', $file->id)->delete();

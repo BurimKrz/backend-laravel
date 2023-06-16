@@ -18,7 +18,7 @@ return[
     'emailExist' => 'Emaili ekziston',
     'emailWrong' => 'Dicka shkoi keq',
     'newsletter' => 'Buletini u dërgua me sukses',
-
-
+    'currentLanguage' => 'Ju tashmë po e përdorni këtë gjuhë.',
+    'updateL' => 'Gjuha e përditësuar.',
 
 ];

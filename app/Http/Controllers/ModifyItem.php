@@ -19,10 +19,8 @@ class ModifyItem extends Controller
         return response()->json($this->modifyItemInterface->modifyProduct($modifyItemRequest, $id), 200);
     }
 
-    public function destroy(ModifyItemInterface $modifyItemInterface, $id, $language)
+    public function destroy(ModifyItemInterface $modifyItemInterface, $id, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return response()->json($this->modifyItemInterface->deleteProduct($id, $language), 200);
+        return response()->json($this->modifyItemInterface->deleteProduct($id, $languageId), 200);
     }
 }
