@@ -6,7 +6,6 @@ use App\Http\Requests\FileRequest;
 use App\Models\FileHasProduct;
 use App\Models\FileHasType;
 use App\Models\FileUpload;
-use App\Models\Product;
 
 class FileService
 {
@@ -17,10 +16,22 @@ class FileService
         // if ($storedData) {
         // $productId = $this->processData($storedData)
 
-        $latestProduct      = Product::latest()->first();
-        $lastKnownProductId = $latestProduct ? $latestProduct->id : null;
+        // $latestProduct      = Product::latest()->first();
+        // $lastKnownProductId = $latestProduct ? $latestProduct->id : null;
 
-        $filePath = $request->file('files')->store('pdf', 'public');
+        $typeId        = $request->typeId;
+        $filePath      = '';
+        $fileExtension = $request->file('files')->getClientOriginalExtension();
+        $imgMimes      = ['jpg', 'png', 'jpeg'];
+        if ($typeId == 1 && in_array($fileExtension, $imgMimes)) {
+            $filePath = $request->file('files')->store('Images/cover', 'public');
+        } elseif ($typeId == 2 && in_array($fileExtension, $imgMimes)) {
+            $filePath = $request->file('files')->store('Images/slide', 'public');
+        } elseif ($typeId == 3 && $fileExtension === 'pdf') {
+            $filePath = $request->file('files')->store('Documents/pdf', 'public');
+        } else {
+            return response()->json(['error' => 'Invalid file type or type ID'], 400);
+        }
 
         $file = FileUpload::create([
             'URL' => $filePath,
@@ -28,7 +39,7 @@ class FileService
 
         FileHasProduct::create([
             'file_id'    => $file->id,
-            'product_id' => $lastKnownProductId,
+            'product_id' => 4,
         ]);
 
         FileHasType::create([

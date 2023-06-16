@@ -15,8 +15,17 @@ class FileGetDataController extends Controller
     {
         return response()->json($this->fileGetDataInterface->showAllFiles(), 200);
     }
-    public function showIndexFile($productId)
+    public function showCoverFile($productId, $fileType)
     {
-        return response()->json($this->fileGetDataInterface->showIndexFile($productId), 200);
+        return response()->json($this->fileGetDataInterface->showCoverFile($productId, $fileType), 200);
+    }
+
+    public function showSlideFile($productId, $fileType)
+    {
+        return response()->json($this->fileGetDataInterface->showSlideFile($productId, $fileType), 200);
+    }
+    public function showPdfFile($productId, $fileType)
+    {
+        return response()->json($this->fileGetDataInterface->showPdfFile($productId, $fileType), 200);
     }
 }

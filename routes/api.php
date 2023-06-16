@@ -115,7 +115,11 @@ Route::get('/corporate/{id}', [CorporateController::class, 'showCorporate']);
 
 Route::get('/allFiles', [FileGetDataController::class, 'showAllFiles']);
 
-Route::get('/indexFiles/{productId}', [FileGetDataController::class, 'showIndexFile']);
+Route::get('/coverFiles/{productId}/{fileType}', [FileGetDataController::class, 'showCoverFile']);
+
+Route::get('/slideFiles/{productId}/{fileType}', [FileGetDataController::class, 'showSlideFile']);
+
+Route::get('/pdfFiles/{productId}/{fileType}', [FileGetDataController::class, 'showPdfFile']);
 
 //Update product
 Route::put('/product/{id}', [ModifyItem::class, 'update']);

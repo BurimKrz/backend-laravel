@@ -22,7 +22,15 @@ class FileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'files' => 'max:5000',
+            'files'  => 'required|mimes:pdf,jpg,png,jpeg|max:5120',
+            'typeId' => 'required',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'files.mimes' => 'Invalid file type. Allowed file types: pdf, jpg, png, jpeg',
         ];
     }
 }
