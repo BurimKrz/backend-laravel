@@ -29,6 +29,7 @@ use App\Http\Controllers\SellerController;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TradeController;
+use App\Http\Controllers\UpdateLanguageController;
 use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\SearchController;
@@ -132,6 +133,9 @@ Route::put('/updateUser/{id}/{lang}', [UpdateProfileUserController::class, 'upda
 Route::put('/password/{lang}', [PasswordController::class, 'password']);
 
 Route::put('/updateFile/{id}/{lang}', [FileUpdateDeleteController::class, 'updateFile']);
+
+//Update Language
+Route::get('/updateLanguage/{userId}/{languageId}', [UpdateLanguageController::class, 'updateLanguage']);
 
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);

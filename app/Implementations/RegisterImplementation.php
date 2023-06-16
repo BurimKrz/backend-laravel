@@ -6,12 +6,13 @@ use App\Http\Requests\UsersTokenRequest;
 use App\Interfaces\RegisterInterface;
 use App\Models\Token;
 use App\Models\User;
+use App\Models\UserLanguage;
 use App\Models\UsersToken;
 
 class RegisterImplementation implements RegisterInterface
 {
 
-    public function userRegister(RegisterRequest $registerRequest, UsersTokenRequest $usersTokenRequest):User
+    public function userRegister(RegisterRequest $registerRequest, UsersTokenRequest $usersTokenRequest): User
     {
         $user = User::create([
             'name'         => $registerRequest->name,
@@ -31,6 +32,10 @@ class RegisterImplementation implements RegisterInterface
             UsersToken::create([
                 'user_id'  => $user->id,
                 'token_id' => $token->id,
+            ]);
+            UserLanguage::create([
+                'user_id'     => $user->id,
+                'language_id' => 1,
             ]);
         }
 
