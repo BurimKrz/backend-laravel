@@ -22,8 +22,8 @@ class FileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'files'  => 'required|mimes:pdf,jpg,png,jpeg|max:5120',
-            'typeId' => 'required',
+            'files.*.file'   => 'required|file',
+            'files.*.typeId' => 'required|numeric',
         ];
     }
 

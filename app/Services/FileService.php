@@ -19,33 +19,38 @@ class FileService
         // $latestProduct      = Product::latest()->first();
         // $lastKnownProductId = $latestProduct ? $latestProduct->id : null;
 
-        $typeId        = $request->typeId;
-        $filePath      = '';
-        $fileExtension = $request->file('files')->getClientOriginalExtension();
-        $imgMimes      = ['jpg', 'png', 'jpeg'];
-        if ($typeId == 1 && in_array($fileExtension, $imgMimes)) {
-            $filePath = $request->file('files')->store('Images/cover', 'public');
-        } elseif ($typeId == 2 && in_array($fileExtension, $imgMimes)) {
-            $filePath = $request->file('files')->store('Images/slide', 'public');
-        } elseif ($typeId == 3 && $fileExtension === 'pdf') {
-            $filePath = $request->file('files')->store('Documents/pdf', 'public');
-        } else {
-            return response()->json(['error' => 'Invalid file type or type ID'], 400);
+        $files = $request->file('files');
+
+        foreach ($files as $key => $file) {
+            $typeId        = $request->input('typeId')[$key];
+            $filePath      = '';
+            $fileExtension = $file->getClientOriginalExtension();
+            $imgMimes      = ['jpg', 'png', 'jpeg'];
+
+            if ($typeId == 1 && in_array($fileExtension, $imgMimes)) {
+                $filePath = $file->store('Images/cover', 'public');
+            } elseif ($typeId == 2 && in_array($fileExtension, $imgMimes)) {
+                $filePath = $file->store('Images/slide', 'public');
+            } elseif ($typeId == 3 && $fileExtension === 'pdf') {
+                $filePath = $file->store('Documents/pdf', 'public');
+            } else {
+                return response()->json(['error' => 'Invalid file type or type ID'], 400);
+            }
+
+            $uploadedFile = FileUpload::create([
+                'URL' => $filePath,
+            ]);
+
+            FileHasProduct::create([
+                'file_id'    => $uploadedFile->id,
+                'product_id' => 4,
+            ]);
+
+            FileHasType::create([
+                'file_id' => $uploadedFile->id,
+                'type_id' => $typeId,
+            ]);
         }
-
-        $file = FileUpload::create([
-            'URL' => $filePath,
-        ]);
-
-        FileHasProduct::create([
-            'file_id'    => $file->id,
-            'product_id' => 4,
-        ]);
-
-        FileHasType::create([
-            'file_id' => $file->id,
-            'type_id' => $request->typeId,
-        ]);
     }
     // private function processData($data)
 // {
