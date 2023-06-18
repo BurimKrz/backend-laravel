@@ -22,24 +22,7 @@ class FileGetDataImplementation implements FileGetDataInterface
         return $fileUrls;
     }
 
-    public function showCoverFile($productId, $fileType)
-    {
-        $file = FileUpload::join('file_has_product', 'file.id', '=', 'file_has_product.file_id')
-            ->join('product', 'product.id', '=', 'file_has_product.product_id')
-            ->join('file_has_types', 'file.id', '=', 'file_has_types.file_id')
-            ->join('file_type', 'file_type.id', '=', 'file_has_types.type_id')
-            ->where('product.id', $productId)
-            ->where('file_type.id', $fileType)
-            ->first(['file.URL']);
-
-        if ($file) {
-            $url = asset('storage/' . $file->URL);
-            return $url;
-        } else {
-            return "File not found";
-        }
-    }
-    public function showSlideFile($productId, $fileType)
+    public function showIndexFile($productId, $fileType)
     {
         $files = FileUpload::join('file_has_product', 'file.id', '=', 'file_has_product.file_id')
             ->join('product', 'product.id', '=', 'file_has_product.product_id')
@@ -58,23 +41,5 @@ class FileGetDataImplementation implements FileGetDataInterface
         });
 
         return $urls;
-    }
-    public function showPdfFile($productId, $fileType)
-    {
-        $file = FileUpload::join('file_has_product', 'file.id', '=', 'file_has_product.file_id')
-            ->join('product', 'product.id', '=', 'file_has_product.product_id')
-            ->join('file_has_types', 'file.id', '=', 'file_has_types.file_id')
-            ->join('file_type', 'file_type.id', '=', 'file_has_types.type_id')
-            ->where('product.id', $productId)
-            ->where('file_type.id', $fileType)
-            ->first(['file.URL']);
-
-        if ($file) {
-            $url = asset('storage/' . $file->URL);
-            return $url;
-        } else {
-            return "File not found";
-
-        }
     }
 }
