@@ -15,10 +15,9 @@ use App\Implementations\ModifyItemImplementation;
 use App\Implementations\ProductImplementation;
 use App\Implementations\RegisterImplementation;
 use App\Implementations\SellerImplementation;
+use App\Implementations\SuccessStoriesImplementation;
 use App\Implementations\TokenImplementation;
 use App\Implementations\UpdateProfileUserImplementation;
-use App\Implementations\ForgotPasswordImplementation;
-use App\Implementations\SuccessStoriesImplementation;
 use App\Interfaces\BuyerInterface;
 use App\Interfaces\CategoryInterface;
 use App\Interfaces\CompanyInterface;
@@ -32,10 +31,9 @@ use App\Interfaces\PasswordInterface;
 use App\Interfaces\ProductInterface;
 use App\Interfaces\RegisterInterface;
 use App\Interfaces\SellerInterface;
+use App\Interfaces\SuccessStoriesInterface;
 use App\Interfaces\TokenInterface;
 use App\Interfaces\UpdateProfileUserInterface;
-use App\Interfaces\PasswordInterface;
-use App\Interfaces\SuccessStoriesInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
