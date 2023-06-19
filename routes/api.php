@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyFilterController;
 use App\Http\Controllers\CompanyListController;
+// use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\CorporateController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ExportProduct;
@@ -30,7 +31,6 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\SuccessStoriesController;
 use App\Http\Controllers\TokenController;
-use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateLanguageController;
 use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
@@ -123,19 +123,8 @@ Route::get('/allFiles', [FileGetDataController::class, 'showAllFiles']);
 
 Route::get('/showFiles/{productId}/{fileType}', [FileGetDataController::class, 'showIndexFile']);
 
-//Update product
-Route::put('/product/{id}', [ModifyItem::class, 'update']);
-
-//Updating Token
-Route::put('/updateToken/{id}/{lang}', [TokenController::class, 'updateToken']);
-
-//Updating User Profile Data
-Route::put('/updateUser/{id}/{lang}', [UpdateProfileUserController::class, 'update']);
-
 //Forgot password
 Route::put('/password/{lang}', [PasswordController::class, 'password']);
-
-Route::post('/updateFile/{Fid}/{Lid}', [FileUpdateDeleteController::class, 'updateFile']);
 
 //Update Language
 Route::get('/updateLanguage/{userId}/{languageId}', [UpdateLanguageController::class, 'updateLanguage']);
@@ -143,65 +132,78 @@ Route::get('/updateLanguage/{userId}/{languageId}', [UpdateLanguageController::c
 //Register a new user
 Route::post('/register', [RegisterController::class, 'register']);
 
-//Login
-Route::post('/login/{language}', [AuthController::class, 'login']);
-
-//Logout
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-
-//Create a new company
-Route::post('/company/{userId}', [CompanyController::class, 'company']);
-
-//Activity area for comapany
-Route::post('/activity/{lang}', [ActivityController::class, 'activitycontroller']);
-
-//Add a new product
-Route::post('/add', [AddProduct::class, 'AddProduct']);
-
-//Confiramtion from an user for buying a product
-Route::post('/buyConfirmed', [BuyerController::class, 'buyerConfirmation']);
-
-//Confiramtion from an owner for selling a product
-Route::post('/sellConfirm', [SellerController::class, 'sellConfirmation']);
-
-//Trede a product confimation
-Route::post('/trade', [TradeController::class, 'store']);
-
-//Add a product at interested list
-Route::post('/interestedAt', [InterestedProductController::class, 'interestedAt']);
-
-Route::post('/interestedIn', [InterestedInListController::class, 'interestedInProduct']);
-
-//Newsletter
-Route::post('/newsletter/{lang}', [NewsletterController::class, 'addNewsletter']);
-
-//Admin can send newsletter
-Route::post('/sendnewsletter/{lang}', [NewsletterController::class, 'sendNewsletter']);
-
-Route::post('/addFile', [FileController::class, 'addFile']);
-
 //Search for company
 Route::post('/searchCompany', [SearchController::class, 'companySearch']);
 
 //Search for product
 Route::post('/searchProduct', [SearchController::class, 'productSearch']);
 
+//protected routes
+Route::middleware('auth:sanctum')->group(function () {
+
+//Update product
+    Route::put('/product/{id}', [ModifyItem::class, 'update']);
+
+//Updating Token
+    Route::put('/updateToken/{id}/{lang}', [TokenController::class, 'updateToken']);
+
+//Updating User Profile Data
+    Route::put('/updateUser/{id}/{lang}', [UpdateProfileUserController::class, 'update']);
+
+    Route::post('/updateFile/{id}', [FileUpdateDeleteController::class, 'updateFile']);
+//Login
+    Route::post('/login/{language}', [AuthController::class, 'login']);
+
+//Logout
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+//Create a new company
+    Route::post('/company/{userId}', [CompanyController::class, 'company']);
+
+//Activity area for comapany
+    Route::post('/activity/{lang}', [ActivityController::class, 'activitycontroller']);
+
+//Add a new product
+    Route::post('/add', [AddProduct::class, 'AddProduct']);
+
+//Confiramtion from an user for buying a product
+    Route::post('/buyConfirmed', [BuyerController::class, 'buyerConfirmation']);
+
+//Confiramtion from an owner for selling a product
+    Route::post('/sellConfirm', [SellerController::class, 'sellConfirmation']);
+
+//Add a product at interested list
+    Route::post('/interestedAt', [InterestedProductController::class, 'interestedAt']);
+
+    Route::post('/interestedIn', [InterestedInListController::class, 'interestedInProduct']);
+
+//Newsletter
+    Route::post('/newsletter/{lang}', [NewsletterController::class, 'addNewsletter']);
+
+//Admin can send newsletter
+    Route::post('/sendnewsletter/{lang}', [NewsletterController::class, 'sendNewsletter']);
+
+    Route::post('/addFile', [FileController::class, 'addFile']);
+
 //Send support email
-Route::post('/email/{lang}', [EmailController::class, 'email']);
+    Route::post('/email/{lang}', [EmailController::class, 'email']);
 
 //Add a success sotory
-Route::post('/successStory', [SuccessStoriesController::class, 'addSucessStories']);
+    Route::post('/successStory', [SuccessStoriesController::class, 'addSucessStories']);
 
 //Detele a product
-Route::delete('/product/{id}/{lang}', [ModifyItem::class, 'destroy']);
+    Route::delete('/product/{id}/{lang}', [ModifyItem::class, 'destroy']);
 
 //Delete a product from InterestedAt
-Route::delete('/deleteProduct/{id}/{lang}', [InterestedProductController::class, 'deleteInterestedAT']);
+    Route::delete('/deleteProduct/{id}/{lang}', [InterestedProductController::class, 'deleteInterestedAT']);
 
 //Delete a product from InterestedInList
-Route::delete('/delete/{id}/{langId}', [InterestedInListController::class, 'destroy']);
+    Route::delete('/delete/{id}/{lang}', [InterestedInListController::class, 'destroy']);
 
-Route::delete('/deleteFile/{id}/{langId}', [FileUpdateDeleteController::class, 'deleteFile']);
+    Route::delete('/deleteFile/{id}/{lang}', [FileUpdateDeleteController::class, 'deleteFile']);
+
+});
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
