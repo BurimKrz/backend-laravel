@@ -1,5 +1,6 @@
 <?php
 namespace App\Services;
+use App\Services\ChangeLanguageService;
 use Illuminate\Support\Facades\DB;
 
 class NotificationService

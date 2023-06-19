@@ -3,6 +3,7 @@ namespace App\Services;
 
 use App\Models\Company;
 use App\Models\CompanyCategory;
+use App\Services\ChangeLanguageService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CompanyFilterService

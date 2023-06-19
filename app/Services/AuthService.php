@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Http\Requests\AuthRequest;
+use App\Services\ChangeLanguageService;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
