@@ -20,7 +20,9 @@ return[
     'newsletter' => 'Buletini u dërgua me sukses',
     'currentLanguage' => 'Ju tashmë po e përdorni këtë gjuhë.',
     'updateL' => 'Gjuha e përditësuar.',
-    'deleted' => 'Të dhënat u fshinë me sukses', 
+    'deleted' => 'Të dhënat u fshinë me sukses',
+    'errorFile' => 'Lloj i pavlefshëm skedari ose lloj ID',
+    'FileUploaded' => 'Skedarët u ngarkuan me sukses'
 
 
 ];

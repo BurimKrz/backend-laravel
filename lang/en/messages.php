@@ -21,6 +21,8 @@ return[
     'currentLanguage' => 'You already are using this language.',
     'updateL' => 'Language updated.',
     'deleted' => 'Data deleted successfully', 
+    'errorFile' => 'Invalid file type or type ID',
+    'FileUploaded' => 'Files Uploaded successfully',
    
 
 

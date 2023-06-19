@@ -31,7 +31,7 @@ class FileService
             } elseif ($typeId == 3 && $fileExtension === 'pdf') {
                 $filePath = $file->store('Documents/pdf', 'public');
             } else {
-                return response()->json(['error' => 'Invalid file type or type ID'], 400);
+                return response()->json(['error' => __('messages.errorFile')], 400);
             }
 
             $uploadedFile = FileUpload::create([
@@ -48,7 +48,7 @@ class FileService
                 'type_id' => $typeId,
             ]);
         }
-        return response()->json(['message' => 'Files Uploaded successfully'], 201);
+        return response()->json(['message' => __('messages.FileUploaded')], 201);
     }
     // private function processData($data)
 // {
