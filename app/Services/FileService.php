@@ -48,6 +48,7 @@ class FileService
                 'type_id' => $typeId,
             ]);
         }
+        return response()->json(['message' => 'Files Uploaded successfully'], 201);
     }
     // private function processData($data)
 // {
