@@ -21,6 +21,10 @@ return [
    'newsletter' => 'Boletín enviado con éxito',
    'currentLanguage' => 'Ya estás usando este lenguaje.',
    'updateL' => 'Idioma actualizado.',
+   'deleted' => 'Datos eliminados con éxito', 
+   'errorFile' => 'Tipo de archivo o ID de tipo no válido',
+   'FileUploaded' => 'Archivos subidos con éxito',
+
 
 
 ];

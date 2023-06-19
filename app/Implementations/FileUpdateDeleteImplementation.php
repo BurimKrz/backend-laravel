@@ -19,7 +19,7 @@ class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
         $changeLanguage->changeLanguage($languageId);
 
         if (!$fileData) {
-            return response()->json(['message' => 'File not found'], 404);
+            return response()->json(['message' => __('messages.fileUpdate')], 404);
         }
 
         $existingFilePath = public_path('storage/' . $fileData->URL);
@@ -37,13 +37,13 @@ class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
         } elseif ($typeId == 3 && $fileExtension === 'pdf') {
             $filePath = $request->file('files')->store('Documents/pdf', 'public');
         } else {
-            return response()->json(['error' => 'Invalid file type or type ID'], 400);
+            return response()->json(['error' => __('messages.errorFile')], 400);
         }
 
         $fileData->URL = $filePath;
         $fileData->save();
 
-        return response()->json(['message' => 'File updated successfully']);
+        return response()->json(['message' => __('messages.fileUpdateS')]);
     }
     public function deleteFile($id, $languageId)
     {
@@ -66,6 +66,6 @@ class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
 
         $file->delete();
 
-        return 'Data deleted successfully';
+        return __('messages.deleted');
     }
 }
