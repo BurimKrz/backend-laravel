@@ -8,7 +8,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyFilterController;
 use App\Http\Controllers\CompanyListController;
-// use Tests\Feature\Auth\RegistrationTest;
 use App\Http\Controllers\CorporateController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ExportProduct;

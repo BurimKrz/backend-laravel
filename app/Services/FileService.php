@@ -16,9 +16,6 @@ class FileService
         // if ($storedData) {
         // $productId = $this->processData($storedData)
 
-        // $latestProduct      = Product::latest()->first();
-        // $lastKnownProductId = $latestProduct ? $latestProduct->id : null;
-
         $files = $request->file('files');
 
         foreach ($files as $key => $file) {
