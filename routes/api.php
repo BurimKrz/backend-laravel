@@ -135,7 +135,7 @@ Route::put('/updateUser/{id}/{lang}', [UpdateProfileUserController::class, 'upda
 //Forgot password
 Route::put('/password/{lang}', [PasswordController::class, 'password']);
 
-Route::post('/updateFile/{id}', [FileUpdateDeleteController::class, 'updateFile']);
+Route::post('/updateFile/{Fid}/{Lid}', [FileUpdateDeleteController::class, 'updateFile']);
 
 //Update Language
 Route::get('/updateLanguage/{userId}/{languageId}', [UpdateLanguageController::class, 'updateLanguage']);
@@ -199,9 +199,9 @@ Route::delete('/product/{id}/{lang}', [ModifyItem::class, 'destroy']);
 Route::delete('/deleteProduct/{id}/{lang}', [InterestedProductController::class, 'deleteInterestedAT']);
 
 //Delete a product from InterestedInList
-Route::delete('/delete/{id}/{lang}', [InterestedInListController::class, 'destroy']);
+Route::delete('/delete/{id}/{langId}', [InterestedInListController::class, 'destroy']);
 
-Route::delete('/deleteFile/{id}/{lang}', [FileUpdateDeleteController::class, 'deleteFile']);
+Route::delete('/deleteFile/{id}/{langId}', [FileUpdateDeleteController::class, 'deleteFile']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

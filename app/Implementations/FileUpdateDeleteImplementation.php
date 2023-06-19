@@ -6,19 +6,17 @@ use App\Interfaces\FileUpdateDeleteInterface;
 use App\Models\FileHasProduct;
 use App\Models\FileHasType;
 use App\Models\FileUpload;
-use Illuminate\Support\Facades\File;
 use App\Services\ChangeLanguageService;
+use Illuminate\Support\Facades\File;
 
 class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
 {
 
     public function updateFile(FileRequest $request, $id, $languageId)
     {
-        $fileData = FileUpload::find($id);
+        $fileData       = FileUpload::find($id);
         $changeLanguage = new ChangeLanguageService;
         $changeLanguage->changeLanguage($languageId);
-        
-        $fileDataArray = $request->input('files', []);
 
         if (!$fileData) {
             return response()->json(['message' => 'File not found'], 404);
@@ -49,18 +47,12 @@ class FileUpdateDeleteImplementation implements FileUpdateDeleteInterface
     }
     public function deleteFile($id, $languageId)
     {
-        $file = FileUpload::find($id);
+        $file           = FileUpload::find($id);
         $changeLanguage = new ChangeLanguageService;
         $changeLanguage->changeLanguage($languageId);
-        $file = File::find($id);
 
         if (!$file) {
-            return response()->json(['message' =>  __('messages.notFound')], 404);
-        }
-
-        $filePath = public_path('storage/' . $file->URL);
-        if (File::exists($filePath)) {
-            File::delete($filePath);
+            return response()->json(['message' => __('messages.notFound')], 404);
         }
 
         $filePath = public_path('storage/' . $file->URL);
