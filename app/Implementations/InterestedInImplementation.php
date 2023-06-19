@@ -20,10 +20,10 @@ class InterestedInImplementation implements InterestedInterface
 
     }
 
-    public function delete($id)
+    public function delete($id, $languageId)
     {
         $product = InterestedIn::findOrFail($id);
         $product->delete();
-        return "Product deleted from list";
+        return __('messages.delete');
     }
 }

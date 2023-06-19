@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ActivityRequest;
 
 use App\Services\ActivityService;
+use Illuminate\Support\Facades\App;
 
 
 class ActivityController extends Controller
@@ -14,8 +15,8 @@ class ActivityController extends Controller
     public function __construct(ActivityService $acticityService){
         $this->acticityService = $acticityService;
     }
-    public function activitycontroller(ActivityRequest $activityRequest)
-    {
-        return response()->json($this->acticityService->activity($activityRequest));
+    public function activitycontroller(ActivityRequest $activityRequest, $languageId)
+    {        
+        return response()->json($this->acticityService->activity($activityRequest, $languageId));
     }
 }

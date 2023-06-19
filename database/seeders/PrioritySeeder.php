@@ -21,7 +21,9 @@ class PrioritySeeder extends Seeder
             AdminSeeder::class,
             CountrySeeder::class,
             FileTypeSeeder::class,
+            LanguageSeeder::class,
             DatabaseSeeder::class,
+            
         ]);
     }
 }

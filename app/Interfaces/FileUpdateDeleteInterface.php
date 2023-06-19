@@ -7,6 +7,6 @@ use App\Http\Requests\FileRequest;
 
 interface FileUpdateDeleteInterface
 {
-    public function updateFile(FileRequest $request, $id);
-    public function deleteFile($id);
+    public function updateFile(FileRequest $request, $id, $languageId);
+    public function deleteFile($id, $languageId);
 }

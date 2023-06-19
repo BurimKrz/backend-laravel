@@ -2,6 +2,7 @@
 
 namespace App\Implementations;
 
+use App\Services\ChangeLanguageService;
 use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\ForgotPasswordRequest;
@@ -10,8 +11,11 @@ use App\Models\User;
 
 class ForgotPasswordImplementation implements PasswordInterface{
 
-    public function resetPassword(ForgotPasswordRequest $forgotPassword)
+    public function resetPassword(ForgotPasswordRequest $forgotPassword, $languageId)
     {
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
+        
         $email = $forgotPassword -> email;
         $newPassword = $forgotPassword -> newPassword;
         $confirmPassword = $forgotPassword -> confirmPassword;
@@ -19,17 +23,17 @@ class ForgotPasswordImplementation implements PasswordInterface{
         $user = User::where('email', $email)->first();
 
         if(!$user){
-            return 'This user does not exist';
+            return __('messages.userNotExist');
         }
 
         if(Hash::check($newPassword, $user->password)){
-            return 'New password must be different from the current password.';
+            return __('messages.newPass');
         }
         if ($newPassword == $confirmPassword){
             $user->password  = bcrypt($newPassword);
             $user->save();
 
-            return 'Password changed successfully';
+            return __('messages.pass');
         }
     }
 }

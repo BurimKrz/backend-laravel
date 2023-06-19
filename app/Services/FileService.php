@@ -3,42 +3,65 @@
 namespace App\Services;
 
 use App\Http\Requests\FileRequest;
-use App\Models\File;
 use App\Models\FileHasProduct;
 use App\Models\FileHasType;
-use App\Models\Product;
-use Illuminate\Support\Facades\Storage;
+use App\Models\FileUpload;
 
 class FileService
 {
     public function AddFile(FileRequest $request)
     {
-        $latestProduct      = Product::latest()->first();
-        $lastKnownProductId = $latestProduct ? $latestProduct->id : null;
+        // $storedData = Session::get('stored_data');
 
-        $fileDataArray = $request->input('files', []);
+        // if ($storedData) {
+        // $productId = $this->processData($storedData)
 
-        foreach ($fileDataArray as $fileData) {
-            $fileDirectory = ($fileData['typeId'] === 1 || $fileData['typeId'] === 2) ? 'images' : 'pdf';
+        $files = $request->file('files');
 
-            $file = File::create([
-                'URL' => $fileData['URL'],
+        foreach ($files as $key => $file) {
+            $typeId        = $request->input('typeId')[$key];
+            $filePath      = '';
+            $fileExtension = $file->getClientOriginalExtension();
+            $imgMimes      = ['jpg', 'png', 'jpeg'];
+
+            if ($typeId == 1 && in_array($fileExtension, $imgMimes)) {
+                $filePath = $file->store('Images/cover', 'public');
+            } elseif ($typeId == 2 && in_array($fileExtension, $imgMimes)) {
+                $filePath = $file->store('Images/slide', 'public');
+            } elseif ($typeId == 3 && $fileExtension === 'pdf') {
+                $filePath = $file->store('Documents/pdf', 'public');
+            } else {
+                return response()->json(['error' => 'Invalid file type or type ID'], 400);
+            }
+
+            $uploadedFile = FileUpload::create([
+                'URL' => $filePath,
             ]);
 
             FileHasProduct::create([
-                'file_id'    => $file->id,
-                'product_id' => $lastKnownProductId,
+                'file_id'    => $uploadedFile->id,
+                'product_id' => 4,
             ]);
 
             FileHasType::create([
-                'file_id' => $file->id,
-                'type_id' => $fileData['typeId'],
+                'file_id' => $uploadedFile->id,
+                'type_id' => $typeId,
             ]);
-
-            // Move the file to the respective directory
-            $newFilePath = public_path('storage/' . $fileDirectory . '/');
-            Storage::move($newFilePath, $file->URL);
-
         }
+        return response()->json(['message' => 'Files Uploaded successfully'], 201);
     }
+    // private function processData($data)
+// {
+//     $processedData = [];
+
+//     foreach ($data as $item) {
+
+//         $processedItem = $item;
+
+//         $processedData[] = $processedItem;
+//     }
+
+//     return $processedData;
+// }
+// }
 }

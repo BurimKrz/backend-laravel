@@ -4,6 +4,7 @@ namespace App\Implementations;
 use App\Http\Requests\ModifyItemRequest;
 use App\Interfaces\ModifyItemInterface;
 use App\Models\Product;
+use App\Services\ChangeLanguageService;
 
 class ModifyItemImplementation implements ModifyItemInterface
 {
@@ -21,11 +22,13 @@ class ModifyItemImplementation implements ModifyItemInterface
         return $product;
     }
 
-    public function deleteProduct($id)
+    public function deleteProduct($id, $languageId)
     {
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
         $product = Product::findOrFail($id);
         $product->delete();
-        return response()->json("Product deleted");
+        return response()->json(__('messages.delete'));
     }
 
 }

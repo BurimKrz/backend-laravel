@@ -19,11 +19,11 @@ class InterestedAtImplementation implements InterestedAtInterface
         );
 
     }
-    public function delete($id)
+    public function delete($id, $languageId)
     {
         $product = InterestedAt::findOrFail($id);
         $product->delete();
-        return "Product deleted";
+        return __('messages.delete');
 
     }
 }

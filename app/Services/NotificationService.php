@@ -1,12 +1,16 @@
 <?php
 namespace App\Services;
+use App\Services\ChangeLanguageService;
 use Illuminate\Support\Facades\DB;
 
 class NotificationService
 {
 
-    public function notification($id)
+    public function notification($id, $languageId)
     {
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
+        
         $notifications = DB::table('notifications')
             ->where('notifiable_id', $id)
             ->get();
@@ -14,7 +18,7 @@ class NotificationService
         return response()->json($notifications, 200);
 
         if (!$notifications) {
-            return response()->json(['error' => 'Notification not found'], 404);
+            return response()->json(['error' =>  __('messages.notFound')], 404);
         }
     }
 }

@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\ForgotPasswordRequest;
 use App\Interfaces\PasswordInterface;
+use Illuminate\Support\Facades\App;
 
 class PasswordController extends Controller
 {
-     private PasswordInterface $passwordInterface;
+    private PasswordInterface $passwordInterface;
 
-     public function __construct(PasswordInterface $passwordInterface){
+    public function __construct(PasswordInterface $passwordInterface)
+    {
         $this->passwordInterface = $passwordInterface;
-     }
+    }
 
-     public function password (ForgotPasswordRequest $forgotPassword){
-        return response() -> json($this->passwordInterface->resetPassword($forgotPassword));
-     }
+    public function password(ForgotPasswordRequest $forgotPassword, $languageId)
+    {
+        return response()->json($this->passwordInterface->resetPassword($forgotPassword, $languageId));
+    }
 }

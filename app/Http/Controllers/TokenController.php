@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TokenRequest;
 use App\Interfaces\TokenInterface;
 use App\Services\TokenService;
+use Illuminate\Support\Facades\App;
 
 class TokenController extends Controller
 {
@@ -20,9 +21,9 @@ class TokenController extends Controller
         return response()->json($this->tokenService->showToken($id), 200);
     }
 
-    public function updateToken(TokenInterface $tokenInterface, TokenRequest $tokenRequest, $user_id)
+    public function updateToken(TokenInterface $tokenInterface, TokenRequest $tokenRequest, $user_id, $languageId)
     {
-        return response()->json($this->tokenInterface->tokenUpdate($tokenRequest, $user_id));
+        return response()->json($this->tokenInterface->tokenUpdate($tokenRequest, $user_id, $languageId));
     }
 
 }

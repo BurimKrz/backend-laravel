@@ -22,7 +22,15 @@ class FileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'files.*.URL' => 'required',
+            'files.*.file'   => 'required|file',
+            'files.*.typeId' => 'required|numeric',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'files.mimes' => 'Invalid file type. Allowed file types: pdf, jpg, png, jpeg',
         ];
     }
 }

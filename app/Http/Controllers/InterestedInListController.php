@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Interfaces\InterestedInterface;
 use App\Services\InterestedInService;
+use Illuminate\Support\Facades\App;
 
 class InterestedInListController extends Controller
 {
@@ -19,9 +20,9 @@ class InterestedInListController extends Controller
         return response()->json($this->interestedInService->showInterestedIn($id), 200);
     }
 
-    public function destroy(InterestedInterface $interestedInterface, $id)
+    public function destroy(InterestedInterface $interestedInterface, $id, $languageId)
     {
-        return response()->json($this->interestedInterface->delete($id), 200);
+        return response()->json($this->interestedInterface->delete($id, $languageId), 200);
     }
 
 }

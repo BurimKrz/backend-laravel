@@ -3,12 +3,15 @@ namespace App\Services;
 
 use App\Http\Requests\ActivityRequest;
 use App\Models\ActivityCompany;
+use App\Services\ChangeLanguageService;
 
 class ActivityService
 {
-    public function activity(ActivityRequest $activityRequest)
+    public function activity(ActivityRequest $activityRequest, $languageId)
     {
-
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
+        
         $activityAreaId = strval($activityRequest->activity_area_id);
 
         $split = str_split($activityAreaId, 1);
@@ -19,7 +22,7 @@ class ActivityService
                 'company_id'       => 2,
             ]);
         }
-        return response()->json('ok');
+        return response()->json(__('messages.successfully'));
     }
 
 }

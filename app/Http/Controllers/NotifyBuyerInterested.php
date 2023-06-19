@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\NotifyBuyerService;
+use Illuminate\Support\Facades\App;
 
 class NotifyBuyerInterested extends Controller
 {
@@ -11,8 +12,8 @@ class NotifyBuyerInterested extends Controller
     {
         $this->notifyBuyerService = $notifyBuyerService;
     }
-    public function notify($Oid, $Uid, $Pid)
+    public function notify($Oid, $Uid, $Pid, $languageId)
     {
-        return $this->notifyBuyerService->notifyBuyer($Oid, $Uid, $Pid);
+        return $this->notifyBuyerService->notifyBuyer($Oid, $Uid, $Pid, $languageId);
     }
 }

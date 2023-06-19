@@ -7,6 +7,7 @@ use App\Interfaces\ProductInterface;
 use App\Models\ExportProduct;
 use App\Models\ImportProduct;
 use App\Models\Product;
+use Illuminate\Support\Facades\Session;
 
 class ProductImplementation implements ProductInterface
 {
@@ -26,6 +27,9 @@ class ProductImplementation implements ProductInterface
                 'company_id'     => $addProductRequest['company_id'],
             ]
         );
+        error_log($data = $product->toArray());
+
+        Session::put('stored_data', $data);
 
         $typeImportExport = $addProductRequest->type;
 

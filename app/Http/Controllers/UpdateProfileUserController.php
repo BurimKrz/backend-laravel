@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateProfileUserRequest;
 use App\Interfaces\UpdateProfileUserInterface;
+use Illuminate\Support\Facades\App;
 
 class UpdateProfileUserController extends Controller
 {
@@ -12,8 +13,9 @@ class UpdateProfileUserController extends Controller
     public function __construct(UpdateProfileUserInterface $updateProfileUserInterface){
         $this->updateProfileUserInterface = $updateProfileUserInterface;
     }
-    public function update(UpdateProfileUserRequest $updateProfileUserRequest, $id)
+    public function update(UpdateProfileUserRequest $updateProfileUserRequest, $id, $languageId)
     {
-        return response()->json($this->updateProfileUserInterface->updateProfileUser($updateProfileUserRequest, $id));
+        return response()->json($this->updateProfileUserInterface
+        ->updateProfileUser($updateProfileUserRequest, $id, $languageId));
     }
 }
