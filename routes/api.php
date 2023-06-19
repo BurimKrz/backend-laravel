@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AddProduct;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyFilterController;
@@ -27,10 +25,8 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\SellerController;
 use App\Http\Controllers\SuccessStoriesController;
 use App\Http\Controllers\TokenController;
-use App\Http\Controllers\TradeController;
 use App\Http\Controllers\UpdateLanguageController;
 use App\Http\Controllers\UpdateProfileUserController;
 use App\Http\Controllers\ViewController;
@@ -48,164 +44,318 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-//Country list
+// //Country list
+// Route::get('/country', [RegisterController::class, 'index']);
+
+// //Route for import list
+// Route::get('/ilist', [ImportProduct::class, 'import']);
+
+// //All product list
+// Route::get('/ProductAllList', [ProductController::class, 'products']);
+
+// //Route for export list
+// Route::get('/elist', [ExportProduct::class, 'showList']);
+
+// //View more for export product
+// Route::get('/elist/{id}', [ExportProduct::class, 'show']);
+
+// //View more for import product
+// Route::get('/ilist/{id}', [ImportProduct::class, 'show']);
+
+// //View more for company
+// Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
+
+// //Show user token
+// Route::get('/token/{id}', [TokenController::class, 'token']);
+
+// //Number of views for product
+// Route::get('/view/{id}', [ViewController::class, 'view']);
+
+// //Created date for product
+// Route::get('/date/{id}', [ViewController::class, 'date']);
+
+// //Category of company
+// Route::get('/category', [CategoryController::class, 'category']);
+
+// //Subcategory of company
+// Route::get('/subcategory', [CategoryController::class, 'subcategory']);
+
+// //Category of product
+// Route::get('/productcategory', [CategoryController::class, 'productcategory']);
+
+// //List of all comapmanies
+// Route::get('/CompanyList', [CompanyListController::class, 'companyList']);
+
+// //Filter product base on subcategory
+// Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filterProductSubCategory']);
+
+// //Filter company base on category
+// Route::get('/filterCompany/{id}/{lang}', [CompanyFilterController::class, 'filterCompany']);
+
+// Route::get('/filterProduct/{id}', [FilterProductController::class, 'filterProductCategory']);
+
+// //Products people are interested at for user
+// Route::get('/interstedProduct/{id}', [InterestedProductController::class, 'interestedProduct']);
+
+// //Notification for the buyer that is interested in a product
+// Route::get('/Notify/{Oid}/{Pid}/{Uid}/{lang}', [NotifyBuyerInterested::class, 'notify']);
+
+// //Products people are interested in for company
+// Route::get('/interstedIn/{id}', [InterestedInListController::class, 'interestedIn']);
+
+// //Getting data for the "Form" communication
+// Route::get('/form/{id}', [MailFormController::class, 'mailForm']);
+
+// //Get the the Notifications for the Owner
+// Route::get('/Notify/{id}/{lang}', [ListNotificationsController::class, 'findNotifications']);
+
+// //
+// Route::get('/corporate/{id}', [CorporateController::class, 'showCorporate']);
+
+// //Show the success stories
+// Route::get('/successStory', [SuccessStoriesController::class, 'successStories']);
+
+// Route::get('/allFiles', [FileGetDataController::class, 'showAllFiles']);
+
+// Route::get('/showFiles/{productId}/{fileType}', [FileGetDataController::class, 'showIndexFile']);
+
+// //Update product
+// Route::put('/product/{id}', [ModifyItem::class, 'update']);
+
+// //Updating Token
+// Route::put('/updateToken/{id}/{lang}', [TokenController::class, 'updateToken']);
+
+// //Updating User Profile Data
+// Route::put('/updateUser/{id}/{lang}', [UpdateProfileUserController::class, 'update']);
+
+// //Forgot password
+// Route::put('/password/{lang}', [PasswordController::class, 'password']);
+
+// Route::post('/updateFile/{Fid}/{Lid}', [FileUpdateDeleteController::class, 'updateFile']);
+
+// //Update Language
+// Route::get('/updateLanguage/{userId}/{languageId}', [UpdateLanguageController::class, 'updateLanguage']);
+
+// //Register a new user
+// Route::post('/register', [RegisterController::class, 'register']);
+
+// //Login
+// Route::post('/login/{language}', [AuthController::class, 'login']);
+
+// //Logout
+// Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+// //Create a new company
+// Route::post('/company/{userId}', [CompanyController::class, 'company']);
+
+// //Activity area for comapany
+// Route::post('/activity/{lang}', [ActivityController::class, 'activitycontroller']);
+
+// //Add a new product
+// Route::post('/add', [AddProduct::class, 'AddProduct']);
+
+// //Confiramtion from an user for buying a product
+// Route::post('/buyConfirmed', [BuyerController::class, 'buyerConfirmation']);
+
+// //Confiramtion from an owner for selling a product
+// Route::post('/sellConfirm', [SellerController::class, 'sellConfirmation']);
+
+// //Trede a product confimation
+// Route::post('/trade', [TradeController::class, 'store']);
+
+// //Add a product at interested list
+// Route::post('/interestedAt', [InterestedProductController::class, 'interestedAt']);
+
+// Route::post('/interestedIn', [InterestedInListController::class, 'interestedInProduct']);
+
+// //Newsletter
+// Route::post('/newsletter/{lang}', [NewsletterController::class, 'addNewsletter']);
+
+// //Admin can send newsletter
+// Route::post('/sendnewsletter/{lang}', [NewsletterController::class, 'sendNewsletter']);
+
+// Route::post('/addFile', [FileController::class, 'addFile']);
+
+// //Search for company
+// Route::post('/searchCompany', [SearchController::class, 'companySearch']);
+
+// //Search for product
+// Route::post('/searchProduct', [SearchController::class, 'productSearch']);
+
+// //Send support email
+// Route::post('/email/{lang}', [EmailController::class, 'email']);
+
+// //Add a success sotory
+// Route::post('/successStory', [SuccessStoriesController::class, 'addSucessStories']);
+
+// //Detele a product
+// Route::delete('/product/{id}/{lang}', [ModifyItem::class, 'destroy']);
+
+// //Delete a product from InterestedAt
+// Route::delete('/deleteProduct/{id}/{lang}', [InterestedProductController::class, 'deleteInterestedAT']);
+
+// //Delete a product from InterestedInList
+// Route::delete('/delete/{id}/{langId}', [InterestedInListController::class, 'destroy']);
+
+// Route::delete('/deleteFile/{id}/{langId}', [FileUpdateDeleteController::class, 'deleteFile']);
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::middleware('auth:sanctum')->group(function () {
+    // Logout
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+    // Add a new product
+    Route::post('/add', [AddProduct::class, 'AddProduct']);
+
+    // Update product
+    Route::put('/product/{id}', [ModifyItem::class, 'update']);
+
+    // Delete a product
+    Route::delete('/product/{id}', [ModifyItem::class, 'destroy']);
+
+    // Create a new company
+    Route::post('/company', [CompanyController::class, 'company']);
+
+// Updating Token
+    Route::put('/updateToken/{id}/{lang}', [TokenController::class, 'updateToken']);
+
+// Updating User Profile Data
+    Route::put('/updateUser/{id}/{lang}', [UpdateProfileUserController::class, 'update']);
+
+    Route::post('/updateFile/{Fid}/{Lid}', [FileUpdateDeleteController::class, 'updateFile']);
+
+// Newsletter
+    Route::post('/newsletter/{lang}', [NewsletterController::class, 'addNewsletter']);
+
+// Admin can send newsletter
+    Route::post('/sendnewsletter/{lang}', [NewsletterController::class, 'sendNewsletter']);
+
+    Route::post('/addFile', [FileController::class, 'addFile']);
+
+// Search for company
+    Route::post('/searchCompany', [SearchController::class, 'companySearch']);
+
+// Search for product
+    Route::post('/searchProduct', [SearchController::class, 'productSearch']);
+
+// Send support email
+    Route::post('/email/{lang}', [EmailController::class, 'email']);
+
+// Add a success story
+    Route::post('/successStory', [SuccessStoriesController::class, 'addSucessStories']);
+
+// Delete a product
+    Route::delete('/product/{id}/{lang}', [ModifyItem::class, 'destroy']);
+
+// Delete a product from InterestedAt
+    Route::delete('/deleteProduct/{id}/{lang}', [InterestedProductController::class, 'deleteInterestedAT']);
+
+// Delete a product from InterestedInList
+    Route::delete('/delete/{id}/{langId}', [InterestedInListController::class, 'destroy']);
+
+    Route::delete('/deleteFile/{id}/{langId}', [FileUpdateDeleteController::class, 'deleteFile']);
+
+});
+
+// Update Language
+Route::put('/updateLanguage/{userId}/{languageId}', [UpdateLanguageController::class, 'updateLanguage']);
+
+// Forgot password
+Route::put('/password/{lang}', [PasswordController::class, 'password']);
+
+// Register a new user (public)
+Route::post('/register', [RegisterController::class, 'register']);
+
+// Login (public)
+Route::post('/login', [AuthController::class, 'login']);
+// Country list
 Route::get('/country', [RegisterController::class, 'index']);
 
-//Route for import list
+// Route for import list
 Route::get('/ilist', [ImportProduct::class, 'import']);
 
-//All product list
+// All product list
 Route::get('/ProductAllList', [ProductController::class, 'products']);
 
-//Route for export list
+// Route for export list
 Route::get('/elist', [ExportProduct::class, 'showList']);
 
-//View more for export product
+// View more for export product
 Route::get('/elist/{id}', [ExportProduct::class, 'show']);
 
-//View more for import product
+// View more for import product
 Route::get('/ilist/{id}', [ImportProduct::class, 'show']);
 
-//View more for company
+// View more for company
 Route::get('/company_details/{id}', [CompanyListController::class, 'companyDetails']);
 
-//Show user token
+// Show user token
 Route::get('/token/{id}', [TokenController::class, 'token']);
 
-//Number of views for product
+// Number of views for product
 Route::get('/view/{id}', [ViewController::class, 'view']);
 
-//Created date for product
+// Created date for product
 Route::get('/date/{id}', [ViewController::class, 'date']);
 
-//Category of company
+// Category of company
 Route::get('/category', [CategoryController::class, 'category']);
 
-//Subcategory of company
+// Subcategory of company
 Route::get('/subcategory', [CategoryController::class, 'subcategory']);
 
-//Category of product
+// Category of product
 Route::get('/productcategory', [CategoryController::class, 'productcategory']);
 
-//List of all comapmanies
+// List of all companies
 Route::get('/CompanyList', [CompanyListController::class, 'companyList']);
 
-//Filter product base on subcategory
+// Filter product based on subcategory
 Route::get('/subcategory/{c_id}/{s_id}', [FilterProductController::class, 'filterProductSubCategory']);
 
-//Filter company base on category
+// Filter company based on category
 Route::get('/filterCompany/{id}/{lang}', [CompanyFilterController::class, 'filterCompany']);
 
+// Filter product based on category
 Route::get('/filterProduct/{id}', [FilterProductController::class, 'filterProductCategory']);
 
-//Products people are interested at for user
+// Products people are interested at for user
 Route::get('/interstedProduct/{id}', [InterestedProductController::class, 'interestedProduct']);
 
-//Notification for the buyer that is interested in a product
+// Notification for the buyer that is interested in a product
 Route::get('/Notify/{Oid}/{Pid}/{Uid}/{lang}', [NotifyBuyerInterested::class, 'notify']);
 
-//Products people are interested in for company
+// Products people are interested in for company
 Route::get('/interstedIn/{id}', [InterestedInListController::class, 'interestedIn']);
 
-//Getting data for the "Form" communication
+// Getting data for the "Form" communication
 Route::get('/form/{id}', [MailFormController::class, 'mailForm']);
 
-//Get the the Notifications for the Owner
+// Get the Notifications for the Owner
 Route::get('/Notify/{id}/{lang}', [ListNotificationsController::class, 'findNotifications']);
 
 //
 Route::get('/corporate/{id}', [CorporateController::class, 'showCorporate']);
 
-//Show the success stories
+// Show the success stories
 Route::get('/successStory', [SuccessStoriesController::class, 'successStories']);
 
 Route::get('/allFiles', [FileGetDataController::class, 'showAllFiles']);
 
 Route::get('/showFiles/{productId}/{fileType}', [FileGetDataController::class, 'showIndexFile']);
 
-//Update product
-Route::put('/product/{id}', [ModifyItem::class, 'update']);
-
-//Updating Token
-Route::put('/updateToken/{id}/{lang}', [TokenController::class, 'updateToken']);
-
-//Updating User Profile Data
-Route::put('/updateUser/{id}/{lang}', [UpdateProfileUserController::class, 'update']);
-
-//Forgot password
-Route::put('/password/{lang}', [PasswordController::class, 'password']);
-
-Route::post('/updateFile/{Fid}/{Lid}', [FileUpdateDeleteController::class, 'updateFile']);
-
-//Update Language
+// Update Language
 Route::get('/updateLanguage/{userId}/{languageId}', [UpdateLanguageController::class, 'updateLanguage']);
-
-//Register a new user
-Route::post('/register', [RegisterController::class, 'register']);
-
-//Login
-Route::post('/login/{language}', [AuthController::class, 'login']);
-
-//Logout
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-
-//Create a new company
-Route::post('/company/{userId}', [CompanyController::class, 'company']);
-
-//Activity area for comapany
-Route::post('/activity/{lang}', [ActivityController::class, 'activitycontroller']);
-
-//Add a new product
-Route::post('/add', [AddProduct::class, 'AddProduct']);
-
-//Confiramtion from an user for buying a product
-Route::post('/buyConfirmed', [BuyerController::class, 'buyerConfirmation']);
-
-//Confiramtion from an owner for selling a product
-Route::post('/sellConfirm', [SellerController::class, 'sellConfirmation']);
-
-//Trede a product confimation
-Route::post('/trade', [TradeController::class, 'store']);
-
-//Add a product at interested list
-Route::post('/interestedAt', [InterestedProductController::class, 'interestedAt']);
-
-Route::post('/interestedIn', [InterestedInListController::class, 'interestedInProduct']);
-
-//Newsletter
-Route::post('/newsletter/{lang}', [NewsletterController::class, 'addNewsletter']);
-
-//Admin can send newsletter
-Route::post('/sendnewsletter/{lang}', [NewsletterController::class, 'sendNewsletter']);
-
-Route::post('/addFile', [FileController::class, 'addFile']);
-
-//Search for company
-Route::post('/searchCompany', [SearchController::class, 'companySearch']);
-
-//Search for product
-Route::post('/searchProduct', [SearchController::class, 'productSearch']);
-
-//Send support email
-Route::post('/email/{lang}', [EmailController::class, 'email']);
-
-//Add a success sotory
-Route::post('/successStory', [SuccessStoriesController::class, 'addSucessStories']);
-
-//Detele a product
-Route::delete('/product/{id}/{lang}', [ModifyItem::class, 'destroy']);
-
-//Delete a product from InterestedAt
-Route::delete('/deleteProduct/{id}/{lang}', [InterestedProductController::class, 'deleteInterestedAT']);
-
-//Delete a product from InterestedInList
-Route::delete('/delete/{id}/{langId}', [InterestedInListController::class, 'destroy']);
-
-Route::delete('/deleteFile/{id}/{langId}', [FileUpdateDeleteController::class, 'deleteFile']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::get('/', function () {
     return view('welcome');
 });
