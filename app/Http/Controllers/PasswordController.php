@@ -15,10 +15,8 @@ class PasswordController extends Controller
         $this->passwordInterface = $passwordInterface;
     }
 
-    public function password(ForgotPasswordRequest $forgotPassword, $language)
+    public function password(ForgotPasswordRequest $forgotPassword, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return response()->json($this->passwordInterface->resetPassword($forgotPassword, $language));
+        return response()->json($this->passwordInterface->resetPassword($forgotPassword, $languageId));
     }
 }

@@ -1,12 +1,16 @@
 <?php
 namespace App\Services;
+use App\Services\ChangeLanguageService;
 use Illuminate\Support\Facades\DB;
 
 class NotificationService
 {
 
-    public function notification($id, $language)
+    public function notification($id, $languageId)
     {
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
+        
         $notifications = DB::table('notifications')
             ->where('notifiable_id', $id)
             ->get();

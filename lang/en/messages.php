@@ -18,6 +18,8 @@ return[
     'emailExist' => 'Email already exists',
     'emailWrong' => 'Something went wrong',
     'newsletter' => 'Newsletter sent successfully',
+    'currentLanguage' => 'You already are using this language.',
+    'updateL' => 'Language updated.',
    
 
 

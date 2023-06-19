@@ -12,10 +12,8 @@ class NotifyBuyerInterested extends Controller
     {
         $this->notifyBuyerService = $notifyBuyerService;
     }
-    public function notify($Oid, $Uid, $Pid, $language)
+    public function notify($Oid, $Uid, $Pid, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return $this->notifyBuyerService->notifyBuyer($Oid, $Uid, $Pid, $language);
+        return $this->notifyBuyerService->notifyBuyer($Oid, $Uid, $Pid, $languageId);
     }
 }

@@ -8,5 +8,5 @@ interface ModifyItemInterface
 
     public function modifyProduct(ModifyItemRequest $modifyItemRequest, $id);
 
-    public function deleteProduct($id, $language);
+    public function deleteProduct($id, $languageId);
 }

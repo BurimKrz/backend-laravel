@@ -3,12 +3,15 @@ namespace App\Services;
 
 use App\Models\Company;
 use App\Models\CompanyCategory;
+use App\Services\ChangeLanguageService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CompanyFilterService
 {
-    public function companyFilter($id, $language)
+    public function companyFilter($id, $languageId)
     {
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
 
         $companyCategory = CompanyCategory::find($id);
 

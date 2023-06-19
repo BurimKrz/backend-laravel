@@ -28,10 +28,8 @@ class InterestedProductController extends Controller
         return response()->json($this->interestedAtService->selectInterstedProduct($id), 200);
     }
 
-    public function deleteInterestedAT(InterestedAtInterface $interestedAtInterface, $id, $language)
+    public function deleteInterestedAT(InterestedAtInterface $interestedAtInterface, $id, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return response()->json($this->interestedAtInterface->delete($id, $language), 200);
+        return response()->json($this->interestedAtInterface->delete($id, $languageId), 200);
     }
 }

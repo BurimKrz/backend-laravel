@@ -13,10 +13,8 @@ class CompanyFilterController extends Controller
     {
         $this->companyFilterService = $companyFilterService;
     }
-    public function filterCompany(CompanyFilterService $companyFilterService, $id, $language)
+    public function filterCompany(CompanyFilterService $companyFilterService, $id, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return response()->json($this->companyFilterService->companyFilter($id, $language), 200);
+        return response()->json($this->companyFilterService->companyFilter($id, $languageId), 200);
     }
 }

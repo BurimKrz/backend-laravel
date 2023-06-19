@@ -2,13 +2,16 @@
 namespace App\Services;
 
 use App\Http\Requests\AuthRequest;
+use App\Services\ChangeLanguageService;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class AuthService
 {
-    public function createAuth(AuthRequest $authRequest, $language)
+    public function createAuth(AuthRequest $authRequest, $languageId)
     {
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
 
         $credentials = $authRequest->validated();
 

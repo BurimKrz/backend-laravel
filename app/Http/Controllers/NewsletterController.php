@@ -16,17 +16,13 @@ class NewsletterController extends Controller
     public function __construct(NewsletterService $newsletterService, ){
         $this->newsletterService = $newsletterService;
     }
-    public function addNewsletter(NewsletterRequest $newsletterRequest, $language)
+    public function addNewsletter(NewsletterRequest $newsletterRequest, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return response()->json($this->newsletterService->newsletter($newsletterRequest, $language), 200);
+        return response()->json($this->newsletterService->newsletter($newsletterRequest, $languageId), 200);
     }
 
-    public function sendNewsletter(SendNewsletterRequest $newsletter, $language)
+    public function sendNewsletter(SendNewsletterRequest $newsletter, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return response()->json($this->newsletterService->newsletterSent($newsletter, $language), 200);
+        return response()->json($this->newsletterService->newsletterSent($newsletter, $languageId), 200);
     }
 }

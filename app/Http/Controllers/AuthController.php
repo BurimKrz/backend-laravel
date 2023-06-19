@@ -17,11 +17,9 @@ class AuthController extends Controller
         $this->authService = $authService;
     }
 
-    public function login(AuthRequest $authRequest, $language)
+    public function login(AuthRequest $authRequest, $languageId)
     {
-        $locale = config('app.available_locales');
-        App::setLocale($locale[$language]);
-        return response()->json($this->authService->createAuth($authRequest, $language));
+        return response()->json($this->authService->createAuth($authRequest, $languageId));
     }
 
     public function logout(Request $request, $language)

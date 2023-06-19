@@ -7,5 +7,5 @@ use App\Models\InterestedAt;
 interface InterestedAtInterface{
     public function createInterestedAt(InterestedAtRequest $interestedAtRequest): InterestedAt;
 
-    public function delete($id, $language);
+    public function delete($id, $languageId);
 }

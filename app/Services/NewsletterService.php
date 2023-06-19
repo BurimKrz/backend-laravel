@@ -4,14 +4,18 @@ namespace App\Services;
 use App\Http\Requests\NewsletterRequest;
 use App\Http\Requests\SendNewsletterRequest;
 use App\Models\Newsletters;
+use App\Services\ChangeLanguageService;
 use Illuminate\Database\QueryException;
 use App\Jobs\NewsletterJob;
 
 class NewsletterService
 {
 
-    public function newsletter(NewsletterRequest $newsletterRequest, $language)
+    public function newsletter(NewsletterRequest $newsletterRequest, $languageId)
     {
+        $changeLanguage = new ChangeLanguageService;
+        $changeLanguage->changeLanguage($languageId);
+
         $count = Newsletters::where('email', $newsletterRequest->email)->count();
 
         if ($count === 1) {
@@ -29,8 +33,11 @@ class NewsletterService
         }
     }
 
-    public function newsletterSent(SendNewsletterRequest $newsletter, $language){
+    public function newsletterSent(SendNewsletterRequest $newsletter, $languageId){
         {
+            $changeLanguage = new ChangeLanguageService;
+            $changeLanguage->changeLanguage($languageId);
+            
             dispatch(new NewsletterJob($newsletter->subject, $newsletter->message));
 
             return response()->json(['message' =>  __('messages.newsletter')], 200);
