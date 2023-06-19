@@ -23,7 +23,7 @@ return [
    'updateL' => 'Idioma actualizado.',
    'deleted' => 'Datos eliminados con éxito', 
    'errorFile' => 'Tipo de archivo o ID de tipo no válido',
-   'FileUploaded' => 'Archivos subidos con éxito'
+   'FileUploaded' => 'Archivos subidos con éxito',
 
 
 
