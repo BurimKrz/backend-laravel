@@ -6,32 +6,34 @@ use App\Implementations\BuyerImplementation;
 use App\Implementations\CategoryImplementation;
 use App\Implementations\CompanyImplementation;
 use App\Implementations\ExportImplementation;
+use App\Implementations\FileGetDataImplementation;
 use App\Implementations\FileUpdateDeleteImplementation;
+use App\Implementations\ForgotPasswordImplementation;
 use App\Implementations\InterestedAtImplementation;
 use App\Implementations\InterestedInImplementation;
 use App\Implementations\ModifyItemImplementation;
 use App\Implementations\ProductImplementation;
 use App\Implementations\RegisterImplementation;
 use App\Implementations\SellerImplementation;
+use App\Implementations\SuccessStoriesImplementation;
 use App\Implementations\TokenImplementation;
 use App\Implementations\UpdateProfileUserImplementation;
-use App\Implementations\ForgotPasswordImplementation;
-use App\Implementations\SuccessStoriesImplementation;
 use App\Interfaces\BuyerInterface;
 use App\Interfaces\CategoryInterface;
 use App\Interfaces\CompanyInterface;
 use App\Interfaces\ExportInterface;
+use App\Interfaces\FileGetDataInterface;
 use App\Interfaces\FileUpdateDeleteInterface;
 use App\Interfaces\InterestedAtInterface;
 use App\Interfaces\InterestedInterface;
 use App\Interfaces\ModifyItemInterface;
+use App\Interfaces\PasswordInterface;
 use App\Interfaces\ProductInterface;
 use App\Interfaces\RegisterInterface;
 use App\Interfaces\SellerInterface;
+use App\Interfaces\SuccessStoriesInterface;
 use App\Interfaces\TokenInterface;
 use App\Interfaces\UpdateProfileUserInterface;
-use App\Interfaces\PasswordInterface;
-use App\Interfaces\SuccessStoriesInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -54,6 +56,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(BuyerInterface::class, BuyerImplementation::class);
         $this->app->bind(FileUpdateDeleteInterface::class, FileUpdateDeleteImplementation::class);
         $this->app->bind(UpdateProfileUserInterface::class, UpdateProfileUserImplementation::class);
+        $this->app->bind(FileGetDataInterface::class, FileGetDataImplementation::class);
         $this->app->bind(PasswordInterface::class, ForgotPasswordImplementation::class);
         $this->app->bind(SuccessStoriesInterface::class, SuccessStoriesImplementation::class);
     }
