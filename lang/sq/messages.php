@@ -20,5 +20,7 @@ return[
     'newsletter' => 'Buletini u dërgua me sukses',
     'currentLanguage' => 'Ju tashmë po e përdorni këtë gjuhë.',
     'updateL' => 'Gjuha e përditësuar.',
+    'deleted' => 'Të dhënat u fshinë me sukses', 
+
 
 ];

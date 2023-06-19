@@ -21,6 +21,8 @@ return [
    'newsletter' => 'Boletín enviado con éxito',
    'currentLanguage' => 'Ya estás usando este lenguaje.',
    'updateL' => 'Idioma actualizado.',
+   'deleted' => 'Datos eliminados con éxito', 
+
 
 
 ];
