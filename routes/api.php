@@ -133,6 +133,9 @@ Route::post('/searchCompany', [SearchController::class, 'companySearch']);
 //Search for product
 Route::post('/searchProduct', [SearchController::class, 'productSearch']);
 
+//Login
+Route::post('/login/{language}', [AuthController::class, 'login']);
+
 Route::middleware('auth:sanctum')->group(function () {
 //Update product
     Route::put('/product/{id}', [ModifyItem::class, 'update']);
@@ -144,9 +147,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/updateUser/{id}/{lang}', [UpdateProfileUserController::class, 'update']);
 
     Route::post('/updateFile/{id}', [FileUpdateDeleteController::class, 'updateFile']);
-
-//Login
-    Route::post('/login/{language}', [AuthController::class, 'login']);
 
 //Logout
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
