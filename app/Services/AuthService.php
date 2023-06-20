@@ -13,14 +13,11 @@ class AuthService
         if (Auth::attempt($credentials)) {
             session()->regenerate();
 
-            $user      = Auth::user();
-            $csrfToken = $authRequest->cookie('XSRF-TOKEN');
-            session()->put('_token', $csrfToken);
+            $user = Auth::user();
 
             $responseData = [
                 'message' => __('messages.welcome'),
                 'user'    => $user,
-                '_token'  => $csrfToken,
             ];
 
             return $responseData;
