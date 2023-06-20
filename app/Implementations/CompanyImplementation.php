@@ -7,12 +7,19 @@ use App\Interfaces\CompanyInterface;
 use App\Models\Company;
 use App\Models\UserCompany;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyImplementation implements CompanyInterface
 {
 
     public function createCompany(CompanyRequest $companyRequest, $userId): Company
     {
+        if (!Auth::check()) {
+            throw new \Exception ('User must be logged in to create a company.');
+        }
+
+        // Retrieve the authenticated user
+        $user    = Auth::user();
         $company = Company::create(
             [
                 'name'            => $companyRequest['name'],
@@ -41,7 +48,7 @@ class CompanyImplementation implements CompanyInterface
         return $company;
     }
 
-    public function companyList():JsonResource
+    public function companyList(): JsonResource
     {
         return CompanyListResource::collection(Company::paginate(10));
     }
