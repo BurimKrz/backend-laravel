@@ -14,11 +14,8 @@ class CompanyImplementation implements CompanyInterface
 
     public function createCompany(CompanyRequest $companyRequest, $userId): Company
     {
-        if (!Auth::check()) {
-            throw new \Exception ('User must be logged in to create a company.');
-        }
+        $this->middleware('auth');
 
-        // Retrieve the user's ID
         $userId = Auth::id();
 
         // Retrieve the CSRF token from the request headers
