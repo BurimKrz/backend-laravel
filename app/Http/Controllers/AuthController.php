@@ -13,13 +13,14 @@ class AuthController extends Controller
 
     private AuthService $authService;
 
-    public function __construct(AuthService $authService){
+    public function __construct(AuthService $authService)
+    {
         $this->authService = $authService;
     }
 
-    public function login(AuthRequest $authRequest, $languageId)
+    public function login(AuthRequest $authRequest)
     {
-        return response()->json($this->authService->createAuth($authRequest, $languageId));
+        return response()->json($this->authService->createAuth($authRequest));
     }
 
     public function logout(Request $request, $languageId)

@@ -134,7 +134,7 @@ Route::post('/searchCompany', [SearchController::class, 'companySearch']);
 Route::post('/searchProduct', [SearchController::class, 'productSearch']);
 
 //Login
-Route::post('/login/{language}', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
 //Update product

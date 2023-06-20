@@ -7,51 +7,45 @@ use App\Interfaces\CompanyInterface;
 use App\Models\Company;
 use App\Models\UserCompany;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CompanyImplementation implements CompanyInterface
 {
 
-    public function createCompany(CompanyRequest $companyRequest, $userId): Company
+    public function createCompany(CompanyRequest $companyRequest, $userId): mixed
     {
-        $userId = Auth::id();
-
-// Retrieve the CSRF token from the request cookie
-        $csrfToken = $companyRequest->cookie('XSRF-TOKEN');
-
-// Include the CSRF token in the request
-        $companyRequest->merge([
-            '_token' => $csrfToken,
-        ]);
-
-        $company = Company::create(
-            [
-                'name'            => $companyRequest['name'],
-                'keywords'        => $companyRequest['keywords'],
-                'country'         => $companyRequest['country'],
-                'web_address'     => $companyRequest['web_address'],
-                'more_info'       => $companyRequest['more_info'],
-                'budged'          => $companyRequest['budged'],
-                'type'            => $companyRequest['type'],
-                'taxpayer_office' => $companyRequest['taxpayer_office'],
-                'TIN'             => $companyRequest['TIN'],
-                'category_id'     => $companyRequest['category_id'],
-                'subcategory_id'  => $companyRequest['subcategory_id'],
-            ]
-        );
-
-        if ($company) {
-            UserCompany::create([
-                'user_id'    => $userId,
-                'company_id' => $company->id,
-            ]);
+        if (!Session::has('_token')) {
+            return response()->json(['error' => 'You are not Authenticated'], 401);
         }
+        if (Session::has('_token')) {
+            $company = Company::create(
+                [
+                    'name'            => $companyRequest['name'],
+                    'keywords'        => $companyRequest['keywords'],
+                    'country'         => $companyRequest['country'],
+                    'web_address'     => $companyRequest['web_address'],
+                    'more_info'       => $companyRequest['more_info'],
+                    'budged'          => $companyRequest['budged'],
+                    'type'            => $companyRequest['type'],
+                    'taxpayer_office' => $companyRequest['taxpayer_office'],
+                    'TIN'             => $companyRequest['TIN'],
+                    'category_id'     => $companyRequest['category_id'],
+                    'subcategory_id'  => $companyRequest['subcategory_id'],
+                ]
+            );
 
-        $keywordsArray = explode(",", $companyRequest['keywords']);
+            if ($company) {
+                UserCompany::create([
+                    'user_id'    => $userId,
+                    'company_id' => $company->id,
+                ]);
+            }
 
-        return $company;
+            $keywordsArray = explode(",", $companyRequest['keywords']);
+
+            return $company;
+        }
     }
-
     public function companyList(): JsonResource
     {
         return CompanyListResource::collection(Company::paginate(10));
