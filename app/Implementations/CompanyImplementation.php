@@ -18,8 +18,17 @@ class CompanyImplementation implements CompanyInterface
             throw new \Exception ('User must be logged in to create a company.');
         }
 
-        // Retrieve the authenticated user
-        $user    = Auth::user();
+        // Retrieve the user's ID
+        $userId = Auth::id();
+
+        // Retrieve the CSRF token from the request headers
+        $csrfToken = $companyRequest->header('X-CSRF-TOKEN');
+
+        // Include the CSRF token in the request
+        $companyRequest->merge([
+            '_token' => $csrfToken,
+        ]);
+
         $company = Company::create(
             [
                 'name'            => $companyRequest['name'],
