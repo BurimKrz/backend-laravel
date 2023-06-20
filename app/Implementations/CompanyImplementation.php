@@ -14,14 +14,12 @@ class CompanyImplementation implements CompanyInterface
 
     public function createCompany(CompanyRequest $companyRequest, $userId): Company
     {
-        $this->middleware('auth');
-
         $userId = Auth::id();
 
-        // Retrieve the CSRF token from the request headers
-        $csrfToken = $companyRequest->header('X-CSRF-TOKEN');
+// Retrieve the CSRF token from the request cookie
+        $csrfToken = $companyRequest->cookie('XSRF-TOKEN');
 
-        // Include the CSRF token in the request
+// Include the CSRF token in the request
         $companyRequest->merge([
             '_token' => $csrfToken,
         ]);
