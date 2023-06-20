@@ -7,6 +7,7 @@ use App\Interfaces\ProductInterface;
 use App\Models\ExportProduct;
 use App\Models\ImportProduct;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class ProductImplementation implements ProductInterface
@@ -14,6 +15,13 @@ class ProductImplementation implements ProductInterface
 
     public function createProduct(AddProductRequest $addProductRequest): Product
     {
+        // Check if the user is logged in
+        if (!Auth::check()) {
+            throw new \Exception ('User must be logged in to add a product.');
+        }
+
+        // Retrieve the authenticated user
+        $user    = Auth::user();
         $product = Product::create(
             [
                 'name'           => $addProductRequest['name'],
