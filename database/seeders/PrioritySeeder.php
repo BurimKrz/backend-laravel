@@ -15,7 +15,7 @@ class PrioritySeeder extends Seeder
         $this->call([
             CompanyCategorySeeder::class,
             ProductCategorySeeder::class,
-            CompanySubcategorySeeder::class,
+            CompanySubCategorySeeder::class,
             ProductSubcategorySeeder::class,
             ActivityAreaSeeder::class,
             AdminSeeder::class,

@@ -12,7 +12,7 @@ use App\Models\CompanyCategory;
 use App\Models\CompanySubcategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class companyFactory extends Factory
+class CompanyFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
